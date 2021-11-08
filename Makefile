@@ -30,7 +30,7 @@ OBJS		=	$(addprefix $(OBJ)/, $(OFILES))
 VPATH		=	$(SRC)
 
 $(OBJ)/%.o:	%.c
-			$(CC) $(CFLAGS) -I$(INC) -I$(LIBFT) -c $< -o $@
+			$(CC) $(CFLAGS) -I$(INC) -I$(LIBFT) -I$(LIB) -c $< -o $@
 
 all:		CFLAGS += -O2 -DNDEBUG
 all:		$(NAME)
@@ -38,7 +38,7 @@ all:		$(NAME)
 $(NAME):	$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_GL)
-			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_GL) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_GL) -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
 $(OBJ):
 			$(MK) $(OBJ)
@@ -50,7 +50,7 @@ linux:		CFLAGS += -Og
 linux:		$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)
-			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_LINUX) -lmlx -lXext -lX11 -o $(NAME)
+			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_LINUX) -lmlx -lm -lXext -lX11 -o $(NAME)
 
 clean:
 			@$(MAKE_DIR) $(LIBFT) clean
