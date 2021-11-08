@@ -20,7 +20,7 @@ NM			=	norminette
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
 CFILES		=	main.c
-HFILES		=
+HFILES		=	vec2.h
 OFILES		=	$(CFILES:.c=.o)
 
 SRCS		=	$(addprefix $(SRC)/, $(CFILES))
