@@ -6,30 +6,46 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 15:05:40 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:35:21 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <math.h>
 #include <libft/libft.h>
+#include <stdint.h>
 #include "buffer.h"
 #include "draw.h"
 #include "utils.h"
 
 #define WIDTH 800
 #define HEIGHT 600
+#define SQUARE_SIZE 50
+#define PAD_SIZE 3
 
-int	mouse_fn(int x, int y, void *data)
+void	draw_grid(t_buffer *buf)
 {
-	t_buffer	*buf;
+	int32_t	x;
+	int32_t	y;
+	float	py;
+	float	px;
+	t_vec2	p;
 
-	buf = data;
-	clear(buf, 0x777777);
-	draw_line(buf, (t_vec2){400.0f, 300.0f},
-		(t_vec2){(float)x, (float)y}, 0x00FFFF00);
-	mlx_put_image_to_window(buf->mlx, buf->win, buf->img, 0, 0);
-	return (0);
+	y = 0;
+	while (y < HEIGHT / SQUARE_SIZE)
+	{
+		x = 0;
+		py = (float)(y * SQUARE_SIZE);
+		while (x < WIDTH / SQUARE_SIZE)
+		{
+			px = (float)(x * SQUARE_SIZE);
+			p.x = px + SQUARE_SIZE - PAD_SIZE;
+			p.y = py + SQUARE_SIZE - PAD_SIZE;
+			draw_rect(buf, (t_vec2){px, py}, p, 0xFFFFFF);
+			x++;
+		}
+		y++;
+	}
 }
 
 int	main(void)
@@ -41,7 +57,8 @@ int	main(void)
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "cub3D");
 	buf = new_buffer(mlx, win, WIDTH, HEIGHT);
-	draw_rect(buf, (t_vec2i){0, 0}, (t_vec2i){800, 600}, 0x777777);
-	mlx_hook(win, 6, 1 << 6, &mouse_fn, buf);
+	clear(buf, 0x777777);
+	draw_grid(buf);
+	mlx_put_image_to_window(buf->mlx, buf->win, buf->img, 0, 0);
 	mlx_loop(mlx);
 }

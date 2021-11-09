@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:27 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 15:06:59 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:11:27 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,16 @@
 #include <stdint.h>
 #include <math.h>
 
-void	draw_rect(t_buffer *buf, t_vec2i tl, t_vec2i br, uint32_t c)
+void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c)
 {
-	int32_t	width;
-	int32_t	height;
 	int32_t	i;
 	int32_t	j;
 
-	width = br.x - tl.x;
-	height = br.y - tl.y;
-	j = tl.y;
-	while (j < height)
+	j = (int32_t)tl.y;
+	while (j < (int32_t)br.y)
 	{
-		i = tl.x;
-		while (i < width)
+		i = (int32_t)tl.x;
+		while (i < (int32_t)br.x)
 		{
 			put_pixel(buf, i, j, c);
 			i++;

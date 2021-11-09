@@ -50,12 +50,12 @@ linux:		$(OBJ) $(OBJS)
 			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_LINUX) -lmlx -lm -lXext -lX11 -o $(NAME)
 
 clean:
-			@$(MAKE_DIR) $(LIBFT) clean
+#			@$(MAKE_DIR) $(LIBFT) clean
 			@$(MAKE_DIR) $(MLX_LINUX) clean
 			@$(RM) $(OBJS)
 
 fclean:		clean
-			@$(MAKE_DIR) $(LIBFT) fclean
+#			@$(MAKE_DIR) $(LIBFT) fclean
 			@$(RM) $(NAME)
 
 re:			fclean all
