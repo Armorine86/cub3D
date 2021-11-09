@@ -30,7 +30,7 @@ OBJS		=	$(addprefix $(OBJ)/, $(OFILES))
 VPATH		=	$(SRC)
 
 $(OBJ)/%.o:	%.c
-			$(CC) $(CFLAGS) -I$(INC) -I$(LIBFT) -I$(LIB) -c $< -o $@
+			$(CC) $(CFLAGS) -I$(INC) -I$(LIB) -c $< -o $@
 
 all:		CFLAGS += -O2 -DNDEBUG
 all:		$(NAME)
