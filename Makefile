@@ -19,8 +19,8 @@ NM			=	norminette
 
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
-CFILES		=	main.c
-HFILES		=	
+CFILES		=	main.c buffer.c
+HFILES		=	buffer.h
 OFILES		=	$(CFILES:.c=.o)
 
 SRCS		=	$(addprefix $(SRC)/, $(CFILES))
