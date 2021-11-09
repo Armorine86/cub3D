@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buffer.h                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 00:11:04 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 00:55:55 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/09 00:51:06 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/09 00:58:42 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUFFER_H
-# define BUFFER_H
+#include "utils.h"
 
-# include <libft/libft.h>
-
-typedef struct s_buffer
+uint32_t	make_trgb(uint8_t t, uint8_t r, uint8_t g, uint8_t b)
 {
-	void	*mlx;
-	void	*img;
-	char	*data;
-	int32_t	bpp;
-	int32_t	pitch;
-	int32_t	endian;
-}	t_buffer;
-
-t_buffer	*new_buffer(void *mlx_ptr, int32_t width, int32_t height);
-void		destroy_buffer(t_buffer *buf);
-void		put_pixel(t_buffer *buf, int32_t x, int32_t y, uint32_t trgb);
-
-#endif
+	return ((uint32_t)(t << 24 | r << 16 | g << 8 | b));
+}

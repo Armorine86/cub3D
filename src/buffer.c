@@ -6,12 +6,11 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:19:04 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 00:35:21 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 00:55:44 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "buffer.h"
-#include <libft/libft.h>
 #include <mlx.h>
 #include <stdlib.h>
 
@@ -32,10 +31,10 @@ void	destroy_buffer(t_buffer *buf)
 	free(buf);
 }
 
-void	put_pixel(t_buffer *buf, int x, int y, unsigned int rgb)
+void	put_pixel(t_buffer *buf, int32_t x, int32_t y, uint32_t trgb)
 {
 	char	*dst;
 
 	dst = buf->data + (y * buf->pitch + x * (buf->bpp / 8));
-	*(unsigned int *)dst = rgb;
+	*(uint32_t *)dst = trgb;
 }
