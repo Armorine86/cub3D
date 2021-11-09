@@ -58,5 +58,25 @@
    "obj/utils.o"
   ],
   "file": "src/utils.c"
+ },
+ {
+  "directory": "/Users/mleblanc/Documents/cub3D",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-Wconversion",
+   "-Wpedantic",
+   "-O2",
+   "-DNDEBUG",
+   "-Iinclude",
+   "-Ilib",
+   "-c",
+   "src/draw.c",
+   "-o",
+   "obj/draw.o"
+  ],
+  "file": "src/draw.c"
  }
 ]

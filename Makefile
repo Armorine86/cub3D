@@ -6,11 +6,10 @@ OBJ			=	obj
 
 LIB			=	lib
 LIBFT		=	$(LIB)/libft
-MLX_GL		=	$(LIB)/mlx_opengl
 MLX_LINUX	=	$(LIB)/mlx_linux
 
 CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra -Wpedantic
+CFLAGS		=	-Wall -Werror -Wextra -Wconversion -Wpedantic
 
 RM			=	rm -rf
 MK			=	mkdir -p
@@ -18,8 +17,8 @@ NM			=	norminette
 
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
-CFILES		=	main.c buffer.c utils.c
-HFILES		=	buffer.h utils.h
+CFILES		=	main.c buffer.c utils.c draw.c
+HFILES		=	buffer.h utils.h draw.h
 OFILES		=	$(CFILES:.c=.o)
 
 SRCS		=	$(addprefix $(SRC)/, $(CFILES))
@@ -36,8 +35,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
-			@$(MAKE_DIR) $(MLX_GL)
-			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_GL) -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
+			$(CC) $(OBJS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
 $(OBJ):
 			@$(MK) $(OBJ)
@@ -53,7 +51,6 @@ linux:		$(OBJ) $(OBJS)
 
 clean:
 			@$(MAKE_DIR) $(LIBFT) clean
-			@$(MAKE_DIR) $(MLX_GL) clean
 			@$(MAKE_DIR) $(MLX_LINUX) clean
 			@$(RM) $(OBJS)
 
