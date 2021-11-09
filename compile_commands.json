@@ -1,0 +1,62 @@
+[
+ {
+  "directory": "/Users/mleblanc/Documents/cub3D",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-Wconversion",
+   "-Wpedantic",
+   "-O2",
+   "-DNDEBUG",
+   "-Iinclude",
+   "-Ilib",
+   "-c",
+   "src/main.c",
+   "-o",
+   "obj/main.o"
+  ],
+  "file": "src/main.c"
+ },
+ {
+  "directory": "/Users/mleblanc/Documents/cub3D",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-Wconversion",
+   "-Wpedantic",
+   "-O2",
+   "-DNDEBUG",
+   "-Iinclude",
+   "-Ilib",
+   "-c",
+   "src/buffer.c",
+   "-o",
+   "obj/buffer.o"
+  ],
+  "file": "src/buffer.c"
+ },
+ {
+  "directory": "/Users/mleblanc/Documents/cub3D",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-Wconversion",
+   "-Wpedantic",
+   "-O2",
+   "-DNDEBUG",
+   "-Iinclude",
+   "-Ilib",
+   "-c",
+   "src/utils.c",
+   "-o",
+   "obj/utils.o"
+  ],
+  "file": "src/utils.c"
+ }
+]

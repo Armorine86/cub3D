@@ -1,3 +1,4 @@
 obj/
 cub3D
 *.o
+*.idx

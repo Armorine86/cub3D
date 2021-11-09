@@ -7,7 +7,6 @@ OBJ			=	obj
 LIB			=	lib
 LIBFT		=	$(LIB)/libft
 MLX_GL		=	$(LIB)/mlx_opengl
-MLX_MAC		=	$(LIB)/mlx_mac
 MLX_LINUX	=	$(LIB)/mlx_linux
 
 CC			=	clang
@@ -41,7 +40,7 @@ $(NAME):	$(OBJ) $(OBJS)
 			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_GL) -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
 $(OBJ):
-			$(MK) $(OBJ)
+			@$(MK) $(OBJ)
 
 debug:		CFLAGS += -O0 -g
 debug:		$(NAME)
@@ -55,7 +54,6 @@ linux:		$(OBJ) $(OBJS)
 clean:
 			@$(MAKE_DIR) $(LIBFT) clean
 			@$(MAKE_DIR) $(MLX_GL) clean
-			@$(MAKE_DIR) $(MLX_MAC) clean
 			@$(MAKE_DIR) $(MLX_LINUX) clean
 			@$(RM) $(OBJS)
 

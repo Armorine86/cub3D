@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 00:59:14 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 10:58:38 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 		i = 0;
 		while (i < WIDTH)
 		{
-			put_pixel(buf, i, j, make_trgb(0xFF, 0x88, 0x88, 0x88));
+			put_pixel(buf, i, j, make_argb(0x00, 0x77, 0x77, 0x77));
 			i++;
 		}
 		j++;
