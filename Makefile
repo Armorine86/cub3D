@@ -43,10 +43,10 @@ $(NAME):	$(OBJ) $(OBJS)
 $(OBJ):
 			$(MK) $(OBJ)
 
-debug:		CFLAGS += -Og
+debug:		CFLAGS += -O0 -g
 debug:		$(NAME)
 
-linux:		CFLAGS += -Og
+linux:		CFLAGS += -O0 -g
 linux:		$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)
