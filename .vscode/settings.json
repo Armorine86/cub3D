@@ -2,6 +2,7 @@
 	"files.associations": {
 		"game.h": "c",
 		"player.h": "c",
-		"keymap.h": "c"
+		"keymap.h": "c",
+		"buffer.h": "c"
 	}
 }

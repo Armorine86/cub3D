@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 23:57:47 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 23:58:38 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	keyup(int key, void *data)
 	t_game	*game;
 
 	game = data;
-		if (key == KEY_W)
+	if (key == KEY_W)
 		game->keystate[W] = false;
 	else if (key == KEY_A)
 		game->keystate[A] = false;
