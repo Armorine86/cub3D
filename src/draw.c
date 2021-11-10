@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:27 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 21:39:21 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:40:52 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	draw_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 {
 	float	a;
 
-	if (!in_bounds(p0, buf->width, buf->height))
+	if (!in_bounds(p0, buf->w, buf->h))
 		return ;
-	if (!in_bounds(p1, buf->width, buf->height))
+	if (!in_bounds(p1, buf->w, buf->h))
 		return ;
 	a = 0.0f;
 	if (p0.x != p1.x)
