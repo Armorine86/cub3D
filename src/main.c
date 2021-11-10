@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 22:47:15 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 23:16:53 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,18 @@
 #include <libft/libft.h>
 #include <stdint.h>
 #include "draw.h"
+#include "game.h"
 #include "utils.h"
-
-#define WIDTH 800
-#define HEIGHT 600
-#define SQUARE_SIZE 100
-#define PAD_SIZE 3
-
-static const int	g_map[6][8] = {
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 1, 1},
-	{1, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 1, 0, 0, 0, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1}
-};
-
-void	draw_grid(t_buffer *buf)
-{
-	int32_t	x;
-	int32_t	y;
-	float	py;
-	float	px;
-	t_vec2	p;
-
-	y = 0;
-	while (y < HEIGHT / SQUARE_SIZE)
-	{
-		x = 0;
-		py = (float)(y * SQUARE_SIZE);
-		while (x < WIDTH / SQUARE_SIZE)
-		{
-			px = (float)(x * SQUARE_SIZE);
-			p.x = px + SQUARE_SIZE - PAD_SIZE;
-			p.y = py + SQUARE_SIZE - PAD_SIZE;
-			if (g_map[y][x] == 1)
-				draw_rect(buf, (t_vec2){px, py}, p, 0xFFFFFF);
-			else
-				draw_rect(buf, (t_vec2){px, py}, p, 0x0);
-			x++;
-		}
-		y++;
-	}
-}
 
 int	update(void *data)
 {
-	t_buffer	*buf;
+	t_game	*game;
 
-	buf = data;
-	clear_buffer(buf, 0x777777);
-	draw_grid(buf);
-	mlx_put_image_to_window(buf->mlx, buf->win, buf->img, 0, 0);
+	game = data;
+	clear_buffer(game->buf, 0x777777);
+	draw_grid(game->buf);
+	draw_player(game->buf, &game->player);
+	update_screen(game);
 	return (0);
 }
 
@@ -74,11 +34,13 @@ int	main(void)
 {
 	void		*mlx;
 	void		*win;
-	t_buffer	*buf;
+	t_game		game;
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "cub3D");
-	buf = new_buffer(mlx, win, WIDTH, HEIGHT);
-	mlx_loop_hook(mlx, &update, buf);
+	game.player.dir = (t_vec2){0.0f, 1.0f};
+	game.player.pos = (t_vec2){150.0f, 150.0f};
+	game.buf = new_buffer(mlx, win, WIDTH, HEIGHT);
+	mlx_loop_hook(mlx, &update, &game);
 	mlx_loop(mlx);
 }

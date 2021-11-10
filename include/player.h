@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 13:09:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 23:13:37 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/09 22:58:48 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#ifndef PLAYER_H
+# define PLAYER_H
 
-# include "buffer.h"
-# include "player.h"
+#include <libft/libft.h>
 
-void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c);
-void	draw_rect_center(t_buffer *buf, t_vec2 center, t_vec2 wh, uint32_t c);
-void	draw_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c);
-void	draw_grid(t_buffer *buf);
-void	draw_player(t_buffer *buf, t_player *player);
+typedef struct s_player
+{
+	t_vec2	pos;
+	t_vec2	dir;
+}	t_player;
 
 #endif
