@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 08:21:46 by mmondell         ###   ########.fr       */
+/*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
+/*   Updated: 2021/11/10 14:59:22 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include <libft/libft.h>
+#include <stdint.h>
+#include <fcntl.h>
+#include "game.h"
 
-void	update_player(t_player *player, bool keystate[4], float speed)
+bool	valid_extension(char *file)
 {
-	if (keystate[W])
-	{
-		player->pos.x += player->dir.x * speed;
-		player->pos.y += player->dir.y * speed;
-	}
-	if (keystate[S])
-	{
-		player->pos.x -= player->dir.x * speed;
-		player->pos.y -= player->dir.y * speed;
-	}
+	size_t	len;
+
+	len = ft_strlen(file);
+	if ((ft_strncmp(file + len - 4, ".cub", len)))
+		return (false);
+	return (true);
 }

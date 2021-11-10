@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 00:19:14 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 10:58:50 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,29 @@ int	quit_game(t_game *game)
 	exit(0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	void		*mlx;
 	void		*win;
 	t_game		game;
+	t_map		*map;
 
+	if (argc != 2)
+	{
+		ft_putendl_fd("Error: Enter a valid map", 2);
+		exit(EXIT_FAILURE);
+	}
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "cub3D");
 	init_game(&game, mlx, win);
+	map = create_map(argv[1]);
+	for (int i = 0; i < map->height; i++)
+		printf("%s\n", map->grid[i]);
 	mlx_do_key_autorepeatoff(mlx);
 	mlx_hook(win, 2, 1, &keydown, &game);
 	mlx_hook(win, 3, 2, &keyup, &game);
 	mlx_hook(win, 17, 0, &quit_game, &game);
 	mlx_loop_hook(mlx, &update, &game);
+	read_to_str()
 	mlx_loop(mlx);
 }
