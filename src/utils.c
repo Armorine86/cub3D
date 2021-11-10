@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:51:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 15:06:33 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 21:38:04 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ uint32_t	make_argb(uint8_t t, uint8_t r, uint8_t g, uint8_t b)
 	return ((uint32_t)(t << 24 | r << 16 | g << 8 | b));
 }
 
-void	swap(t_vec2 *a, t_vec2 *b)
+void	vec2_swap(t_vec2 *a, t_vec2 *b)
 {
 	t_vec2	tmp;
 

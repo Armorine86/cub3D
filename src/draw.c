@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:27 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 16:11:27 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 21:39:21 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	h_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 	if (p0.x != p1.x)
 		a = (p1.y - p0.y) / (p1.x - p0.x);
 	if (p1.x < p0.x)
-		swap(&p0, &p1);
+		vec2_swap(&p0, &p1);
 	b = p1.y - (a * p1.x);
 	i = (int32_t)p0.x;
 	while (i < (int32_t)p1.x)
@@ -71,7 +71,7 @@ void	v_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 	int32_t	i;
 
 	if (p1.y < p0.y)
-		swap(&p0, &p1);
+		vec2_swap(&p0, &p1);
 	a = 0.0f;
 	if (p0.y != p1.y)
 		a = (p1.x - p0.x) / (p1.y - p0.y);
