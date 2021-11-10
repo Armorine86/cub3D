@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:38:48 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 00:07:37 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 00:22:52 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 # ifdef __linux__
 
-#  define KEY_W 119
-#  define KEY_A 97
-#  define KEY_S 115
-#  define KEY_D 100
-#  define KEY_ESC 65307
+#  define KEY_W 0x77
+#  define KEY_A 0x61
+#  define KEY_S 0x73
+#  define KEY_D 0x64
+#  define KEY_ESC 0xFF1B
 
 # elif __APPLE__
 
-#  define KEY_W 119
-#  define KEY_A 97
-#  define KEY_S 115
-#  define KEY_D 100
-#  define KEY_ESC 100
+#  define KEY_W 0x0D
+#  define KEY_A 0x00
+#  define KEY_S 0x01
+#  define KEY_D 0x02
+#  define KEY_ESC 0x35
 
 # endif
 
