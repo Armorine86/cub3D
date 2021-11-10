@@ -4,6 +4,7 @@
 		"player.h": "c",
 		"keymap.h": "c",
 		"buffer.h": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"libft.h": "c"
 	}
 }
