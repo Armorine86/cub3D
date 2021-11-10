@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 00:19:14 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 12:45:53 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@
 int	update(void *data)
 {
 	t_game	*game;
+	t_time	t;
 
 	game = data;
-	update_player(&game->player, game->keystate, 1.0f);
+	ft_gettime(&t);
+	game->dt = ft_timediff(game->last_frame, t);
+	game->last_frame = t;
+	update_player(&game->player, game->keystate, 150.0f * game->dt);
 	clear_buffer(game->buf, 0x777777);
 	draw_grid(game->buf);
 	draw_player(game->buf, &game->player);
@@ -43,6 +47,10 @@ int	keydown(int key, t_game *game)
 		game->keystate[S] = true;
 	else if (key == KEY_D)
 		game->keystate[D] = true;
+	else if (key == KEY_LEFT)
+		game->keystate[LEFT] = true;
+	else if (key == KEY_RIGHT)
+		game->keystate[RIGHT] = true;
 	else if (key == KEY_ESC)
 	{
 		destroy_game(game);
@@ -61,6 +69,10 @@ int	keyup(int key, t_game *game)
 		game->keystate[S] = false;
 	else if (key == KEY_D)
 		game->keystate[D] = false;
+	else if (key == KEY_LEFT)
+		game->keystate[LEFT] = false;
+	else if (key == KEY_RIGHT)
+		game->keystate[RIGHT] = false;
 	return (0);
 }
 

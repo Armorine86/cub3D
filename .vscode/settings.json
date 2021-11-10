@@ -3,6 +3,7 @@
 		"game.h": "c",
 		"player.h": "c",
 		"keymap.h": "c",
-		"buffer.h": "c"
+		"buffer.h": "c",
+		"mlx.h": "c"
 	}
 }
