@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 22:23:50 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:47:15 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	update(void *data)
 	t_buffer	*buf;
 
 	buf = data;
-	clear_buffer(buf, 0);
+	clear_buffer(buf, 0x777777);
 	draw_grid(buf);
 	mlx_put_image_to_window(buf->mlx, buf->win, buf->img, 0, 0);
 	return (0);

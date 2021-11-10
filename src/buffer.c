@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:19:04 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 22:22:33 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/09 22:46:37 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	clear_buffer(t_buffer *buf, uint32_t c)
 	int32_t	y;
 
 	y = 0;
-	while (y < buf->w)
+	while (y < buf->h)
 	{
 		x = 0;
-		while (x < buf->h)
+		while (x < buf->w)
 		{
 			put_pixel(buf, x, y, c);
 			x++;
