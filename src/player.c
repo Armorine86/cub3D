@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 14:46:54 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:46:50 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ static t_vec2	move_right(t_player *p)
 	return (right);
 }
 
-void	update_player(t_player *p, bool keystate[N_KEYS], float speed)
+void	update_player(t_player *p, bool keystate[N_KEYS], float dt)
 {
 	t_vec2	move_dir;
 
 	if (keystate[LEFT])
 	{
-		p->angle = wrap_angle(p->angle - 0.1f);
+		p->angle = wrap_angle(p->angle - A_SPEED * dt);
 		p->dir = vec2_rotate(p->dir, p->angle);
 	}
 	if (keystate[RIGHT])
 	{
-		p->angle = wrap_angle(p->angle + 0.1f);
+		p->angle = wrap_angle(p->angle + A_SPEED * dt);
 		p->dir = vec2_rotate(p->dir, p->angle);
 	}
 	move_dir = (t_vec2){0, 0};
@@ -55,5 +55,5 @@ void	update_player(t_player *p, bool keystate[N_KEYS], float speed)
 	if (keystate[D])
 		move_dir = vec2_add(move_dir, move_right(p));
 	move_dir = vec2_normalize(move_dir);
-	p->pos = vec2_add(p->pos, vec2_mul(move_dir, speed));
+	p->pos = vec2_add(p->pos, vec2_mul(move_dir, SPEED * dt));
 }

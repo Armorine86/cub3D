@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 12:45:53 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:42:15 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	update(void *data)
 	ft_gettime(&t);
 	game->dt = ft_timediff(game->last_frame, t);
 	game->last_frame = t;
-	update_player(&game->player, game->keystate, 150.0f * game->dt);
+	update_player(&game->player, game->keystate, game->dt);
 	clear_buffer(game->buf, 0x777777);
 	draw_grid(game->buf);
 	draw_player(game->buf, &game->player);

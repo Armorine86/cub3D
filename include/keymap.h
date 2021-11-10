@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keymap.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:38:48 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 13:26:46 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:37:59 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #  define KEY_S 0x73
 #  define KEY_D 0x64
 #  define KEY_ESC 0xFF1B
-#  define KEY_LEFT 0x7B
-#  define KEY_RIGHT 0x7C
+#  define KEY_LEFT 0xFF51
+#  define KEY_RIGHT 0xFF53
 
 # elif __APPLE__
 

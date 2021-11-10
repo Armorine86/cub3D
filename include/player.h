@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 13:26:07 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:47:36 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <libft/libft.h>
 # include "keymap.h"
 
+# define SPEED 175
+# define A_SPEED 4
+
 typedef struct s_player
 {
 	t_vec2	pos;
@@ -23,6 +26,6 @@ typedef struct s_player
 	float	angle;
 }	t_player;
 
-void	update_player(t_player *player, bool keystate[N_KEYS], float speed);
+void	update_player(t_player *player, bool keystate[N_KEYS], float dt);
 
 #endif
