@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 23:57:19 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 00:12:24 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ typedef struct s_game
 	t_buffer	*buf;
 	t_player	player;
 	bool		keystate[4];
+	void		*mlx;
+	void		*win;
 }	t_game;
 
+void	init_game(t_game *game, void *mlx, void *win);
 void	update_screen(t_game *game);
+void	destroy_game(t_game *game);
 
 #endif

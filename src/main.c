@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 23:58:38 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 00:19:14 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <math.h>
 #include <libft/libft.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include "draw.h"
 #include "game.h"
 #include "utils.h"
@@ -32,11 +33,8 @@ int	update(void *data)
 	return (0);
 }
 
-int	keydown(int key, void *data)
+int	keydown(int key, t_game *game)
 {
-	t_game	*game;
-
-	game = data;
 	if (key == KEY_W)
 		game->keystate[W] = true;
 	else if (key == KEY_A)
@@ -45,14 +43,16 @@ int	keydown(int key, void *data)
 		game->keystate[S] = true;
 	else if (key == KEY_D)
 		game->keystate[D] = true;
+	else if (key == KEY_ESC)
+	{
+		destroy_game(game);
+		exit(0);
+	}
 	return (0);
 }
 
-int	keyup(int key, void *data)
+int	keyup(int key, t_game *game)
 {
-	t_game	*game;
-
-	game = data;
 	if (key == KEY_W)
 		game->keystate[W] = false;
 	else if (key == KEY_A)
@@ -64,6 +64,12 @@ int	keyup(int key, void *data)
 	return (0);
 }
 
+int	quit_game(t_game *game)
+{
+	destroy_game(game);
+	exit(0);
+}
+
 int	main(void)
 {
 	void		*mlx;
@@ -72,12 +78,11 @@ int	main(void)
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "cub3D");
-	game.player.dir = (t_vec2){0.0f, 1.0f};
-	game.player.pos = (t_vec2){150.0f, 150.0f};
-	game.buf = new_buffer(mlx, win, WIDTH, HEIGHT);
+	init_game(&game, mlx, win);
 	mlx_do_key_autorepeatoff(mlx);
-	mlx_hook(win, 2, 1 << 0, &keydown, &game);
-	mlx_hook(win, 3, 1 << 1, &keyup, &game);
+	mlx_hook(win, 2, 1, &keydown, &game);
+	mlx_hook(win, 3, 2, &keyup, &game);
+	mlx_hook(win, 17, 0, &quit_game, &game);
 	mlx_loop_hook(mlx, &update, &game);
 	mlx_loop(mlx);
 }
