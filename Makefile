@@ -18,7 +18,7 @@ NM			=	norminette
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
 CFILES		=	main.c buffer.c utils.c draw.c game.c draw2.c
-HFILES		=	buffer.h utils.h draw.h game.h player.h
+HFILES		=	buffer.h utils.h draw.h game.h player.h keymap.h
 OFILES		=	$(CFILES:.c=.o)
 
 SRCS		=	$(addprefix $(SRC)/, $(CFILES))

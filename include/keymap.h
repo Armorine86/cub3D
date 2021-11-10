@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   keymap.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 23:57:19 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/09 23:38:48 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/09 23:57:01 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef KEYMAP_H
+# define KEYMAP_H
 
-# include "buffer.h"
-# include "player.h"
+# ifdef __linux__
+#  define KEY_W 119
+#  define KEY_A 97
+#  define KEY_S 115
+#  define KEY_D 100
+# elif __APPLE__
+#  define KEY_W 119
+#  define KEY_A 97
+#  define KEY_S 115
+#  define KEY_D 100
+# endif
 
-# define WIDTH 800
-# define HEIGHT 600
-# define SQUARE_SIZE 100
-# define PAD_SIZE 3
-
-typedef struct s_game
+typedef enum	s_key
 {
-	t_buffer	*buf;
-	t_player	player;
-	bool		keystate[4];
-}	t_game;
-
-void	update_screen(t_game *game);
+	W,
+	A,
+	S,
+	D
+}	t_key;
 
 #endif
