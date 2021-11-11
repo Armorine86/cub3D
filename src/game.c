@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 12:45:38 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:03:19 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_game(t_game *game, void *mlx, void *win)
 	game->player.angle = deg_to_rad(90.0);
 	game->player.dir.x = cos(game->player.angle);
 	game->player.dir.y = sin(game->player.angle);
-	game->player.pos = (t_vec2){350.0, 250.0};
+	game->player.pos = (t_vec2){3.5, 2.5};
 	game->buf = new_buffer(mlx, win, WIDTH, HEIGHT);
 	ft_gettime(&game->last_frame);
 	game->dt = 0.0;
@@ -63,7 +63,7 @@ int	update(t_game *game)
 
 int	update(t_game *game)
 {
-	game->dt = 0.005f;
+	game->dt = 0.01f;
 	update_player(&game->player, game->keystate, game->dt);
 	clear_buffer(game->buf, 0x777777);
 	draw_grid(game->buf);

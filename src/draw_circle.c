@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:01:58 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 12:45:38 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:02:42 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ void	draw_circle(t_buffer *buf, t_vec2 center, double r, uint32_t c)
 void	draw_player(t_buffer *buf, t_player *player)
 {
 	t_vec2	line_end;
+	t_vec2	scaled_pos;
 
-	draw_circle(buf, player->pos, 10.0, 0xFF0000);
-	line_end = vec2_add(player->pos, vec2_mul(player->dir, 30.0));
-	draw_line(buf, player->pos, line_end, 0xFF0000);
+	scaled_pos = vec2_mul(player->pos, 100.0);
+	draw_circle(buf, scaled_pos, 10.0, 0xFF0000);
+	line_end = vec2_add(scaled_pos, vec2_mul(player->dir, 30.0));
+	draw_line(buf, scaled_pos, line_end, 0xFF0000);
 }
