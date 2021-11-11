@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 12:39:14 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 21:10:34 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_game(t_game *game, void *mlx, void *win)
 
 	game->mlx = mlx;
 	game->win = win;
-	game->player.angle = PI_F / 2.0f;
+	game->player.angle = deg_to_rad(90.0f);
 	game->player.dir.x = cosf(game->player.angle);
 	game->player.dir.y = sinf(game->player.angle);
 	game->player.pos = (t_vec2){350.0f, 250.0f};
