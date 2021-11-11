@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:27 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 19:35:03 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 22:01:27 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <math.h>
-
-void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c)
-{
-	int32_t	i;
-	int32_t	j;
-
-	j = (int32_t)tl.y;
-	while (j < (int32_t)br.y)
-	{
-		i = (int32_t)tl.x;
-		while (i < (int32_t)br.x)
-		{
-			put_pixel(buf, i, j, c);
-			i++;
-		}
-		j++;
-	}
-}
 
 // static bool	in_bounds(t_vec2 p, int32_t width, int32_t height)
 // {

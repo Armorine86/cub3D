@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 16:44:19 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/10 22:07:57 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_game
 }	t_game;
 
 void	init_game(t_game *game, void *mlx, void *win);
-void	update_screen(t_game *game);
 void	destroy_game(t_game *game);
+int		update(t_game *game);
+int		quit_game(t_game *game);
 
 #endif

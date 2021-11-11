@@ -6,6 +6,7 @@
 		"buffer.h": "c",
 		"mlx.h": "c",
 		"libft.h": "c",
-		"assert.h": "c"
+		"assert.h": "c",
+		"draw.h": "c"
 	}
 }
