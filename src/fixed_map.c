@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   fixed_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 17:36:03 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/11 17:37:31 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/11 17:40:04 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
-
-# include "buffer.h"
-# include "player.h"
-
-typedef struct s_game
-{
-	t_buffer	*buf;
-	t_player	player;
-	bool		keystate[N_KEYS];
-	void		*mlx;
-	void		*win;
-	t_time		last_frame;
-	double		dt;
-}	t_game;
-
-void	init_game(t_game *game, void *mlx, void *win);
-int		update(t_game *game);
-int		quit_game(t_game *game);
-
-#endif
+int	g_map[6][8] = {
+	{1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 1, 0, 1, 0, 1, 1, 1},
+	{1, 0, 0, 1, 0, 1, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1}
+};

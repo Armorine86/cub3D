@@ -6,12 +6,13 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 15:28:54 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:45:33 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "draw.h"
+#include "fixed_map.h"
 #include <mlx.h>
 #include <math.h>
 #include <stdlib.h>
@@ -25,7 +26,7 @@ void	init_game(t_game *game, void *mlx, void *win)
 	game->player.angle = deg_to_rad(90.0);
 	game->player.dir.x = cos(game->player.angle);
 	game->player.dir.y = sin(game->player.angle);
-	game->player.pos = (t_vec2){3.5, 2.5};
+	game->player.pos = (t_vec2){1.5, 1.5};
 	game->buf = new_buffer(mlx, win, WIDTH, HEIGHT);
 	ft_gettime(&game->last_frame);
 	game->dt = 0.0;

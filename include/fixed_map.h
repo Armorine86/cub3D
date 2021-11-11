@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   fixed_map.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 17:36:03 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/11 17:35:21 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/11 17:36:46 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef FIXED_MAP_H
+# define FIXED_MAP_H
 
-# include "buffer.h"
-# include "player.h"
+# define WIDTH 800
+# define HEIGHT 600
+# define SQUARE_SIZE 100
+# define PAD_SIZE 3
+# define MAP_W 8
+# define MAP_H 6
 
-typedef struct s_game
-{
-	t_buffer	*buf;
-	t_player	player;
-	bool		keystate[N_KEYS];
-	void		*mlx;
-	void		*win;
-	t_time		last_frame;
-	double		dt;
-}	t_game;
-
-void	init_game(t_game *game, void *mlx, void *win);
-int		update(t_game *game);
-int		quit_game(t_game *game);
+extern const int g_map[MAP_H][MAP_W];
 
 #endif

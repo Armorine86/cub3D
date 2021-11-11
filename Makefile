@@ -18,7 +18,7 @@ NM			=	norminette
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
 CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
-				draw_circle.c event.c draw_ray.c
+				draw_circle.c event.c draw_ray.c fixed_map.c
 HFILES		=	buffer.h utils.h draw.h game.h player.h keymap.h event.h
 OFILES		=	$(CFILES:.c=.o)
 

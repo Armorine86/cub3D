@@ -6,22 +6,14 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:05:44 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 14:58:47 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:37:45 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 #include "game.h"
+#include "fixed_map.h"
 #include <math.h>
-
-static const int	g_map[6][8] = {
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 0, 0, 0, 0, 1},
-	{1, 1, 0, 0, 0, 1, 1, 1},
-	{1, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 1, 0, 0, 0, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1}
-};
 
 void	draw_grid(t_buffer *buf)
 {
