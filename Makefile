@@ -31,6 +31,9 @@ VPATH		=	$(SRC)
 $(OBJ)/%.o:	%.c
 			$(CC) $(CFLAGS) -I$(INC) -I$(LIB) -c $< -o $@
 
+cool_evaluator:	CFLAGS += -DCOOL_EVALUATOR
+cool_evaluator:	all
+
 all:		CFLAGS += -O2 -DNDEBUG
 all:		$(NAME)
 
@@ -65,4 +68,4 @@ norme:
 			$(MAKE_DIR) $(LIBFT) norme
 			$(NM) $(SRCS) $(HEADERS)
 
-.PHONY:		all debug clean fclean re norme linux
+.PHONY:		all debug clean fclean re norme linux cool_evaluator
