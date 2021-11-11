@@ -5,6 +5,7 @@
 		"keymap.h": "c",
 		"buffer.h": "c",
 		"mlx.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"assert.h": "c"
 	}
 }

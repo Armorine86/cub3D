@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 16:46:50 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:32:15 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	update_player(t_player *p, bool keystate[N_KEYS], float dt)
 		move_dir = vec2_add(move_dir, p->dir);
 	if (keystate[S])
 		move_dir = vec2_sub(move_dir, p->dir);
-	if (keystate[A])
+	if (keystate[A] && !keystate[D])
 		move_dir = vec2_add(move_dir, move_left(p));
-	if (keystate[D])
+	if (keystate[D] && !keystate[A])
 		move_dir = vec2_add(move_dir, move_right(p));
 	move_dir = vec2_normalize(move_dir);
 	p->pos = vec2_add(p->pos, vec2_mul(move_dir, SPEED * dt));

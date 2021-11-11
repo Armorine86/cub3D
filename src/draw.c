@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:27 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/09 23:05:32 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:35:03 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c)
 	}
 }
 
-static bool	in_bounds(t_vec2 p, int32_t width, int32_t height)
-{
-	if ((int32_t)p.x < 0 || (int32_t)p.x >= width)
-		return (false);
-	if ((int32_t)p.y < 0 || (int32_t)p.y >= height)
-		return (false);
-	return (true);
-}
+// static bool	in_bounds(t_vec2 p, int32_t width, int32_t height)
+// {
+// 	if ((int32_t)p.x < 0 || (int32_t)p.x >= width)
+// 		return (false);
+// 	if ((int32_t)p.y < 0 || (int32_t)p.y >= height)
+// 		return (false);
+// 	return (true);
+// }
 
 static void	h_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 {
@@ -88,10 +88,6 @@ void	draw_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 {
 	float	a;
 
-	if (!in_bounds(p0, buf->w, buf->h))
-		return ;
-	if (!in_bounds(p1, buf->w, buf->h))
-		return ;
 	a = 0.0f;
 	if (p0.x != p1.x)
 		a = (p1.y - p0.y) / (p1.x - p0.x);
