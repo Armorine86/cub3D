@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 10:09:33 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/11 09:29:57 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ typedef struct s_game
 {
 	t_buffer	*buf;
 	t_player	player;
-	bool		keystate[4];
+	bool		keystate[N_KEYS];
 	void		*mlx;
 	void		*win;
+	t_time		last_frame;
+	float		dt;
 }	t_game;
 
 typedef struct s_map
@@ -40,8 +42,8 @@ typedef struct s_map
 t_map	*create_map(char *file);
 t_map 	*parse_file(char *file);
 void	init_game(t_game *game, void *mlx, void *win);
-void	update_screen(t_game *game);
-void	destroy_game(t_game *game);
+int		update(t_game *game);
+int		quit_game(t_game *game);
 
 /* PARSE UTILS */
 

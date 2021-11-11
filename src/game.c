@@ -6,27 +6,35 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 00:12:42 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 01:36:00 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+#include "draw.h"
 #include <mlx.h>
+#include <math.h>
+#include <stdlib.h>
 
 void	init_game(t_game *game, void *mlx, void *win)
 {
+	int	i;
+
 	game->mlx = mlx;
 	game->win = win;
-	game->player.dir = (t_vec2){0.0f, 1.0f};
-	game->player.pos = (t_vec2){150.0f, 150.0f};
+	game->player.angle = deg_to_rad(90.0f);
+	game->player.dir.x = cosf(game->player.angle);
+	game->player.dir.y = sinf(game->player.angle);
+	game->player.pos = (t_vec2){350.0f, 250.0f};
 	game->buf = new_buffer(mlx, win, WIDTH, HEIGHT);
-	game->keystate[0] = false;
-	game->keystate[1] = false;
-	game->keystate[2] = false;
-	game->keystate[3] = false;
+	ft_gettime(&game->last_frame);
+	game->dt = 0.0f;
+	i = 0;
+	while (i < N_KEYS)
+		game->keystate[i++] = false;
 }
 
-void	update_screen(t_game *game)
+static void	update_screen(t_game *game)
 {
 	t_buffer	*buf;
 
@@ -34,8 +42,41 @@ void	update_screen(t_game *game)
 	mlx_put_image_to_window(buf->mlx, buf->win, buf->img, 0, 0);
 }
 
-void	destroy_game(t_game *game)
+#ifdef COOL_EVALUATOR
+
+int	update(t_game *game)
+{
+	t_time	t;
+
+	ft_gettime(&t);
+	game->dt = ft_timediff(game->last_frame, t);
+	game->last_frame = t;
+	update_player(&game->player, game->keystate, game->dt);
+	clear_buffer(game->buf, 0x777777);
+	draw_grid(game->buf);
+	draw_player(game->buf, &game->player);
+	update_screen(game);
+	return (0);
+}
+
+#else
+
+int	update(t_game *game)
+{
+	game->dt = 0.005f;
+	update_player(&game->player, game->keystate, game->dt);
+	clear_buffer(game->buf, 0x777777);
+	draw_grid(game->buf);
+	draw_player(game->buf, &game->player);
+	update_screen(game);
+	return (0);
+}
+
+#endif
+
+int	quit_game(t_game *game)
 {
 	destroy_buffer(game->buf);
 	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
 }

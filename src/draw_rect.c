@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw2.c                                            :+:      :+:    :+:   */
+/*   draw_rect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:05:44 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 00:03:55 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 22:13:42 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 #include "game.h"
+#include <math.h>
 
 static const int	g_map[6][8] = {
 	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 1, 1},
+	{1, 1, 1, 0, 0, 0, 0, 1},
+	{1, 1, 0, 0, 0, 1, 1, 1},
 	{1, 0, 0, 0, 0, 1, 0, 1},
 	{1, 0, 1, 0, 0, 0, 0, 1},
 	{1, 1, 1, 1, 1, 1, 1, 1}
@@ -50,15 +51,22 @@ void	draw_grid(t_buffer *buf)
 	}
 }
 
-void	draw_player(t_buffer *buf, t_player *player)
+void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c)
 {
-	t_vec2	wh;
-	t_vec2	line_end;
+	int32_t	i;
+	int32_t	j;
 
-	wh = (t_vec2){10.0f, 10.0f};
-	draw_rect_center(buf, player->pos, wh, 0xFF0000);
-	line_end = vec2_add(player->pos, vec2_mul(player->dir, 30.0f));
-	draw_line(buf, player->pos, line_end, 0xFF0000);
+	j = (int32_t)tl.y;
+	while (j < (int32_t)br.y)
+	{
+		i = (int32_t)tl.x;
+		while (i < (int32_t)br.x)
+		{
+			put_pixel(buf, i, j, c);
+			i++;
+		}
+		j++;
+	}
 }
 
 void	draw_rect_center(t_buffer *buf, t_vec2 center, t_vec2 wh, uint32_t c)

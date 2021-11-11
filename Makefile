@@ -17,8 +17,9 @@ NM			=	norminette
 
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
-CFILES		=	main.c buffer.c utils.c draw.c game.c draw2.c player.c map_parser.c parse_utils.c
-HFILES		=	buffer.h utils.h draw.h game.h player.h keymap.h
+CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
+				draw_circle.c event.c
+HFILES		=	buffer.h utils.h draw.h game.h player.h keymap.h event.h
 OFILES		=	$(CFILES:.c=.o)
 
 SRCS		=	$(addprefix $(SRC)/, $(CFILES))
@@ -29,6 +30,9 @@ VPATH		=	$(SRC)
 
 $(OBJ)/%.o:	%.c
 			$(CC) $(CFLAGS) -I$(INC) -I$(LIB) -c $< -o $@
+
+cool_evaluator:	CFLAGS += -DCOOL_EVALUATOR
+cool_evaluator:	all
 
 all:		CFLAGS += -O2 -DNDEBUG
 all:		$(NAME)
@@ -64,4 +68,4 @@ norme:
 			$(MAKE_DIR) $(LIBFT) norme
 			$(NM) $(SRCS) $(HEADERS)
 
-.PHONY:		all debug clean fclean re norme linux
+.PHONY:		all debug clean fclean re norme linux cool_evaluator
