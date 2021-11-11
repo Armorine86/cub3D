@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/10 14:59:22 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/11 10:10:09 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 #include <fcntl.h>
 #include "game.h"
 
-bool	valid_extension(char *file)
+void	*free_map(t_map *map)
+{
+	if (map->grid)
+		ft_strarr_free(map->grid);
+	if (map)
+		free(map);
+	return (NULL);
+}
+
+bool	valid_file_extension(char *file)
 {
 	size_t	len;
 
