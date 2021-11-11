@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 12:45:38 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:01:11 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <libft/libft.h>
 # include "keymap.h"
 
-# define SPEED 175.0
+# define SPEED 2.5
 # define A_SPEED 4.0
 
 typedef struct s_player

@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 14:03:19 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:28:54 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	update(t_game *game)
 	update_player(&game->player, game->keystate, game->dt);
 	clear_buffer(game->buf, 0x777777);
 	draw_grid(game->buf);
+	draw_field(game->buf, &game->player, 0xFF00);
 	draw_player(game->buf, &game->player);
 	update_screen(game);
 	return (0);
@@ -67,6 +68,7 @@ int	update(t_game *game)
 	update_player(&game->player, game->keystate, game->dt);
 	clear_buffer(game->buf, 0x777777);
 	draw_grid(game->buf);
+	draw_field(game->buf, &game->player, 0xFF00);
 	draw_player(game->buf, &game->player);
 	update_screen(game);
 	return (0);
