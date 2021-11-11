@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:27 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 22:01:27 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/10 22:46:41 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <math.h>
-
-// static bool	in_bounds(t_vec2 p, int32_t width, int32_t height)
-// {
-// 	if ((int32_t)p.x < 0 || (int32_t)p.x >= width)
-// 		return (false);
-// 	if ((int32_t)p.y < 0 || (int32_t)p.y >= height)
-// 		return (false);
-// 	return (true);
-// }
 
 static void	h_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 {
