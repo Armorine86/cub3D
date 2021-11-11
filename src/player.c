@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 22:04:17 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 12:45:38 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static t_vec2	move_left(t_player *p)
 {
 	t_vec2	left;
 
-	left.x = cosf(p->angle - deg_to_rad(90.0f));
-	left.y = sinf(p->angle - deg_to_rad(90.0f));
+	left.x = cos(p->angle - deg_to_rad(90.0));
+	left.y = sin(p->angle - deg_to_rad(90.0));
 	return (left);
 }
 
@@ -26,12 +26,12 @@ static t_vec2	move_right(t_player *p)
 {
 	t_vec2	right;
 
-	right.x = cosf(p->angle + deg_to_rad(90.0f));
-	right.y = sinf(p->angle + deg_to_rad(90.0f));
+	right.x = cos(p->angle + deg_to_rad(90.0));
+	right.y = sin(p->angle + deg_to_rad(90.0));
 	return (right);
 }
 
-void	update_player(t_player *p, bool keystate[N_KEYS], float dt)
+void	update_player(t_player *p, bool keystate[N_KEYS], double dt)
 {
 	t_vec2	move_dir;
 

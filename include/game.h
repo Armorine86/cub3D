@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 01:14:41 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 12:43:23 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	t_time		last_frame;
-	float		dt;
+	double		dt;
 }	t_game;
 
 void	init_game(t_game *game, void *mlx, void *win);
