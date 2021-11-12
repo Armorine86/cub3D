@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   fixed_map.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 15:01:11 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/11 17:35:21 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/11 19:01:21 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#ifndef FIXED_MAP_H
+# define FIXED_MAP_H
 
-# include <libft/libft.h>
-# include "keymap.h"
+#include "config.h"
 
-# define SPEED 2.5
-# define A_SPEED 4.0
-
-typedef struct s_player
-{
-	t_vec2	pos;
-	t_vec2	dir;
-	double	angle;
-}	t_player;
-
-void	update_player(t_player *player, bool keystate[N_KEYS], double dt);
+extern const int g_map[MAP_H][MAP_W];
 
 #endif

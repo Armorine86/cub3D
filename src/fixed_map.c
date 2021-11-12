@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   fixed_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 15:01:11 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/11 17:37:31 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/11 19:01:58 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#include "config.h"
 
-# include <libft/libft.h>
-# include "keymap.h"
-
-# define SPEED 2.5
-# define A_SPEED 4.0
-
-typedef struct s_player
-{
-	t_vec2	pos;
-	t_vec2	dir;
-	double	angle;
-}	t_player;
-
-void	update_player(t_player *player, bool keystate[N_KEYS], double dt);
-
-#endif
+int	g_map[MAP_H][MAP_W] = {
+	{1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 1, 0, 1, 0, 1, 1, 1},
+	{1, 0, 0, 1, 0, 1, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1}
+};

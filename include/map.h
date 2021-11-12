@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:38:58 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/12 08:33:23 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/12 09:46:10 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	create_map(t_game *game, char *file);
 void	*free_map(t_map *map);
 bool	valid_file_extension(char *file);
 void	*free_texture(void *mlx, t_textures *t);
+char	**extract_file_path(char *info);
+
 
 
 #endif

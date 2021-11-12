@@ -7,6 +7,7 @@
 		"mlx.h": "c",
 		"libft.h": "c",
 		"assert.h": "c",
-		"draw.h": "c"
+		"draw.h": "c",
+		"math.h": "c"
 	}
 }

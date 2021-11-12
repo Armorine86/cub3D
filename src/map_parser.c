@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/12 08:49:33 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/12 09:45:37 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,32 @@ static t_textures	*get_textures_info(t_game *game, t_map *map)
 
 static t_game	*textures_paths(t_game *game, char *info)
 {
-	char	*temp;
-	int		i;
+	char	**tex_path;
+	int		n;
 
-	i = 0;
-	temp = ft_strnstr(info, './',  ft_strlen(info));
-	while (i < N_TEXTURES)
+	n = 0;
+	tex_path = extract_file_path(info);
+	while (n < N_TEXTURES)
+	{
+		game->textures[n] = store_texture(game->mlx, tex_path[n + 1]);
+		n += 2;
+	}
+	ft_strarr_free(tex_path);
+	return(game);
 }
 
 static t_game	*get_map_data(t_game *game, const char *file)
 {
 	int		index;
+	char	*save;
 	char	*info;
 
 	index = 0;
 	game->map = ft_calloc(1, sizeof(t_map));
 	info = read_to_str(file);
-	game = textures_paths(game, info);
-	free(info);
+	save = info;
+	game = textures_paths(&game->textures, info);
+	free(save);
 	return (game->map);
 }
 

@@ -6,41 +6,33 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:05:44 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 22:13:42 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:08:27 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 #include "game.h"
+#include "fixed_map.h"
 #include <math.h>
-
-static const int	g_map[6][8] = {
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 0, 0, 0, 0, 1},
-	{1, 1, 0, 0, 0, 1, 1, 1},
-	{1, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 1, 0, 0, 0, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1}
-};
 
 void	draw_grid(t_buffer *buf)
 {
 	int32_t	x;
 	int32_t	y;
-	float	py;
-	float	px;
+	double	py;
+	double	px;
 	t_vec2	p;
 
 	y = 0;
-	while (y < HEIGHT / SQUARE_SIZE)
+	while (y < HEIGHT / SQ_SIZE)
 	{
 		x = 0;
-		py = (float)(y * SQUARE_SIZE);
-		while (x < WIDTH / SQUARE_SIZE)
+		py = (double)(y * SQ_SIZE);
+		while (x < WIDTH / SQ_SIZE)
 		{
-			px = (float)(x * SQUARE_SIZE);
-			p.x = px + SQUARE_SIZE - PAD_SIZE;
-			p.y = py + SQUARE_SIZE - PAD_SIZE;
+			px = (double)(x * SQ_SIZE);
+			p.x = px + SQ_SIZE - PAD_SIZE;
+			p.y = py + SQ_SIZE - PAD_SIZE;
 			if (g_map[y][x] == 1)
 				draw_rect(buf, (t_vec2){px, py}, p, 0xFFFFFF);
 			else
@@ -74,7 +66,7 @@ void	draw_rect_center(t_buffer *buf, t_vec2 center, t_vec2 wh, uint32_t c)
 	t_vec2	tl;
 	t_vec2	br;
 
-	tl = (t_vec2){center.x - (wh.x / 2.0f), center.y - (wh.y / 2.0f)};
+	tl = (t_vec2){center.x - (wh.x / 2.0), center.y - (wh.y / 2.0)};
 	br = vec2_add(tl, wh);
 	draw_rect(buf, tl, br, c);
 }

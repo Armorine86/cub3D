@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 15:01:11 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/11 19:08:24 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#ifndef CONFIG_H
+# define CONFIG_H
 
-# include <libft/libft.h>
-# include "keymap.h"
-
-# define SPEED 2.5
-# define A_SPEED 4.0
-
-typedef struct s_player
-{
-	t_vec2	pos;
-	t_vec2	dir;
-	double	angle;
-}	t_player;
-
-void	update_player(t_player *player, bool keystate[N_KEYS], double dt);
+# define WIDTH 800
+# define HEIGHT 600
+# define SQ_SIZE 100
+# define PAD_SIZE 3
+# define MAP_W 8
+# define MAP_H 6
 
 #endif
