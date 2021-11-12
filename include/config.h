@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fixed_map.c                                        :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 17:37:31 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 19:01:58 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/11 19:08:24 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
+#ifndef CONFIG_H
+# define CONFIG_H
 
-int	g_map[MAP_H][MAP_W] = {
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 1, 0, 1, 0, 1, 1, 1},
-	{1, 0, 0, 1, 0, 1, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1}
-};
+# define WIDTH 800
+# define HEIGHT 600
+# define SQ_SIZE 100
+# define PAD_SIZE 3
+# define MAP_W 8
+# define MAP_H 6
+
+#endif

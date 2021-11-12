@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:54:45 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 18:00:10 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:24:53 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,26 @@ static t_vec2	fst_ray_len(t_vec2 dir, t_vec2 pos, t_vec2 unit, t_vec2i map)
 	return (ray_len);
 }
 
-void	draw_ray(t_buffer *buf, t_vec2 ray_start, t_vec2 ray_dir, uint32_t c)
+static void	intersect(t_buffer *buf, t_vec2 hit, t_vec2 pos, uint32_t c)
+{
+	draw_line(buf, vec2_mul(pos, SQ_SIZE), vec2_mul(hit, SQ_SIZE), c);
+}
+
+void	draw_ray(t_buffer *buf, t_vec2 pos, t_vec2 dir, uint32_t c)
 {
 	t_vec2	ray_len;
 	t_vec2	unit_step;
 	t_vec2i	map_sq;
 	t_vec2i	step;
-	bool	found;
 	double	dist;
 
-	unit_step.x = sqrt(1.0 + pow(ray_dir.y / ray_dir.x, 2.0));
-	unit_step.y = sqrt(1.0 + pow(ray_dir.x / ray_dir.y, 2.0));
-	map_sq = (t_vec2i){(int32_t)ray_start.x, (int32_t)ray_start.y};
-	step = get_step(ray_dir);
-	ray_len = fst_ray_len(ray_dir, ray_start, unit_step, map_sq);
-	found = false;
+	unit_step.x = sqrt(1.0 + pow(dir.y / dir.x, 2.0));
+	unit_step.y = sqrt(1.0 + pow(dir.x / dir.y, 2.0));
+	map_sq = (t_vec2i){(int32_t)pos.x, (int32_t)pos.y};
+	step = get_step(dir);
+	ray_len = fst_ray_len(dir, pos, unit_step, map_sq);
 	dist = 0.0;
-	while (!found)
+	while (dist < 100.0)
 	{
 		if (ray_len.x < ray_len.y)
 		{
@@ -75,14 +78,10 @@ void	draw_ray(t_buffer *buf, t_vec2 ray_start, t_vec2 ray_dir, uint32_t c)
 			ray_len.y += unit_step.y;
 		}
 		if (g_map[map_sq.y][map_sq.x] == 1)
-			found = true;
-	}
-	if (found)
-	{
-		t_vec2	hit;
-
-		hit = vec2_add(vec2_mul(ray_dir, dist), ray_start);
-		draw_line(buf, vec2_mul(ray_start, 100.0), vec2_mul(hit, 100.0), c);
+		{
+			intersect(buf, vec2_add(vec2_mul(dir, dist), pos), pos, c);
+			break ;
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:05:44 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 17:37:45 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:08:27 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ void	draw_grid(t_buffer *buf)
 	t_vec2	p;
 
 	y = 0;
-	while (y < HEIGHT / SQUARE_SIZE)
+	while (y < HEIGHT / SQ_SIZE)
 	{
 		x = 0;
-		py = (double)(y * SQUARE_SIZE);
-		while (x < WIDTH / SQUARE_SIZE)
+		py = (double)(y * SQ_SIZE);
+		while (x < WIDTH / SQ_SIZE)
 		{
-			px = (double)(x * SQUARE_SIZE);
-			p.x = px + SQUARE_SIZE - PAD_SIZE;
-			p.y = py + SQUARE_SIZE - PAD_SIZE;
+			px = (double)(x * SQ_SIZE);
+			p.x = px + SQ_SIZE - PAD_SIZE;
+			p.y = py + SQ_SIZE - PAD_SIZE;
 			if (g_map[y][x] == 1)
 				draw_rect(buf, (t_vec2){px, py}, p, 0xFFFFFF);
 			else
