@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 10:46:25 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:46:44 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
 # define HEIGHT 600
 # define SQUARE_SIZE 100
 # define PAD_SIZE 3
+# define N_TEXTURES 4
+
 
 typedef struct s_game
 {
-	t_textures	*textures;
+	t_textures	*textures[N_TEXTURES];
 	t_buffer	*buf;
 	t_player	player;
 	t_time		last_frame;

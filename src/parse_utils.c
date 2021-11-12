@@ -6,14 +6,23 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/11 10:10:09 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:22:06 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/libft.h>
 #include <stdint.h>
 #include <fcntl.h>
+#include <mlx.h>
 #include "game.h"
+
+void	*free_texture(void *mlx, t_textures *t)
+{
+	if (mlx && t && t->img)
+		mlx_destroy_image(mlx, t->img);
+	free(t);
+	return (NULL);
+}
 
 void	*free_map(t_map *map)
 {

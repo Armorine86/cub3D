@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/11 10:29:26 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/12 08:49:33 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,63 @@
 #include <stdint.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <mlx.h>
 #include "game.h"
 
-t_map	*get_textures_info(t_map *map, char **str)
+static t_textures	*store_texture(void *mlx, char *file)
 {
-	int32_t	i;
+	t_textures	*t;
 
-	i = 0;
-	while (map->info[i])
-	{
-		if (ft_strcmp(map->info[i], "NO"))
-			
-	}
+	t = ft_calloc(1, sizeof(t_textures));
+	if (!t)
+		return (NULL);
+	t->img = mlx_xpm_file_to_image(mlx, file, &t->width, &t->height);
+	if (t->img)
+		return(free_textures(mlx, t));
+	t->data = mlx_get_data_addr(&t->img, &t->bpp, &t->pitch, &t->endian);
+	t->file = file;
+	return (t);
 }
 
-static t_map	*get_data(t_map *map, const char *file)
+static t_textures	*get_textures_info(t_game *game, t_map *map)
+{
+
+}
+
+static t_game	*textures_paths(t_game *game, char *info)
 {
 	char	*temp;
-	char	*grid;
-	char	**tab;
+	int		i;
 
-	temp = read_to_str(file);
-	map->info = ft_split(temp, '\n');
-	free(temp);
-	map = get_textures_info(map);
-	free(str);
-	map->grid = grid;
-	return (map);
+	i = 0;
+	temp = ft_strnstr(info, './',  ft_strlen(info));
+	while (i < N_TEXTURES)
 }
 
-t_map	*create_map(t_map *map, char *file)
+static t_game	*get_map_data(t_game *game, const char *file)
+{
+	int		index;
+	char	*info;
+
+	index = 0;
+	game->map = ft_calloc(1, sizeof(t_map));
+	info = read_to_str(file);
+	game = textures_paths(game, info);
+	free(info);
+	return (game->map);
+}
+
+void	create_map(t_game *game, char *file)
 {
 	if (!valid_file_extension(file))
 	{
 		ft_putendl_fd("Error", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	map = ft_calloc(1, sizeof(t_map));
-	map = get_data(map, file);
-	if (!map)
+	game = get_map_data(game, file);
+	if (!game->map)
 	{
 		ft_putendl_fd("Error", STDERR_FILENO);
 		return (NULL);
 	}
-	return (map);
 }
