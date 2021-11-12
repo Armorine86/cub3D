@@ -1,35 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/12 10:54:05 by mmondell         ###   ########.fr       */
+/*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
+/*   Updated: 2021/11/12 15:36:32 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/libft.h>
 #include <stdint.h>
+#include <fcntl.h>
 #include <stdlib.h>
 #include <mlx.h>
 #include "game.h"
 
-void	*free_texture(void *mlx, t_textures *t)
+bool	missing_texture(char **tab)
 {
-	if (mlx && t && t->img)
-		mlx_destroy_image(mlx, t->img);
-	free(t);
-	return (NULL);
+	if ((ft_strarr_size(tab)) < 4)
+		return (true);
+	return (false);
 }
 
-bool	valid_file_extension(char *file)
+bool	duplicate_identifier(char *info)
 {
-	size_t	len;
+	char	*str;
+	char	**tab;
+	int32_t	i;
+	int32_t	j;
 
-	len = ft_strlen(file);
-	if ((ft_strncmp(file + len - 4, ".cub", len)))
+	tab = extract_texture_path(info);
+	if (missing_texture(tab))
 		return (false);
+	i = 0;
+	while (tab[i])
+	{
+		j = i + 1;
+		str = ft_substr(tab[i], 0, 2);
+		while (tab[j])
+		{
+			if (!ft_strncmp(tab[j], str, 2))
+			{
+				free(str);
+				return (false);
+			}
+			j++;
+		}	
+		i++;
+	}
 	return (true);
 }

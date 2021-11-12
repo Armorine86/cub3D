@@ -1,12 +1,12 @@
 
-NO ./path_to_north_texture
+NO ./assets/wall.xpm
 
 
-SO ./path_to_south_texture
+SO ./assets/collectible.xpm
 
-WE ./path_to_west_texture
+WE ./assets/empty.xpm
 
-EA ./path_to_east_texture
+EA ./assets/player.xpm
 
 F 0,0,0
 

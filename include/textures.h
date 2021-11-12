@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/12 10:54:05 by mmondell         ###   ########.fr       */
+/*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
+/*   Updated: 2021/11/12 15:14:09 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/libft.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <mlx.h>
-#include "game.h"
+#ifndef TEXTURES_H
+# define TEXTURES_H
 
-void	*free_texture(void *mlx, t_textures *t)
+# define N_TEXTURES 4
+
+
+typedef enum e_pos
 {
-	if (mlx && t && t->img)
-		mlx_destroy_image(mlx, t->img);
-	free(t);
-	return (NULL);
-}
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+}	t_pos;
 
-bool	valid_file_extension(char *file)
+typedef struct s_textures
 {
-	size_t	len;
+	void	*img;
+	char	*file;
+	char	*data;
+	int		width;
+	int		height;
+	int		bpp;
+	int		pitch;
+	int		endian;
+}	t_textures;
 
-	len = ft_strlen(file);
-	if ((ft_strncmp(file + len - 4, ".cub", len)))
-		return (false);
-	return (true);
-}
+
+#endif

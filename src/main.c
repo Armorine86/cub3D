@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/12 09:48:30 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:14:22 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include <stdlib.h>
 #include "event.h"
 #include "fixed_map.h"
+#include "game.h"
 
 int	main(int argc, char **argv)
 {
 	void		*mlx;
 	void		*win;
 	t_game		game;
-	
 
 	if (argc != 2)
 	{
