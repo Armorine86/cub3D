@@ -6,11 +6,12 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:01:58 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 14:02:42 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 22:48:33 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
+#include "config.h"
 
 static void	draw_circle_lines(t_buffer *buf, t_vec2 xy, t_vec2 cen, uint32_t c)
 {
@@ -66,7 +67,7 @@ void	draw_player(t_buffer *buf, t_player *player)
 	t_vec2	line_end;
 	t_vec2	scaled_pos;
 
-	scaled_pos = vec2_mul(player->pos, 100.0);
+	scaled_pos = vec2_mul(player->pos, SQ_SIZE);
 	draw_circle(buf, scaled_pos, 10.0, 0xFF0000);
 	line_end = vec2_add(scaled_pos, vec2_mul(player->dir, 30.0));
 	draw_line(buf, scaled_pos, line_end, 0xFF0000);
