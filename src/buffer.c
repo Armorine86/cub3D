@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:19:04 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 19:37:53 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:21:36 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	put_pixel(t_buffer *buf, int32_t x, int32_t y, uint32_t c)
 	char	*dst;
 
 	if (x < 0 || x >= buf->w)
-		ft_putendl_fd("X out of bounds", 2);
+		return ;
 	if (y < 0 || y >= buf->h)
-		ft_putendl_fd("Y out of bounds", 2);
+		return ;
 	dst = buf->data + (y * buf->pitch + x * (buf->bpp / 8));
 	*(uint32_t *)dst = c;
 }
