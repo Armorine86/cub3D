@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:54:45 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 19:24:53 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:34:44 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,25 @@ static void	intersect(t_buffer *buf, t_vec2 hit, t_vec2 pos, uint32_t c)
 	draw_line(buf, vec2_mul(pos, SQ_SIZE), vec2_mul(hit, SQ_SIZE), c);
 }
 
+static double	distance(t_vec2 *len, t_vec2i *sq, t_vec2i step, t_vec2 unit)
+{
+	double	dist;
+
+	if (len->x < len->y)
+	{
+		sq->x += step.x;
+		dist = len->x;
+		len->x += unit.x;
+	}
+	else
+	{
+		sq->y += step.y;
+		dist = len->y;
+		len->y += unit.y;
+	}
+	return (dist);
+}
+
 void	draw_ray(t_buffer *buf, t_vec2 pos, t_vec2 dir, uint32_t c)
 {
 	t_vec2	ray_len;
@@ -65,39 +84,11 @@ void	draw_ray(t_buffer *buf, t_vec2 pos, t_vec2 dir, uint32_t c)
 	dist = 0.0;
 	while (dist < 100.0)
 	{
-		if (ray_len.x < ray_len.y)
-		{
-			map_sq.x += step.x;
-			dist = ray_len.x;
-			ray_len.x += unit_step.x;
-		}
-		else
-		{
-			map_sq.y += step.y;
-			dist = ray_len.y;
-			ray_len.y += unit_step.y;
-		}
+		dist = distance(&ray_len, &map_sq, step, unit_step);
 		if (g_map[map_sq.y][map_sq.x] == 1)
 		{
 			intersect(buf, vec2_add(vec2_mul(dir, dist), pos), pos, c);
 			break ;
 		}
-	}
-}
-
-void	draw_field(t_buffer *buf, t_player *p, uint32_t c)
-{
-	double	angle_step;
-	double	angle;
-	t_vec2	dir;
-
-	angle_step = deg_to_rad(5.0);
-	angle = p->angle - deg_to_rad(40.0);
-	while (angle < p->angle + deg_to_rad(40.0))
-	{
-		dir.x = cos(angle);
-		dir.y = sin(angle);
-		draw_ray(buf, p->pos, dir, c);
-		angle += angle_step;
 	}
 }
