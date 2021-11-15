@@ -23,6 +23,7 @@ CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 				
 HFILES		=	buffer.h utils.h draw.h game.h player.h keymap.h event.h config.h\
 				intersection.h
+
 OFILES		=	$(CFILES:.c=.o)
 
 SRCS		=	$(addprefix $(SRC)/, $(CFILES))
