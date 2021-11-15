@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 17:36:03 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/15 14:39:43 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_game
 {
 	t_buffer	*buf;
+	t_buffer	*buf3d;
 	t_player	player;
 	bool		keystate[N_KEYS];
 	void		*mlx;

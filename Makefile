@@ -33,9 +33,6 @@ VPATH		=	$(SRC)
 $(OBJ)/%.o:	%.c
 			$(CC) $(CFLAGS) -I$(INC) -I$(LIB) -c $< -o $@
 
-cool_evaluator:	CFLAGS += -DCOOL_EVALUATOR
-cool_evaluator:	all
-
 all:		CFLAGS += -O2 -DNDEBUG
 all:		$(NAME)
 
@@ -49,7 +46,7 @@ $(OBJ):
 debug:		CFLAGS += -O0 -g
 debug:		$(NAME)
 
-linux:		CFLAGS += -O0 -g -DCOOL_EVALUATOR
+linux:		CFLAGS += -O0 -g
 linux:		$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)
