@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/12 15:47:23 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/12 15:29:56 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONFIG_H
-# define CONFIG_H
+#include "draw.h"
 
-# define WIDTH 800
-# define HEIGHT 600
-# define SQ_SIZE 100
-# define PAD_SIZE 3
-# define MAP_W 8
-# define MAP_H 6
-# define MAX_DIST 20.0
-
-#endif
+void	draw_walls(t_buffer *buf, t_player *p)
+{
+	
+}
