@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/15 14:44:34 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:28:46 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	update(t_game *game)
 	draw_grid(game->buf);
 	draw_field(game->buf, &game->player, 0xFF00);
 	draw_player(game->buf, &game->player);
+	draw_view(game->buf3d, &game->player);
 	update_screen(game);
 	return (0);
 }
