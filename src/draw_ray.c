@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:54:45 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/15 15:18:53 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:43:00 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_ray(t_buffer *buf, t_vec2 pos, t_vec2 dir, uint32_t c)
 				vec2_mul(hit.pos, SQ_SIZE), 0xFF00);
 		else if (hit.side == WEST)
 			draw_line(buf, vec2_mul(pos, SQ_SIZE),
-				vec2_mul(hit.pos, SQ_SIZE), 0xFF);
+				vec2_mul(hit.pos, SQ_SIZE), 0xFF00FF);
 		else if (hit.side == NORTH)
 			draw_line(buf, vec2_mul(pos, SQ_SIZE),
 				vec2_mul(hit.pos, SQ_SIZE), 0xFFFF00);
