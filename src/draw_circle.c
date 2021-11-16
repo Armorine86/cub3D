@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:01:58 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 22:48:33 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:19:58 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	draw_circle(t_buffer *buf, t_vec2 center, double r, uint32_t c)
 		}
 		if (x < y)
 			break ;
-		draw_circle_lines(buf, (t_vec2){(double)x, (double)y},
-			(t_vec2){center.x, center.y}, c);
+		draw_circle_lines(buf, (t_vec2){x, y}, (t_vec2){center.x, center.y}, c);
 	}
 }
 

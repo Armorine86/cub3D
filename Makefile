@@ -9,7 +9,7 @@ LIBFT		=	$(LIB)/libft
 MLX_LINUX	=	$(LIB)/mlx_linux
 
 CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra -Wconversion -Wpedantic
+CFLAGS		=	-Wall -Werror -Wextra -Wpedantic
 
 RM			=	rm -rf
 MK			=	mkdir -p
