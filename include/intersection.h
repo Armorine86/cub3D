@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:31:31 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/15 14:52:37 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:31:10 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef enum e_side
 typedef struct s_hit
 {
 	t_vec2	pos;
+	double 	perpdist;
 	double	dist;
 	t_side	side;
 }	t_hit;
