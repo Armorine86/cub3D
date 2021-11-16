@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/16 14:32:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:24:01 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ bool	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
 	map_p = (t_vec2i){pos.x, pos.y};
 	step = get_step(dir);
 	ray_len = fst_ray_len(dir, pos, unit_step, map_p);
+	hit->dist = 0.0;
 	while (hit->dist < MAX_DIST)
 	{
 		*hit = distance(&ray_len, &map_p, step, unit_step);

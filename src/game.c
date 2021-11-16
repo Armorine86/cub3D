@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/16 14:44:36 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/16 15:19:37 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	init_game(t_game *game, void *mlx, void *win)
 
 	game->mlx = mlx;
 	game->win = win;
-	game->player.angle = deg_to_rad(90.0);
+	game->player.angle = deg_to_rad(270.0);
 	game->player.dir.x = cos(game->player.angle);
 	game->player.dir.y = sin(game->player.angle);
 	game->player.pos = (t_vec2){2.5, 1.5};
+	game->player.c_plane = (t_vec2){0.0, 0.66};
 	game->buf = new_buffer(mlx, win, WIDTH / 2, HEIGHT);
 	game->buf3d = new_buffer(mlx, win, WIDTH / 2, HEIGHT);
 	ft_gettime(&game->last_frame);
