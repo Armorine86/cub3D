@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/15 15:00:03 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:20:54 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
 
 	unit_step.x = sqrt(1.0 + pow(dir.y / dir.x, 2.0));
 	unit_step.y = sqrt(1.0 + pow(dir.x / dir.y, 2.0));
-	map_p = (t_vec2i){(int32_t)pos.x, (int32_t)pos.y};
+	map_p = (t_vec2i){pos.x, pos.y};
 	step = get_step(dir);
 	ray_len = fst_ray_len(dir, pos, unit_step, map_p);
 	while (hit->dist < MAX_DIST)
