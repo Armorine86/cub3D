@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 02:14:55 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 02:37:35 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,18 @@ static void	update_screen(t_game *game)
 int	update(t_game *game)
 {
 	t_time	t;
+	int32_t	w;
+	int32_t	h;
 
 	ft_gettime(&t);
 	game->dt = ft_timediff(game->last_frame, t);
 	game->last_frame = t;
 	update_player(&game->player, game->keystate, game->dt);
 	clear_buffer(game->buf, 0x777777);
-	clear_buffer(game->buf3d, 0x777777);
+	w = game->buf3d->w;
+	h = game->buf3d->h;
+	draw_rect(game->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, 0xFFFF);
+	draw_rect(game->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, 0x777777);
 	draw_grid(game->buf);
 	draw_field(game->buf, &game->player, 0xFF00);
 	draw_player(game->buf, &game->player);
