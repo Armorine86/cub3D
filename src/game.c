@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 02:37:35 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:48:00 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,19 @@
 
 void	init_game(t_game *game, void *mlx, void *win)
 {
-	int	i;
+	int32_t		i;
+	t_player	*p;
 
+	p = &game->player;
 	game->mlx = mlx;
 	game->win = win;
-	game->player.angle = deg_to_rad(0.0);
-	game->player.dir.x = cos(game->player.angle);
-	game->player.dir.y = sin(game->player.angle);
-	game->player.pos = (t_vec2){2.5, 1.5};
-	game->player.c_plane.x = 0.0;
-	game->player.c_plane.y = 0.66;
+	p->fov_ratio = FOV / 90.0;
+	p->angle = deg_to_rad(0.0);
+	p->dir.x = cos(p->angle);
+	p->dir.y = sin(p->angle);
+	p->pos = (t_vec2){2.5, 1.5};
+	p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
+	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 	game->buf = new_buffer(mlx, win, WIDTH / 2, HEIGHT);
 	game->buf3d = new_buffer(mlx, win, WIDTH / 2, HEIGHT);
 	ft_gettime(&game->last_frame);

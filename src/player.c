@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 02:39:50 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:48:26 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	rotate_left(t_player *p, double dt)
 	p->angle = wrap_angle(p->angle - A_SPEED * dt);
 	p->dir = vec2_unit(p->angle);
 	p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
-	p->c_plane = vec2_mul(p->c_plane, 0.66);
+	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 }
 
 static void	rotate_right(t_player *p, double dt)
@@ -27,7 +27,7 @@ static void	rotate_right(t_player *p, double dt)
 	p->angle = wrap_angle(p->angle + A_SPEED * dt);
 	p->dir = vec2_unit(p->angle);
 	p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
-	p->c_plane = vec2_mul(p->c_plane, 0.66);
+	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 }
 
 void	update_player(t_player *p, bool keystate[N_KEYS], double dt)
