@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/16 15:24:01 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 01:56:00 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static t_hit	distance(t_vec2 *len, t_vec2i *sq, t_vec2i step, t_vec2 unit)
 			hit.side = WEST;
 		else
 			hit.side = EAST;
-		hit.perpdist = len->x - unit.x;
 	}
 	else
 	{
@@ -68,7 +67,6 @@ static t_hit	distance(t_vec2 *len, t_vec2i *sq, t_vec2i step, t_vec2 unit)
 			hit.side = NORTH;
 		else
 			hit.side = SOUTH;
-		hit.perpdist = len->y - unit.y;
 	}
 	return (hit);
 }

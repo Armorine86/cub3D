@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/16 15:32:41 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 02:06:19 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	draw_view(t_buffer *buf, t_player *p)
 	double	cam_x;
 	t_hit	hit;
 	int32_t	x;
+	double	ca;
 
 	x = 0;
 	while (x < WIDTH / 2)
@@ -31,8 +32,9 @@ void	draw_view(t_buffer *buf, t_player *p)
 		cam_x = (2 * x) / (double)(WIDTH / 2) - 1;
 		ray_dir.x = p->dir.x + p->c_plane.x * cam_x;
 		ray_dir.y = p->dir.y + p->c_plane.y * cam_x;
+		ca = wrap_angle(p->angle - atan(ray_dir.y / ray_dir.x));
 		intersect(p->pos, ray_dir, &hit);
-		wall_h = HEIGHT / hit.perpdist;
+		wall_h = HEIGHT / (hit.dist * cos(ca));
 		draw_start = (-wall_h / 2) + (HEIGHT / 2);
 		if (draw_start < 0)
 			draw_start = 0;
