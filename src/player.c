@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 01:52:08 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 02:16:33 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,16 @@ void	update_player(t_player *p, bool keystate[N_KEYS], double dt)
 	if (keystate[LEFT])
 	{
 		p->angle = wrap_angle(p->angle - A_SPEED * dt);
-		p->dir = vec2_rotate(p->dir, p->angle);
-		p->c_plane = move_right(p);
+		p->dir = vec2_unit(p->angle);
+		p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
+		p->c_plane = vec2_mul(p->c_plane, 0.66);
 	}
 	if (keystate[RIGHT])
 	{
 		p->angle = wrap_angle(p->angle + A_SPEED * dt);
-		p->dir = vec2_rotate(p->dir, p->angle);
-		p->c_plane = move_right(p);
+		p->dir = vec2_unit(p->angle);
+		p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
+		p->c_plane = vec2_mul(p->c_plane, 0.66);
 	}
 	move_dir = (t_vec2){0, 0};
 	if (keystate[W])

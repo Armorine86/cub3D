@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 01:44:22 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 02:14:55 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	init_game(t_game *game, void *mlx, void *win)
 	game->player.dir.x = cos(game->player.angle);
 	game->player.dir.y = sin(game->player.angle);
 	game->player.pos = (t_vec2){2.5, 1.5};
-	game->player.c_plane.x = 0.66 * cos(game->player.angle - PI / 2.0);
-	game->player.c_plane.y = 0.66 * sin(game->player.angle - PI / 2.0);
+	game->player.c_plane.x = 0.0;
+	game->player.c_plane.y = 0.66;
 	game->buf = new_buffer(mlx, win, WIDTH / 2, HEIGHT);
 	game->buf3d = new_buffer(mlx, win, WIDTH / 2, HEIGHT);
 	ft_gettime(&game->last_frame);
