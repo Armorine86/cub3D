@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/15 14:37:50 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:21:47 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 # define MAP_W 8
 # define MAP_H 6
 # define MAX_DIST 20.0
+# define SPEED 2.5
+# define A_SPEED 4.0
 
 #endif

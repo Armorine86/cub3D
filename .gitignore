@@ -4,3 +4,4 @@ cub3D
 *.o
 *.idx
 *.gen
+*.cpp
