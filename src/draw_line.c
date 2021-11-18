@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:27 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 17:43:21 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:38:13 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,55 +17,78 @@
 #include <stdint.h>
 #include <math.h>
 
-static void	h_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
+static void	flip_sign(int32_t *v1, int32_t *v2)
 {
-	double	a;
-	double	b;
-	int32_t	i;
+	*v1 = -(*v1);
+	*v2 = -(*v2);
+}
 
-	a = 0.0;
-	if (p0.x != p1.x)
-		a = (p1.y - p0.y) / (p1.x - p0.x);
-	if (p1.x < p0.x)
-		vec2_swap(&p0, &p1);
-	b = p1.y - (a * p1.x);
-	i = (int32_t)p0.x;
-	while (i < (int32_t)p1.x)
+static void	plotline_low(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
+{
+	t_vec2i	delta;
+	t_vec2i	it;
+	int32_t	yi;
+	int32_t	d;
+
+	delta = (t_vec2i){p1.x - p0.x, p1.y - p0.y};
+	yi = 1;
+	if (delta.y < 0)
+		flip_sign(&yi, &delta.y);
+	d = (delta.y * 2) - delta.x;
+	it = (t_vec2i){p0.x, p0.y};
+	while (it.x < (int32_t)p1.x)
 	{
-		put_pixel(buf, i, (int32_t)(a * (double)i + b), c);
-		i++;
+		put_pixel(buf, it.x, it.y, c);
+		if (d > 0)
+		{
+			it.y += yi;
+			d += 2 * (delta.y - delta.x);
+		}
+		else
+			d += 2 * delta.y;
+		it.x++;
 	}
 }
 
-void	v_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
+static void	plotline_high(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 {
-	double	a;
-	double	b;
-	int32_t	i;
+	t_vec2i	delta;
+	t_vec2i	it;
+	int32_t	xi;
+	int32_t	d;
 
-	if (p1.y < p0.y)
-		vec2_swap(&p0, &p1);
-	a = 0.0;
-	if (p0.y != p1.y)
-		a = (p1.x - p0.x) / (p1.y - p0.y);
-	b = p1.x - (a * p1.y);
-	i = (int32_t)p0.y;
-	while (i < (int32_t)p1.y)
+	delta = (t_vec2i){p1.x - p0.x, p1.y - p0.y};
+	xi = 1;
+	if (delta.x < 0)
+		flip_sign(&xi, &delta.x);
+	d = (2 * delta.x) - delta.y;
+	it = (t_vec2i){p0.x, p0.y};
+	while (it.y < (int32_t)p1.y)
 	{
-		put_pixel(buf, (int32_t)(a * (double)i + b), i, c);
-		i++;
+		put_pixel(buf, it.x, it.y, c);
+		if (d > 0)
+		{
+			it.x += xi;
+			d += 2 * (delta.x - delta.y);
+		}
+		else
+			d += 2 * delta.x;
+		it.y++;
 	}
 }
 
 void	draw_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c)
 {
-	double	a;
-
-	a = 0.0;
-	if (p0.x != p1.x)
-		a = (p1.y - p0.y) / (p1.x - p0.x);
-	if (p0.x != p1.x && a >= -1.0 && a <= 1.0)
-		h_line(buf, p0, p1, c);
+	if (ft_abs((int32_t)(p1.y - p0.y)) < ft_abs((int32_t)(p1.x - p0.x)))
+	{
+		if ((int32_t)p0.x > (int32_t)p1.x)
+			vec2_swap(&p0, &p1);
+		plotline_low(buf, p0, p1, c);
+	}
 	else
-		v_line(buf, p0, p1, c);
+	{
+		if ((int32_t)p0.y > (int32_t)p1.y)
+			vec2_swap(&p0, &p1);
+		plotline_high(buf, p0, p1, c);
+	}
 }

@@ -6,11 +6,12 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:34:34 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/12 15:19:02 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:16:57 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
+#include "config.h"
 #include <math.h>
 
 void	draw_field(t_buffer *buf, t_player *p, uint32_t c)
@@ -21,9 +22,9 @@ void	draw_field(t_buffer *buf, t_player *p, uint32_t c)
 	int32_t	i;
 
 	angle_step = deg_to_rad(2.0);
-	angle = p->angle - deg_to_rad(40.0);
+	angle = p->angle - deg_to_rad(FOV / 2.0);
 	i = 0;
-	while (i < 40)
+	while (i < (int32_t)(FOV / 2.0))
 	{
 		dir.x = cos(angle);
 		dir.y = sin(angle);

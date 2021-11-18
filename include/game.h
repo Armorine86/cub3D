@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/12 15:14:06 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/18 08:11:47 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_game
 {
 	t_buffer	*buf;
+	t_buffer	*buf3d;
 	t_player	player;
 	t_time		last_frame;
 	t_world		*world;
