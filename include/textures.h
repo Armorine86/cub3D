@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/12 15:14:09 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:33:00 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef enum e_pos
 	EAST,
 }	t_pos;
 
-typedef struct s_textures
+typedef struct s_texture
 {
 	void	*img;
 	char	*file;
@@ -34,7 +34,9 @@ typedef struct s_textures
 	int		bpp;
 	int		pitch;
 	int		endian;
-}	t_textures;
+}	t_texture;
 
+t_texture	*new_texture(void *mlx, const char *file);
+void		free_texture(void *mlx, t_texture *t);
 
 #endif
