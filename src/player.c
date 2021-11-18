@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 20:08:30 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 10:56:32 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,14 @@ static void	rotate_right(t_player *p, double dt)
 
 static t_vec2	collide_walls(t_vec2 pos, t_vec2 move)
 {
-	if (!g_map[(int32_t)pos.y][(int32_t)(pos.x + move.x)])
+	int32_t	x;
+	int32_t	y;
+
+	x = ft_clamp(pos.x + move.x, 0, MAP_W - 1);
+	y = ft_clamp(pos.y + move.y, 0, MAP_H - 1);
+	if (!g_map[(int32_t)pos.y][x])
 		pos.x += move.x;
-	if (!g_map[(int32_t)(pos.y + move.y)][(int32_t)pos.x])
+	if (!g_map[y][(int32_t)pos.x])
 		pos.y += move.y;
 	return (pos);
 }
