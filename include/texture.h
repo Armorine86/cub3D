@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/18 13:49:35 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:17:33 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,14 @@
 
 # define N_TEXTURES 4
 
-typedef enum e_pos
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-}	t_pos;
+# include "side.h"
 
 typedef struct s_texture
 {
 	void	*img;
 	char	*data;
-	int		width;
-	int		height;
+	int		w;
+	int		h;
 	int		bpp;
 	int		pitch;
 	int		endian;

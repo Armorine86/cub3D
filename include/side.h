@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersection.h                                     :+:      :+:    :+:   */
+/*   side.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 15:31:31 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 15:17:15 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/11/18 15:16:53 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/11/18 15:17:22 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERSECTION_H
-# define INTERSECTION_H
+#ifndef SIDE_H
+# define SIDE_H
 
-# include <libft/libft.h>
-# include "side.h"
-
-typedef struct s_hit
+typedef enum e_side
 {
-	t_vec2	pos;
-	double	dist;
-	t_side	side;
-}	t_hit;
-
-bool	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit);
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+}	t_side;
 
 #endif

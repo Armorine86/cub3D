@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:11:04 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 13:40:37 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:10:30 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define BUFFER_H
 
 # include <libft/libft.h>
-# include <stdint.h>
 
 typedef struct s_buffer
 {

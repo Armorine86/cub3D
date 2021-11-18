@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/15 14:39:43 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:13:47 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "buffer.h"
 # include "player.h"
+# include "texture.h"
 
 typedef struct s_game
 {
@@ -26,6 +27,7 @@ typedef struct s_game
 	void		*win;
 	t_time		last_frame;
 	double		dt;
+	t_texture	*wall;
 }	t_game;
 
 void	init_game(t_game *game, void *mlx, void *win);

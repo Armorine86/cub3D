@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 13:42:32 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:22:12 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_game(t_game *game, void *mlx, void *win)
 	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 	game->buf = new_buffer(mlx, WIDTH / 2, HEIGHT);
 	game->buf3d = new_buffer(mlx, WIDTH / 2, HEIGHT);
+	game->wall = new_texture(mlx, "textures/wall.xpm");
 	ft_gettime(&game->last_frame);
 	game->dt = 0.0;
 	i = 0;
