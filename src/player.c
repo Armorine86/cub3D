@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 10:56:32 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 11:00:30 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ static void	rotate_right(t_player *p, double dt)
 	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 }
 
-static t_vec2	collide_walls(t_vec2 pos, t_vec2 move)
+static t_vec2	collide_walls(t_vec2 pos, t_vec2 move_dir, double speed)
 {
 	int32_t	x;
 	int32_t	y;
+	t_vec2	move;
 
-	x = ft_clamp(pos.x + move.x, 0, MAP_W - 1);
-	y = ft_clamp(pos.y + move.y, 0, MAP_H - 1);
+	x = ft_clamp(pos.x + move_dir.x * 0.1, 0, MAP_W - 1);
+	y = ft_clamp(pos.y + move_dir.y * 0.1, 0, MAP_H - 1);
+	move = vec2_mul(move_dir, speed);
 	if (!g_map[(int32_t)pos.y][x])
 		pos.x += move.x;
 	if (!g_map[y][(int32_t)pos.x])
@@ -62,5 +64,5 @@ void	update_player(t_player *p, bool keystate[N_KEYS], double dt)
 	if (keystate[D] && !keystate[A])
 		move_dir = vec2_add(move_dir, vec2_unit(p->angle + deg_to_rad(90.0)));
 	move_dir = vec2_normalize(move_dir);
-	p->pos = collide_walls(p->pos, vec2_mul(move_dir, SPEED * dt));
+	p->pos = collide_walls(p->pos, move_dir, SPEED * dt);
 }
