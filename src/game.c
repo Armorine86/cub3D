@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 17:48:00 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 08:11:56 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	update(t_game *game)
 	int32_t	h;
 
 	ft_gettime(&t);
-	game->dt = ft_timediff(game->last_frame, t);
+	game->dt = (float)ft_timediff(game->last_frame, t);
 	game->last_frame = t;
 	update_player(&game->player, game->keystate, game->dt);
 	clear_buffer(game->buf, 0x777777);
