@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 15:22:12 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:45:58 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	update(t_game *game)
 	draw_grid(game->buf);
 	draw_field(game->buf, &game->player, 0xFF00);
 	draw_player(game->buf, &game->player);
-	draw_view(game->buf3d, &game->player);
+	draw_view(game->buf3d, &game->player, game->wall);
 	update_screen(game);
 	return (0);
 }
