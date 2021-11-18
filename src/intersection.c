@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 01:56:00 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 20:18:55 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ bool	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
 	while (hit->dist < MAX_DIST)
 	{
 		*hit = distance(&ray_len, &map_p, step, unit_step);
-		if (g_map[map_p.y][map_p.x] == 1)
+		if (g_map[map_p.y][map_p.x])
 		{
 			hit->pos = vec2_add(vec2_mul(dir, hit->dist), pos);
 			return (true);

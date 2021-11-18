@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 02:53:57 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 20:17:49 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ static t_vec2i	line_pos(t_player *p, t_vec2 ray_dir, double dist, int32_t h)
 	pos.x = (-line_h / 2) + (h / 2);
 	if (pos.x < 0)
 		pos.x = 0;
+	if (pos.x >= h)
+		pos.x = h - 1;
 	pos.y = (line_h / 2) + (h / 2);
+	if (pos.y < 0)
+		pos.y = 0;
 	if (pos.y >= h)
 		pos.y = h - 1;
 	return (pos);
