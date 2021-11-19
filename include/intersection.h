@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:31:31 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 15:17:15 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 22:19:42 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ typedef struct s_hit
 	t_side	side;
 }	t_hit;
 
-bool	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit);
+void	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit);
 
 #endif

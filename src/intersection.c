@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 20:18:55 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 22:38:31 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static t_hit	distance(t_vec2 *len, t_vec2i *sq, t_vec2i step, t_vec2 unit)
 	return (hit);
 }
 
-bool	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
+void	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
 {
 	t_vec2	ray_len;
 	t_vec2	unit_step;
@@ -90,8 +90,7 @@ bool	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
 		if (g_map[map_p.y][map_p.x])
 		{
 			hit->pos = vec2_add(vec2_mul(dir, hit->dist), pos);
-			return (true);
+			return ;
 		}
 	}
-	return (false);
 }
