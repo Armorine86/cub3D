@@ -22,7 +22,7 @@ CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 				intersection.c map_parser.c parse_utils.c textures.c validate.c\
 				
 HFILES		=	buffer.h utils.h draw.h game.h player.h keymap.h event.h config.h\
-				intersection.h
+				intersection.h texture.h
 
 OFILES		=	$(CFILES:.c=.o)
 

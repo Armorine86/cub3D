@@ -5,3 +5,4 @@ cub3D
 *.idx
 *.gen
 *.cpp
+.DS_Store

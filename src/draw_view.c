@@ -6,13 +6,14 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 10:46:00 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:53:58 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 #include "config.h"
 #include "intersection.h"
+#include "utils.h"
 #include <math.h>
 
 static t_vec2	get_ray_dir(t_player *p, int32_t x, int32_t w)
@@ -26,43 +27,79 @@ static t_vec2	get_ray_dir(t_player *p, int32_t x, int32_t w)
 	return (ray_dir);
 }
 
-static t_vec2i	line_pos(t_player *p, t_vec2 ray_dir, double dist, int32_t h)
+static t_lineinfo	line_info(t_player *p, t_vec2 ray, t_hit hit, int32_t h)
 {
-	double	theta;
-	int32_t	line_h;
-	t_vec2i	pos;
+	double		theta;
+	double		view_dist;
+	t_lineinfo	info;
 
-	theta = wrap_angle(p->angle - atan(ray_dir.y / ray_dir.x));
-	line_h = h / (dist * cos(theta));
-	line_h = ft_abs(line_h);
-	pos.x = (-line_h / 2) + (h / 2);
-	if (pos.x < 0)
-		pos.x = 0;
-	pos.y = (line_h / 2) + (h / 2);
-	if (pos.y >= h)
-		pos.y = h - 1;
-	return (pos);
+	info.ray_dir = ray;
+	info.side = hit.side;
+	theta = wrap_angle(p->angle - atan(ray.y / ray.x));
+	view_dist = fabs(hit.dist * cos(theta));
+	info.h = h / view_dist;
+	info.start = (-info.h / 2) + (h / 2);
+	if (info.start < 0)
+		info.start = 0;
+	info.end = (info.h / 2) + (h / 2);
+	if (info.end >= h)
+		info.end = h - 1;
+	if (is_vertical(hit.side))
+		info.wall_x = p->pos.y + view_dist * ray.y;
+	else
+		info.wall_x = p->pos.x + view_dist * ray.x;
+	info.wall_x -= floor(info.wall_x);
+	return (info);
 }
 
-void	draw_view(t_buffer *buf, t_player *p)
+void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 {
-	t_vec2	ray_dir;
-	t_vec2i	line_p;
-	t_hit	hit;
-	int32_t	x;
+	int32_t		tex_x;
+	double		tex_y;
+	double		tex_step;
+	int32_t		y;
+	uint32_t	color;
+
+	tex_x = line.wall_x * t->w;
+	if (is_vertical(line.side) && line.ray_dir.x < 0)
+		tex_x = t->w - tex_x - 1;
+	else if (is_horizontal(line.side) && line.ray_dir.y > 0)
+		tex_x = t->w - tex_x - 1;
+	tex_step = t->h / (double)line.h;
+	tex_y = (line.start - buf->h / 2 + line.h / 2) * tex_step;
+	y = line.start;
+	while (y < line.end)
+	{
+		color = get_tex_pixel(t, tex_x, ft_clamp(tex_y, 0, t->h - 1));
+		tex_y += tex_step;
+		if (line.side == EAST || line.side == WEST)
+			color = (color / 2) & 0x7F7F7F;
+		put_pixel(buf, x, y, color);
+		y++;
+	}
+}
+
+void	draw_view(t_buffer *buf, t_player *p, t_texture *t)
+{
+	t_vec2		ray_dir;
+	t_lineinfo	info;
+	t_hit		hit;
+	int32_t		x;
 
 	x = 0;
 	while (x < buf->w)
 	{
 		ray_dir = get_ray_dir(p, x, buf->w);
 		intersect(p->pos, ray_dir, &hit);
-		line_p = line_pos(p, ray_dir, hit.dist, buf->h);
-		if (hit.side == EAST || hit.side == WEST)
-			draw_line(buf, (t_vec2){x, line_p.x},
-				(t_vec2){x, line_p.y}, 0x0000FF / 2);
+		info = line_info(p, ray_dir, hit, buf->h);
+		if (hit.side == EAST)
+			draw_line_tex(buf, t, info, x);
+		else if (hit.side == WEST)
+			draw_line_tex(buf, t, info, x);
+		else if (hit.side == NORTH)
+			draw_line_tex(buf, t, info, x);
 		else
-			draw_line(buf, (t_vec2){x, line_p.x},
-				(t_vec2){x, line_p.y}, 0x0000FF);
+			draw_line_tex(buf, t, info, x);
 		x++;
 	}
 }

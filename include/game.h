@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 14:23:59 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/19 08:33:44 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "buffer.h"
 # include "player.h"
+# include "texture.h"
 # include "map_info.h"
-# include "textures.h"
 
 typedef struct s_game
 {
@@ -29,6 +29,9 @@ typedef struct s_game
 	bool		keystate[N_KEYS];
 	void		*mlx;
 	void		*win;
+	t_time		last_frame;
+	double		dt;
+	t_texture	*wall;
 }	t_game;
 
 void	load_texture(t_world *world, void *mlx, char **info);
