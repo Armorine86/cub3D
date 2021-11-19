@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:50:36 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/18 16:52:46 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:43:15 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_texture	*new_texture(void *mlx, const char *file)
 	return (t);
 }
 
-uint32_t	get_pixel(t_texture *t, int32_t x, int32_t y)
+uint32_t	get_tex_pixel(t_texture *t, int32_t x, int32_t y)
 {
 	char	*src;
 
