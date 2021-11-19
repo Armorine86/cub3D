@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:50:36 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/18 13:32:54 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:32:56 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <mlx.h>
 #include "game.h"
+#include "textures.h"
 
 void	free_texture(void *mlx, t_texture *t)
 {
@@ -37,12 +38,11 @@ t_texture	*new_texture(void *mlx, const char *file)
 		free_texture(mlx, t);
 		return (NULL);
 	}
-	t->data = mlx_get_data_addr(&t->img, &t->bpp, &t->pitch, &t->endian);
-	t->file = ft_strdup(file);
+	t->data = mlx_get_data_addr(t->img, &t->bpp, &t->pitch, &t->endian);
 	return (t);
 }
 
-t_game	*textures_paths(t_game *game, char **info)
+void	load_texture(t_world *world, void *mlx, char **info)
 {
 	int32_t	n;
 
@@ -50,15 +50,14 @@ t_game	*textures_paths(t_game *game, char **info)
 	while (n < N_TEXTURES)
 	{
 		if (!(ft_strncmp(info[n], "NO", 2)))
-			game->world->tex[NORTH] = store_texture(game->mlx, &info[n][3]);
+			world->tex[NORTH] = new_texture(mlx, &info[n][3]);
 		else if (!(ft_strncmp(info[n], "SO", 2)))
-			game->world->tex[SOUTH] = store_texture(game->mlx, &info[n][3]);
+			world->tex[SOUTH] = new_texture(mlx, &info[n][3]);
 		else if (!(ft_strncmp(info[n], "WE", 2)))
-			game->world->tex[WEST] = store_texture(game->mlx, &info[n][3]);
+			world->tex[WEST] = new_texture(mlx, &info[n][3]);
 		else if (!(ft_strncmp(info[n], "EA", 2)))
-			game->world->tex[EAST] = store_texture(game->mlx, &info[n][3]);
+			world->tex[EAST] = new_texture(mlx, &info[n][3]);
 		n++;
 	}
 	ft_strarr_free(info);
-	return (game);
 }

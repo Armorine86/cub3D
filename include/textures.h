@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/18 13:33:00 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:33:00 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef enum e_pos
 typedef struct s_texture
 {
 	void	*img;
-	char	*file;
 	char	*data;
 	int		width;
 	int		height;
@@ -37,6 +36,8 @@ typedef struct s_texture
 }	t_texture;
 
 t_texture	*new_texture(void *mlx, const char *file);
+char 		**extract_tex_data(int fd);
 void		free_texture(void *mlx, t_texture *t);
+
 
 #endif
