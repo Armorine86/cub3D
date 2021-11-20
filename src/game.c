@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/19 08:32:42 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/20 10:17:56 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_game(t_game *game, void *mlx, void *win)
 	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 	game->buf = new_buffer(mlx, WIDTH / 2, HEIGHT);
 	game->buf3d = new_buffer(mlx, WIDTH / 2, HEIGHT);
-	game->wall = new_texture(mlx, "textures/wall.xpm");
+	game->wall = new_texture(mlx, "textures/pld2.xpm");
 	ft_gettime(&game->last_frame);
 	game->dt = 0.0;
 	i = 0;
@@ -49,8 +49,8 @@ static void	update_screen(t_game *game)
 
 	buf = game->buf;
 	buf3d = game->buf3d;
-	mlx_put_image_to_window(game->mlx, game->win, buf->img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->win, buf3d->img, WIDTH / 2, 0);
+	// mlx_put_image_to_window(game->mlx, game->win, buf->img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, buf3d->img, 0, 0);
 }
 
 int	update(t_game *game)
@@ -63,14 +63,14 @@ int	update(t_game *game)
 	game->dt = (float)ft_timediff(game->last_frame, t);
 	game->last_frame = t;
 	update_player(&game->player, game->keystate, game->dt);
-	clear_buffer(game->buf, 0x777777);
+	// clear_buffer(game->buf, 0x777777);
+	// draw_grid(game->buf);
+	// draw_field(game->buf, &game->player, 0xFF00);
+	// draw_player(game->buf, &game->player);
 	w = game->buf3d->w;
 	h = game->buf3d->h;
 	draw_rect(game->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, 0xFFFF);
 	draw_rect(game->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, 0x777777);
-	draw_grid(game->buf);
-	draw_field(game->buf, &game->player, 0xFF00);
-	draw_player(game->buf, &game->player);
 	draw_view(game->buf3d, &game->player, game->wall);
 	update_screen(game);
 	return (0);

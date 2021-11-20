@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:09:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 19:45:25 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/19 15:47:05 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "buffer.h"
 # include "player.h"
 # include "texture.h"
+# include "intersection.h"
 
 typedef struct s_lineinfo
 {
@@ -23,8 +24,8 @@ typedef struct s_lineinfo
 	int32_t	end;
 	int32_t	h;
 	double	wall_x;
+	t_hit	hit;
 	t_vec2	ray_dir;
-	t_side	side;
 }	t_lineinfo;
 
 void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c);

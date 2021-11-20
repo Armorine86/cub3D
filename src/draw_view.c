@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/19 08:45:50 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/20 10:18:03 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_lineinfo	line_info(t_player *p, t_vec2 ray, t_hit hit, int32_t h)
 	t_lineinfo	info;
 
 	info.ray_dir = ray;
-	info.side = hit.side;
+	info.hit = hit;
 	theta = wrap_angle(p->angle - atan(ray.y / ray.x));
 	view_dist = fabs(hit.dist * cos(theta));
 	info.h = h / view_dist;
@@ -53,6 +53,17 @@ static t_lineinfo	line_info(t_player *p, t_vec2 ray, t_hit hit, int32_t h)
 	return (info);
 }
 
+static uint32_t	get_color(uint32_t c, double dist)
+{
+	double	visibility;
+
+	if (!isnormal(dist))
+		dist = 0;
+	visibility = exp(-pow(dist * FOG_DENSITY, FOG_GRADIENT));
+	visibility = ft_clampd(visibility, 0.0, 1.0);
+	return (argb_mul(c, visibility));
+}
+
 void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 {
 	int32_t		tex_x;
@@ -62,9 +73,9 @@ void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 	uint32_t	color;
 
 	tex_x = line.wall_x * t->w;
-	if (is_vertical(line.side) && line.ray_dir.x < 0)
+	if (is_vertical(line.hit.side) && line.ray_dir.x < 0)
 		tex_x = t->w - tex_x - 1;
-	else if (is_horizontal(line.side) && line.ray_dir.y > 0)
+	else if (is_horizontal(line.hit.side) && line.ray_dir.y > 0)
 		tex_x = t->w - tex_x - 1;
 	tex_step = t->h / (double)line.h;
 	tex_y = (line.start - buf->h / 2 + line.h / 2) * tex_step;
@@ -73,9 +84,7 @@ void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 	{
 		color = get_tex_pixel(t, tex_x, ft_clamp(tex_y, 0, t->h - 1));
 		tex_y += tex_step;
-		if (line.side == EAST || line.side == WEST)
-			color = (color / 2) & 0x7F7F7F;
-		put_pixel(buf, x, y, color);
+		put_pixel(buf, x, y, get_color(color, line.hit.dist));
 		y++;
 	}
 }
