@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/20 10:30:49 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/20 10:58:14 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_world	*get_map_data(void *mlx, char **info)
 	if (!world)
 		return (NULL);
 	load_texture(world, mlx, info);
-	return(world);	
+	return (world);
 }
 
 void	create_map(t_game *game, char *file)
@@ -52,7 +52,8 @@ void	create_map(t_game *game, char *file)
 	if (!valid_data(tex_data, file))
 	{
 		ft_putendl_fd("Error", STDERR_FILENO);
-		exit(EXIT_FAILURE); //TODO FREE Function
+		ft_strarr_free(tex_data);
+		exit(EXIT_FAILURE);
 	}
 	game->world = get_map_data(game->mlx, tex_data);
 	if (!game->world)

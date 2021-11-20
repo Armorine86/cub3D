@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/18 14:28:46 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/20 10:57:27 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <mlx.h>
 
-char **extract_tex_data(int fd)
+char	**extract_tex_data(int fd)
 {
 	int32_t	ret;
 	char	**paths;

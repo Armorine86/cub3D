@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/18 14:42:46 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/20 11:00:28 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	valid_extension(char *file, char *ext)
 	ext_len = ft_strlen(ext);
 	len = ft_strlen(file);
 	if (len <= ext_len)
-		return(false);
+		return (false);
 	if (!ft_strncmp(file + len - ext_len, ext, ext_len))
 		return (true);
 	return (false);
@@ -34,7 +34,7 @@ bool	valid_extension(char *file, char *ext)
 bool	missing_texture(char **tab)
 {
 	int32_t	i;
-	int32_t count;
+	int32_t	count;
 
 	count = 0;
 	i = 0;
@@ -42,7 +42,7 @@ bool	missing_texture(char **tab)
 	{
 		if (!ft_strncmp(tab[i], "NO", 2) || !ft_strncmp(tab[i], "SO", 2)
 			|| !ft_strncmp(tab[i], "EA", 2) || !ft_strncmp(tab[i], "WE", 2)
-			||	!ft_strncmp(tab[i], "C", 1) || !ft_strncmp(tab[i], "F", 1))
+			|| !ft_strncmp(tab[i], "C", 1) || !ft_strncmp(tab[i], "F", 1))
 			count++;
 		i++;
 	}
