@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/19 17:14:23 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:05:20 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void	update_screen(t_game *game)
 
 	buf = game->buf;
 	buf3d = game->buf3d;
-	mlx_put_image_to_window(game->mlx, game->win, buf->img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->win, buf3d->img, WIDTH / 2, 0);
+	// mlx_put_image_to_window(game->mlx, game->win, buf->img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, buf3d->img, 0, 0);
 }
 
 int	update(t_game *game)
@@ -63,14 +63,14 @@ int	update(t_game *game)
 	game->dt = ft_timediff(game->last_frame, t);
 	game->last_frame = t;
 	update_player(&game->player, game->keystate, game->dt);
-	clear_buffer(game->buf, 0x777777);
+	// clear_buffer(game->buf, 0x777777);
+	// draw_grid(game->buf);
+	// draw_field(game->buf, &game->player, 0xFF00);
+	// draw_player(game->buf, &game->player);
 	w = game->buf3d->w;
 	h = game->buf3d->h;
 	draw_rect(game->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, 0xFFFF);
 	draw_rect(game->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, 0x777777);
-	draw_grid(game->buf);
-	draw_field(game->buf, &game->player, 0xFF00);
-	draw_player(game->buf, &game->player);
 	draw_view(game->buf3d, &game->player, game->wall);
 	update_screen(game);
 	return (0);

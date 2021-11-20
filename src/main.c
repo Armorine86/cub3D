@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 15:13:19 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:06:07 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	t_game		game;
 
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, WIDTH, HEIGHT, "cub3D");
+	win = mlx_new_window(mlx, WIDTH / 2, HEIGHT, "cub3D");
 	init_game(&game, mlx, win);
 	mlx_do_key_autorepeatoff(mlx);
 	mlx_hook(win, KEY_PRESS, KEY_PRESS_MASK, &keydown, &game);
