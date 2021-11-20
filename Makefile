@@ -9,7 +9,7 @@ LIBFT		=	$(LIB)/libft
 MLX_LINUX	=	$(LIB)/mlx_linux
 
 CC			=	clang
-CFLAGS		=	-Wall -Werror -Wextra -Wconversion -Wpedantic
+CFLAGS		=	-Wall -Werror -Wextra -Wpedantic
 
 RM			=	rm -rf
 MK			=	mkdir -p
@@ -18,9 +18,12 @@ NM			=	norminette
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
 CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
-				draw_circle.c event.c draw_ray.c fixed_map.c draw_field.c\
-				map_parser.c parse_utils.c textures.c validate.c
-HFILES		=	buffer.h utils.h draw.h game.h player.h keymap.h event.h config.h
+				draw_circle.c event.c draw_ray.c fixed_map.c draw_field.c draw_view.c\
+				intersection.c map_parser.c parse_utils.c texture.c validate.c\
+				
+HFILES		=	buffer.h utils.h texture.h draw.h game.h player.h keymap.h event.h config.h\
+				intersection.h 
+
 OFILES		=	$(CFILES:.c=.o)
 
 SRCS		=	$(addprefix $(SRC)/, $(CFILES))
@@ -31,9 +34,6 @@ VPATH		=	$(SRC)
 
 $(OBJ)/%.o:	%.c
 			$(CC) $(CFLAGS) -I$(INC) -I$(LIB) -c $< -o $@
-
-cool_evaluator:	CFLAGS += -DCOOL_EVALUATOR
-cool_evaluator:	all
 
 all:		CFLAGS += -O2 -DNDEBUG
 all:		$(NAME)
@@ -48,7 +48,7 @@ $(OBJ):
 debug:		CFLAGS += -O0 -g
 debug:		$(NAME)
 
-linux:		CFLAGS += -O0 -g -DCOOL_EVALUATOR
+linux:		CFLAGS += -O0 -g
 linux:		$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)

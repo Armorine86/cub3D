@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:05:44 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 19:08:27 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 02:32:41 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	draw_grid(t_buffer *buf)
 	t_vec2	p;
 
 	y = 0;
-	while (y < HEIGHT / SQ_SIZE)
+	while (y < buf->h / SQ_SIZE)
 	{
 		x = 0;
 		py = (double)(y * SQ_SIZE);
-		while (x < WIDTH / SQ_SIZE)
+		while (x < buf->w / SQ_SIZE)
 		{
 			px = (double)(x * SQ_SIZE);
 			p.x = px + SQ_SIZE - PAD_SIZE;
@@ -48,10 +48,10 @@ void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c)
 	int32_t	i;
 	int32_t	j;
 
-	j = (int32_t)tl.y;
+	j = tl.y;
 	while (j < (int32_t)br.y)
 	{
-		i = (int32_t)tl.x;
+		i = tl.x;
 		while (i < (int32_t)br.x)
 		{
 			put_pixel(buf, i, j, c);

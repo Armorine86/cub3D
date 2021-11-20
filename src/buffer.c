@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:19:04 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/12 15:21:36 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:41:07 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-t_buffer	*new_buffer(void *mlx, void *win, int32_t w, int32_t h)
+t_buffer	*new_buffer(void *mlx, int32_t w, int32_t h)
 {
 	t_buffer	*b;
 
 	b = ft_calloc(1, sizeof(t_buffer));
-	b->mlx = mlx;
-	b->win = win;
 	b->w = w;
 	b->h = h;
 	b->img = mlx_new_image(mlx, w, h);
@@ -30,9 +28,9 @@ t_buffer	*new_buffer(void *mlx, void *win, int32_t w, int32_t h)
 	return (b);
 }
 
-void	destroy_buffer(t_buffer *buf)
+void	destroy_buffer(void *mlx, t_buffer *buf)
 {
-	mlx_destroy_image(buf->mlx, buf->img);
+	mlx_destroy_image(mlx, buf->img);
 	free(buf);
 }
 

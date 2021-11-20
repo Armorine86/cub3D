@@ -1,5 +1,8 @@
+.vscode
 obj/
 cub3D
 *.o
 *.idx
 *.gen
+*.cpp
+.DS_Store

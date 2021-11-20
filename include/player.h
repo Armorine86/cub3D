@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/11 15:01:11 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:45:08 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@
 # include <libft/libft.h>
 # include "keymap.h"
 
-# define SPEED 2.5
-# define A_SPEED 4.0
-
 typedef struct s_player
 {
 	t_vec2	pos;
 	t_vec2	dir;
 	double	angle;
+	t_vec2	c_plane;
+	double	fov_ratio;
 }	t_player;
 
 void	update_player(t_player *player, bool keystate[N_KEYS], double dt);
