@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/19 16:59:32 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:02:20 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,13 @@ static t_lineinfo	line_info(t_player *p, t_vec2 ray, t_hit hit, int32_t h)
 
 static uint32_t	get_color(uint32_t c, double dist)
 {
-	uint8_t	a;
-	uint8_t	r;
-	uint8_t	g;
-	uint8_t	b;
+	double	visibility;
 
 	if (!isnormal(dist))
 		dist = 0;
-	dist = fabs(dist);
-	dist /= 2.0;
-	if (dist < 1.0)
-		dist = 1.0;
-	a = c >> 24;
-	r = (c >> 16) & 0xFF;
-	g = (c >> 8) & 0xFF;
-	b = c & 0xFF;
-	r /= dist;
-	g /= dist;
-	b /= dist;
-	return (make_argb(a, r, g, b));
+	visibility = exp(-pow(dist * FOG_DENSITY, FOG_GRADIENT));
+	visibility = ft_clampd(visibility, 0.0, 1.0);
+	return (argb_mul(c, visibility));
 }
 
 void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
