@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/18 14:45:50 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/20 10:28:17 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	create_map(t_game *game, char *file)
 		exit(EXIT_FAILURE); //TODO FREE Function
 	}
 	game->world = get_map_data(game->mlx, tex_data);
-	ft_strarr_free(tex_data);
+	//ft_strarr_free(tex_data);
 	if (!game->world)
 	{
 		ft_putendl_fd("Error", STDERR_FILENO);

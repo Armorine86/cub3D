@@ -1,12 +1,12 @@
 
-NO ./assets/wall.xpm
+NO ./textures/pattern.xpm
 
 
-SO ./assets/collectible.xpm
+SO ./textures/wall.xpm
 
-WE ./assets/empty.xpm
+WE ./textures/pld2.xpm
 
-EA ./assets/player.xpm
+EA ./textures/pld.xpm
 
 F 0,0,0
 
