@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/19 21:58:15 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:34:09 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define SPEED 2.5
 # define A_SPEED 4.0
 # define FOV 60.0
-# define FOG_DENSITY 0.3
-# define FOG_GRADIENT 3.0
+# define FOG_DENSITY 0.25
+# define FOG_GRADIENT 2.0
 
 #endif
