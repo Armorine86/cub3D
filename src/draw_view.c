@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/20 20:32:08 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/21 09:45:50 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static uint32_t	get_color(uint32_t c, double dist)
 	if (!isnormal(dist))
 		dist = 0;
 	visibility = exp(-pow(dist * FOG_DENSITY, FOG_GRADIENT));
-	visibility = ft_clampd(visibility, 0.0, 1.0);
+	visibility = ft_clamp(visibility, 0.0, 1.0);
 	return (argb_mul(c, visibility));
 }
 
