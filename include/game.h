@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/19 08:36:44 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/22 15:17:17 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 typedef struct s_game
 {
-	t_buffer	*buf;
 	t_buffer	*buf3d;
 	t_player	player;
 	t_time		last_frame;
