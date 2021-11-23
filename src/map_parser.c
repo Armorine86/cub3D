@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 12:55:49 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:40:31 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ bool	valid_data(char **info, char *file)
 char	**read_file(t_world *world, char *file)
 {
 	char		**file_data;
-//	char		**map_info;
 	int32_t		fd;
 
 	fd = open(file, O_RDWR);
@@ -41,14 +40,12 @@ char	**read_file(t_world *world, char *file)
 	file_data = extract_file_data(fd);
 	if (!file_data)
 		return (NULL);
-//	map_info = get_map_layout(file_data);
 	get_map_layout(world, file_data);
 	if (!valid_data(file_data, file) || !world->map)
 	{
 		ft_strarr_free(file_data);
 		return (NULL);
 	}
-//	world->map = map_info;
 	return (file_data);
 }
 

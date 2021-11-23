@@ -1,17 +1,17 @@
 
-NO ./textures/pattern.xpm
+NO      ./textures/pattern.xpm
 
 
-SO ./textures/wall.xpm
-
-
-
-
-WE ./textures/pld2.xpm
+SO       ./textures/wall.xpm
 
 
 
-EA ./textures/pld.xpm
+
+WE           ./textures/pld2.xpm
+
+
+
+EA      ./textures/pld.xpm
 
 
 F red,24,231

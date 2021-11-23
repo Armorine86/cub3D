@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 11:06:32 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:27:44 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ bool	missing_texture(char **tab)
 	i = 0;
 	while (i < 6)
 	{
-		if (!ft_strncmp(tab[i], "NO", 2) || !ft_strncmp(tab[i], "SO", 2)
-			|| !ft_strncmp(tab[i], "EA", 2) || !ft_strncmp(tab[i], "WE", 2)
-			|| !ft_strncmp(tab[i], "C", 1) || !ft_strncmp(tab[i], "F", 1))
+		if (!ft_strncmp(tab[i], "NO", 3) || !ft_strncmp(tab[i], "SO", 3)
+			|| !ft_strncmp(tab[i], "EA", 3) || !ft_strncmp(tab[i], "WE", 3)
+			|| !ft_strncmp(tab[i], "C", 2) || !ft_strncmp(tab[i], "F", 2))
 			count++;
 		i++;
 	}

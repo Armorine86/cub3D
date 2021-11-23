@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:50:36 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/22 23:12:46 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:18:46 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void	load_texture(t_world *world, void *mlx, char **info)
 	while (n < N_TEXTURES)
 	{
 		path = ft_strtrim(&info[n][2], " ");
-		if (!(ft_strncmp(info[n], "NO", 2)))
+		if (!(ft_strncmp(info[n], "NO", 3)))
 			world->tex[NORTH] = new_texture(mlx, path);
-		else if (!(ft_strncmp(info[n], "SO", 2)))
+		else if (!(ft_strncmp(info[n], "SO", 3)))
 			world->tex[SOUTH] = new_texture(mlx, path);
-		else if (!(ft_strncmp(info[n], "WE", 2)))
+		else if (!(ft_strncmp(info[n], "WE", 3)))
 			world->tex[WEST] = new_texture(mlx, path);
-		else if (!(ft_strncmp(info[n], "EA", 2)))
+		else if (!(ft_strncmp(info[n], "EA", 3)))
 			world->tex[EAST] = new_texture(mlx, path);
 		n++;
 		free(path);
