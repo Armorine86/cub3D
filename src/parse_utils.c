@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 12:43:30 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:25:39 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ bool	str_is_null(char *str)
 	if (str[0] == '\0')
 	{
 		free(str);
+		str = NULL;
 		return (true);
 	}
 	return (false);
@@ -103,8 +104,6 @@ char	**extract_file_data(int32_t fd)
 		}
 		else
 			infos = ft_strarr_extend(infos, line);
-		free(line);
 	}
-	free(line);
 	return (infos);
 }

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 12:28:48 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:55:49 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	load_colors(t_world *world, char **floor, char **ceiling)
 	i = -1;
 	while (++i < 3)
 	{
-		//TODO check if between 0 and 255
 		world->floor[i] = ft_atoi(floor[i]);
 		world->ceiling[i] = ft_atoi(ceiling[i]);
 	}
@@ -80,7 +79,7 @@ void	get_floor_ceiling_colors(t_world *world, char **data)
 		if (*ptr == 'F')
 		{
 			ptr++;
-			floor = ft_split(ptr, ',');   //TODO check if arr size is 3 
+			floor = ft_split(ptr, ',');
 		}
 		else if (*ptr == 'C')
 		{
