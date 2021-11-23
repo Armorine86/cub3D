@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/20 10:24:14 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/22 23:16:41 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static uint32_t	get_color(uint32_t c, double dist)
 	if (!isnormal(dist))
 		dist = 0;
 	visibility = exp(-pow(dist * FOG_DENSITY, FOG_GRADIENT));
-	visibility = ft_clamp(visibility, 0.0, 1.0);
+	visibility = ft_clampd(visibility, 0.0, 1.0);
 	return (argb_mul(c, visibility));
 }
 

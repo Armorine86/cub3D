@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/20 10:58:56 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:11:08 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ typedef struct s_texture
 	char	*data;
 	int		w;
 	int		h;
-	int		width;
-	int		height;
 	int		bpp;
 	int		pitch;
 	int		endian;

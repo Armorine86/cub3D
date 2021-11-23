@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/22 15:24:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/22 22:42:54 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,19 @@ char	**get_map_layout(char **tab)
 	char	**map;
 
 	map = ft_calloc(1, sizeof(char *));
-	i = 6;
+	tab += 6;
+	i = 0;
+	while (*tab[0] == '\0')
+		tab++;
 	while (tab[i])
 	{
+		if (tab[i][0] == '\0')
+		{
+			ft_strarr_free(map);
+			return (NULL);
+		}
 		map = ft_strarr_extend(map, tab[i]);
+		i++;
 	}
 	return (map);
 }
@@ -40,9 +49,10 @@ bool	str_is_null(char *str)
 	return (false);
 }
 
-char	**extract_file_data(int fd)
+char	**extract_file_data(int32_t fd)
 {
 	int32_t	ret;
+	char	*temp;
 	char	**infos;
 	char	*line;
 
@@ -51,13 +61,18 @@ char	**extract_file_data(int fd)
 	while (ret)
 	{
 		ret = get_next_line(fd, &line);
-		if (ret == -1)
+		if (ret <= 0)
 			break ;
-		if (str_is_null(line))
-			continue ;
-		infos = ft_strarr_extend(infos, line);
+		if (ft_strarr_size(infos) < 6)
+		{
+			if (str_is_null(line))
+				continue ;
+			temp = ft_strtrim(line, " ");
+			infos = ft_strarr_extend(infos, temp);
+		}
+		else
+			infos = ft_strarr_extend(infos, line);
 		free(line);
 	}
-	free(line);
 	return (infos);
 }

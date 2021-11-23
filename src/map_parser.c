@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/22 14:06:22 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/22 22:52:01 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ bool	valid_data(char **info, char *file)
 
 char	**read_file(t_world *world, char *file)
 {
-	char	**file_data;
-	char	**map_info;
-	int		fd;
+	char		**file_data;
+	char		**map_info;
+	int32_t		fd;
 
 	fd = open(file, O_RDWR);
 	if (fd == -1)
@@ -44,21 +44,24 @@ char	**read_file(t_world *world, char *file)
 	map_info = get_map_layout(file_data);
 	if (!valid_data(file_data, file) || !map_info)
 	{
-		ft_putendl_fd("Error", STDERR_FILENO);
 		ft_strarr_free(file_data);
-		ft_strarr_free(map_info);
 		return (NULL);
 	}
 	world->map = map_info;
 	return (file_data);
 }
 
+//void	get_floor_ceiling_colors(t_world *world, char **data)
+//{
+	
+//}
+
 void	create_map(t_game *game, char *file)
 {
 	char	**file_data;
-	t_world	*world;
 
-	world = ft_calloc(1, sizeof(t_world));
+	game->world = ft_calloc(1, sizeof(t_world));
+	game->world->map = ft_calloc(1, sizeof(char *));
 	file_data = read_file(game->world, file);
 	if (!file_data || !game->world)
 	{
@@ -66,4 +69,6 @@ void	create_map(t_game *game, char *file)
 		exit(EXIT_FAILURE);
 	}
 	load_texture(game->world, game->mlx, file_data);
+	//get_floor_ceiling_colors(game->world, file_data);
+	ft_strarr_free(file_data);
 }

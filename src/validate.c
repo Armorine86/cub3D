@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/20 11:00:28 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/22 22:50:33 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	duplicate_identifier(char **info)
 	i = 0;
 	if (missing_texture(info))
 		return (false);
-	while (info[i])
+	while (i < 6)
 	{
 		j = i + 1;
 		str = ft_substr(info[i], 0, 2);
