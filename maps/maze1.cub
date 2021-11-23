@@ -1,18 +1,24 @@
 
-      NO         ./textures/pattern.xpm
+NO ./textures/pattern.xpm
 
 
-    SO          ./textures/wall.xpm
-
-  WE      ./textures/pld2.xpm
-
-                EA ./textures/pld.xpm
-
-     F     147   ,   24  ,    231
+SO ./textures/wall.xpm
 
 
 
-     C   125  ,32   ,  123
+
+WE ./textures/pld2.xpm
+
+
+
+EA ./textures/pld.xpm
+
+
+F 147,24,231
+
+
+
+C 125,32,123
 
 
 

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/22 23:19:58 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:36:24 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ int	quit_game(t_game *game)
 {
 	destroy_buffer(game->mlx, game->buf3d);
 	mlx_destroy_window(game->mlx, game->win);
+	ft_strarr_free(game->world->map);
 	exit(0);
 }

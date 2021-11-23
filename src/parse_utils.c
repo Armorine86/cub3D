@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 09:44:40 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:43:30 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <mlx.h>
+#include "map_info.h"
 
 int32_t	find_longest_line(char **tab)
 {
@@ -35,47 +36,40 @@ int32_t	find_longest_line(char **tab)
 	return (len);
 }
 
-char	**allocate_sqr_map(char **map, char **tab, int32_t size)
+char	**allocate_sqr_map(t_world *world, char **tab, int32_t size)
 {
-	int32_t	i;
-	int32_t	j;
-	int32_t	diff;
-	char	*ptr;
+	t_string	str;
+	int32_t		i;
+	int32_t		diff;
 
-	i = -1;
-	while (tab[i++])
-		map[i] = ft_calloc(size + 1, sizeof(char));
+	//i = -1;
+	//while (tab[i++])
+	//	world->map[i] = ft_calloc(size + 1, sizeof(char));
 	i = 0;
 	while (tab[i])
 	{
-		ptr = map[i];
 		diff = size - ft_strlen(tab[i]);
-		ft_memcpy(map[i], tab[i], size);
-		j = size - diff;
-		ptr += j;
-		while (j < size)
-		{
-			*ptr = ' ';
-			ptr++;
-			j++;
-		}	
+		str = ft_str_new_copy(tab[i]);
+		while (diff-- > 0)
+			ft_str_add_back(str, ' ');
+		world->map[i] = ft_str_take(str);
 		i++;
 	}
-	return (map);
+	return (world->map);
 }
 
-char	**get_map_layout(char **tab)
+char	**get_map_layout(t_world *world, char **tab)
 {
 	int32_t	size;
-	char	**map;
+	//char	**map;
 
 	tab += 6;
 	while (*tab[0] == '\0')
 		tab++;
 	size = ft_strarr_size(tab);
-	map = ft_calloc(size + 1, sizeof(char *));
+	world->map = ft_calloc(size + 1, sizeof(char *));
 	size = find_longest_line(tab);
-	return (allocate_sqr_map(map, tab, size));
+	return (allocate_sqr_map(world, tab, size));
 }
 
 bool	str_is_null(char *str)
@@ -91,7 +85,6 @@ bool	str_is_null(char *str)
 char	**extract_file_data(int32_t fd)
 {
 	int32_t	ret;
-	char	*temp;
 	char	**infos;
 	char	*line;
 
@@ -106,12 +99,12 @@ char	**extract_file_data(int32_t fd)
 		{
 			if (str_is_null(line))
 				continue ;
-			temp = ft_strtrim(line, " ");
-			infos = ft_strarr_extend(infos, temp);
+			infos = ft_strarr_extend(infos, line);
 		}
 		else
 			infos = ft_strarr_extend(infos, line);
-		//free(line);
+		free(line);
 	}
+	free(line);
 	return (infos);
 }

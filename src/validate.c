@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/22 22:50:33 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 11:06:32 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,14 @@ bool	duplicate_identifier(char **info)
 		str = ft_substr(info[i], 0, 2);
 		while (info[j])
 		{
-			if (!ft_strncmp(info[j], str, 2))
+			if (!ft_strncmp(info[j], str, 3))
 			{
 				free(str);
 				return (false);
 			}
 			j++;
 		}	
+		free(str);
 		i++;
 	}
 	return (true);

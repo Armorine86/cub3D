@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/22 22:52:01 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:28:48 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	valid_data(char **info, char *file)
 char	**read_file(t_world *world, char *file)
 {
 	char		**file_data;
-	char		**map_info;
+//	char		**map_info;
 	int32_t		fd;
 
 	fd = open(file, O_RDWR);
@@ -41,27 +41,63 @@ char	**read_file(t_world *world, char *file)
 	file_data = extract_file_data(fd);
 	if (!file_data)
 		return (NULL);
-	map_info = get_map_layout(file_data);
-	if (!valid_data(file_data, file) || !map_info)
+//	map_info = get_map_layout(file_data);
+	get_map_layout(world, file_data);
+	if (!valid_data(file_data, file) || !world->map)
 	{
 		ft_strarr_free(file_data);
 		return (NULL);
 	}
-	world->map = map_info;
+//	world->map = map_info;
 	return (file_data);
 }
 
-//void	get_floor_ceiling_colors(t_world *world, char **data)
-//{
-	
-//}
+void	load_colors(t_world *world, char **floor, char **ceiling)
+{
+	int32_t	i;
+
+	i = -1;
+	while (++i < 3)
+	{
+		//TODO check if between 0 and 255
+		world->floor[i] = ft_atoi(floor[i]);
+		world->ceiling[i] = ft_atoi(ceiling[i]);
+	}
+}
+
+void	get_floor_ceiling_colors(t_world *world, char **data)
+{
+	int32_t	i;
+	char	*ptr;
+	char	**floor;
+	char	**ceiling;
+
+	data += 4;
+	i = -1;
+	while (++i < 2)
+	{
+		ptr = data[i];
+		if (*ptr == 'F')
+		{
+			ptr++;
+			floor = ft_split(ptr, ',');   //TODO check if arr size is 3 
+		}
+		else if (*ptr == 'C')
+		{
+			ptr++;
+			ceiling = ft_split(ptr, ',');
+		}
+	}
+	load_colors(world, floor, ceiling);
+	ft_strarr_free(floor);
+	ft_strarr_free(ceiling);
+}
 
 void	create_map(t_game *game, char *file)
 {
 	char	**file_data;
 
 	game->world = ft_calloc(1, sizeof(t_world));
-	game->world->map = ft_calloc(1, sizeof(char *));
 	file_data = read_file(game->world, file);
 	if (!file_data || !game->world)
 	{
@@ -69,6 +105,6 @@ void	create_map(t_game *game, char *file)
 		exit(EXIT_FAILURE);
 	}
 	load_texture(game->world, game->mlx, file_data);
-	//get_floor_ceiling_colors(game->world, file_data);
+	get_floor_ceiling_colors(game->world, file_data);
 	ft_strarr_free(file_data);
 }
