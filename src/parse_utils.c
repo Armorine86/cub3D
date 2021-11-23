@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 13:25:39 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:43:42 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,12 @@ char	**extract_file_data(int32_t fd)
 		{
 			if (str_is_null(line))
 				continue ;
-			infos = ft_strarr_extend(infos, line);
+			infos = ft_strarr_extend(infos, ft_strdup(line));
 		}
 		else
-			infos = ft_strarr_extend(infos, line);
+			infos = ft_strarr_extend(infos, ft_strdup(line));
+		free(line);
 	}
+	free(line);
 	return (infos);
 }
