@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/22 23:29:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/23 09:44:40 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,66 @@
 #include <stdbool.h>
 #include <mlx.h>
 
-char	**get_map_layout(char **tab)
+int32_t	find_longest_line(char **tab)
 {
+	int32_t	len;
+	int32_t	temp;
 	int32_t	i;
-	char	**map;
 
-	map = ft_calloc(1, sizeof(char *));
-	tab += 6;
 	i = 0;
-	while (*tab[0] == '\0')
-		tab++;
+	len = 0;
+	temp = 0;
 	while (tab[i])
 	{
-		if (tab[i][0] == '\0')
+		temp = ft_strlen(tab[i]);
+		if (temp > len)
+			len = temp;
+		i++;
+	}
+	return (len);
+}
+
+char	**allocate_sqr_map(char **map, char **tab, int32_t size)
+{
+	int32_t	i;
+	int32_t	j;
+	int32_t	diff;
+	char	*ptr;
+
+	i = -1;
+	while (tab[i++])
+		map[i] = ft_calloc(size + 1, sizeof(char));
+	i = 0;
+	while (tab[i])
+	{
+		ptr = map[i];
+		diff = size - ft_strlen(tab[i]);
+		ft_memcpy(map[i], tab[i], size);
+		j = size - diff;
+		ptr += j;
+		while (j < size)
 		{
-			ft_strarr_free(map);
-			return (NULL);
-		}
-		map = ft_strarr_extend(map, tab[i]);
+			*ptr = ' ';
+			ptr++;
+			j++;
+		}	
 		i++;
 	}
 	return (map);
+}
+
+char	**get_map_layout(char **tab)
+{
+	int32_t	size;
+	char	**map;
+
+	tab += 6;
+	while (*tab[0] == '\0')
+		tab++;
+	size = ft_strarr_size(tab);
+	map = ft_calloc(size + 1, sizeof(char *));
+	size = find_longest_line(tab);
+	return (allocate_sqr_map(map, tab, size));
 }
 
 bool	str_is_null(char *str)
@@ -72,7 +111,7 @@ char	**extract_file_data(int32_t fd)
 		}
 		else
 			infos = ft_strarr_extend(infos, line);
-		free(line);
+		//free(line);
 	}
 	return (infos);
 }
