@@ -6,17 +6,18 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/22 20:11:08 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/24 10:53:58 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEXTURE_H
 # define TEXTURE_H
 
-# define N_TEXTURES 4
+# define N_TEX 4
+# define N_COL 2
 
-# include "side.h"
 # include <stdint.h>
+# include "side.h"
 
 typedef struct s_texture
 {

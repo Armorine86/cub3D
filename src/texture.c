@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:50:36 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 15:18:46 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/24 09:42:28 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	load_texture(t_world *world, void *mlx, char **info)
 	char	*path;
 
 	n = 0;
-	while (n < N_TEXTURES)
+	while (n < N_TEX)
 	{
 		path = ft_strtrim(&info[n][2], " ");
 		if (!(ft_strncmp(info[n], "NO", 3)))

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 15:32:03 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:39:56 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@
 #include <stdbool.h>
 #include <mlx.h>
 #include "map_info.h"
+#include "parser.h"
+
+void	free_parser(t_parser *p)
+{
+	if (p)
+	{
+		if (p->map)
+			ft_strarr_free(p->map);
+		if (p->tex)
+			ft_strarr_free(p->tex);
+		if (p->rgb)
+			ft_strarr_free(p->rgb);
+		free(p);
+	}
+}
 
 int32_t	find_longest_line(char **tab)
 {
@@ -42,9 +57,6 @@ char	**allocate_sqr_map(t_world *world, char **tab, int32_t size)
 	int32_t		i;
 	int32_t		diff;
 
-	//i = -1;
-	//while (tab[i++])
-	//	world->map[i] = ft_calloc(size + 1, sizeof(char));
 	i = 0;
 	while (tab[i])
 	{
@@ -62,7 +74,6 @@ char	**get_map_layout(t_world *world, char **tab)
 {
 	int32_t	size;
 	//char	**map;
-
 	tab += 6;
 	while (*tab[0] == '\0')
 		tab++;
@@ -70,40 +81,4 @@ char	**get_map_layout(t_world *world, char **tab)
 	world->map = ft_calloc(size + 1, sizeof(char *));
 	size = find_longest_line(tab);
 	return (allocate_sqr_map(world, tab, size));
-}
-
-bool	str_is_null(char *str)
-{
-	if (str[0] == '\0')
-	{
-		free(str);
-		str = NULL;
-		return (true);
-	}
-	return (false);
-}
-
-char	**extract_file_data(int32_t fd)
-{
-	int32_t	ret;
-	char	**infos;
-	char	*line;
-
-	infos = ft_calloc(1, sizeof(char *));
-	ret = 1;
-	while (ret)
-	{
-		ret = get_next_line(fd, &line);
-		if (ret < 0)
-			break ;
-		if (ft_strarr_size(infos) < 6)
-		{
-			if (str_is_null(line))
-				continue ;
-			infos = ft_strarr_extend(infos, line);
-		}
-		else
-			infos = ft_strarr_extend(infos, line);
-	}
-	return (infos);
 }

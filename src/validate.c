@@ -6,18 +6,47 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/23 15:27:44 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:56:45 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/libft.h>
 #include <stdint.h>
-#include <fcntl.h>
 #include <stdlib.h>
-#include <mlx.h>
-#include "game.h"
+#include "texture.h"
+#include "config.h"
+#include "libft/libft.h"
+#include "parser.h"
 
-bool	valid_extension(char *file, char *ext)
+bool	valid_rgb(char *str)
+{
+	int32_t	i;
+	int32_t	j;
+	int32_t	num;
+	char	**rgb;
+
+	str++;
+	rgb = ft_split(str, ',');
+	i = 0;
+	while (rgb[i])
+	{
+		j = 0;
+		while (rgb[i][j])
+		{
+			while (rgb[i][j] == ' ')
+				j++;
+			if (!ft_isdigit(rgb[i][j]))
+				return (false);
+			j++;
+		}
+		num = ft_atoi(rgb[i]);
+		if (num < 0 || num > 256)
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+bool	valid_file_ext(char *file, char *ext)
 {
 	size_t	len;
 	size_t	ext_len;
@@ -26,29 +55,44 @@ bool	valid_extension(char *file, char *ext)
 	len = ft_strlen(file);
 	if (len <= ext_len)
 		return (false);
-	if (!ft_strncmp(file + len - ext_len, ext, ext_len))
+	if (!ft_strncmp(file + len - ext_len, ext, ext_len + 1))
 		return (true);
 	return (false);
 }
 
-bool	missing_texture(char **tab)
+bool	valid_identifier(char *str)
+{
+	if (!ft_strncmp(str, "NO ", 3))
+		return (true);
+	else if (!ft_strncmp(str, "SO ", 3))
+		return (true);
+	else if (!ft_strncmp(str, "WE ", 3))
+		return (true);
+	else if (!ft_strncmp(str, "EA ", 3))
+		return (true);
+	else if (!ft_strncmp(str, "C ", 2))
+		return (true);
+	else if (!ft_strncmp(str, "F ", 2))
+		return (true);
+	return (false);
+}
+
+bool	no_missing_texture(char **tab)
 {
 	int32_t	i;
 	int32_t	count;
 
 	count = 0;
 	i = 0;
-	while (i < 6)
+	while (i < N_TEX)
 	{
-		if (!ft_strncmp(tab[i], "NO", 3) || !ft_strncmp(tab[i], "SO", 3)
-			|| !ft_strncmp(tab[i], "EA", 3) || !ft_strncmp(tab[i], "WE", 3)
-			|| !ft_strncmp(tab[i], "C", 2) || !ft_strncmp(tab[i], "F", 2))
+		if (valid_identifier(tab[i]))
 			count++;
 		i++;
 	}
-	if (count == 6)
-		return (false);
-	return (true);
+	if (count == N_TEX)
+		return (true);
+	return (p_error("Error: Texture Mission"));
 }
 
 bool	duplicate_identifier(char **info)
@@ -58,12 +102,12 @@ bool	duplicate_identifier(char **info)
 	int32_t	j;
 
 	i = 0;
-	if (missing_texture(info))
+	if (!no_missing_texture(info))
 		return (false);
-	while (i < 6)
+	while (i < N_TEX)
 	{
 		j = i + 1;
-		str = ft_substr(info[i], 0, 2);
+		str = ft_substr(info[i], 0, 3);
 		while (info[j])
 		{
 			if (!ft_strncmp(info[j], str, 3))

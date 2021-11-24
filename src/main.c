@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/22 23:20:09 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/24 10:38:31 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "event.h"
 #include "fixed_map.h"
+#include "parser.h"
 #include "game.h"
 
 int	main(int argc, char **argv)
@@ -22,9 +23,9 @@ int	main(int argc, char **argv)
 	void		*win;
 	t_game		game;
 
-	if (argc != 2)
+	if (argc != 2 || !valid_file_ext(argv[1], ".cub"))
 	{
-		ft_putendl_fd("Error: Enter a valid map", 2);
+		ft_putendl_fd("Error: Enter a valid map", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	mlx = mlx_init();
