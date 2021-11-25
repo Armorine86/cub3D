@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/25 09:50:27 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/25 15:34:36 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	valid_line(char **data, int32_t limit)
 	}
 	else if (limit == MAP_MAX_H)
 	{
-		if (!valid_symbols(str))
+		if (!valid_map_symbols(str))
 			return (p_error("Error: Invalid Map Symbols"));
 	}
 	return (true);
@@ -86,7 +86,7 @@ char	**read_line(char **data, int32_t fd, bool skip, int limit)
 			data = ft_strarr_extend(data, line);
 			limit--;
 		}
-		else if (ft_strarr_size(data) < 2 && str_is_null(line))
+		else if (ft_strarr_size(data) == 0 && str_is_null(line))
 			continue ;
 		else if (data)
 			data = ft_strarr_extend(data, line);

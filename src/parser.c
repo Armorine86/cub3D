@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/25 10:43:57 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/25 15:17:20 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ bool	read_file(char *file)
 	p->tex = read_line(p->tex, fd, 0, N_TEX);
 	p->rgb = read_line(p->rgb, fd, 0, N_COL);
 	p->map = read_line(p->map, fd, 1, MAP_MAX_H);
+	// if (!map_integrity(p->map))
 	sanitize_map(p->map);
 	if (!p->tex || !p->rgb || !p->map)
 	{

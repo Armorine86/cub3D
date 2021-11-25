@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/25 14:20:27 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/25 15:35:21 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@
 #include "libft/libft.h"
 #include "parser.h"
 
-bool	valid_res(void)
+bool	valid_map_symbols(char *line)
 {
-	if ((long)HEIGHT > INT32_MAX || HEIGHT <= 0)
-		return (p_error("Error: Invalid HEIGHT Resolution Value"));
-	if ((long)WIDTH > INT32_MAX || WIDTH <= 0)
-		return (p_error("Error: Invalid WIDTH Resolution Value"));
-	return (true);
+	int32_t	i;
+	int32_t	line_end;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!ft_strchr(MAP_SYMBOL, line[i]))
+			return(false);
+		i++;
+	}
 }
 
 bool	top_bot_closed(char *str)
@@ -43,21 +48,18 @@ bool	top_bot_closed(char *str)
 bool	map_closed(char **map)
 {
 	int32_t	i;
-	int32_t	line_end;
 	int32_t	last_row;
 
 	i = 0;
-	line_end = ft_strlen(map[i]);
-	last_row = ft_strarr_size(map);
+	last_row = ft_strarr_size(map) - 1;
 	while (map[i])
 	{
-		ft_putendl_fd(map[i], 1);
 		if (i == 0 || i == last_row)
 		{
 			if (!top_bot_closed(map[i]))
 				return (p_error("Error: Map is not Properly Closed"));
 		}
-		else if (map[i][0] != '1' || map[i][line_end] != '1')
+		else if (!valid_map_line(map[i]))
 			return (p_error("Error: Map is not Properly Closed"));
 		i++;
 	}
