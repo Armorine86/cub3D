@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/24 15:56:45 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:54:17 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ bool	valid_rgb(char *str)
 
 	str++;
 	rgb = ft_split(str, ',');
-	i = 0;
-	while (rgb[i])
+	i = -1;
+	while (rgb[++i])
 	{
 		j = 0;
 		while (rgb[i][j])
@@ -39,9 +39,8 @@ bool	valid_rgb(char *str)
 			j++;
 		}
 		num = ft_atoi(rgb[i]);
-		if (num < 0 || num > 256)
+		if (num < 0 || num > 255 || ft_strarr_size(rgb) < 3)
 			return (false);
-		i++;
 	}
 	return (true);
 }
@@ -81,18 +80,20 @@ bool	no_missing_texture(char **tab)
 {
 	int32_t	i;
 	int32_t	count;
+	int32_t size;
 
 	count = 0;
 	i = 0;
-	while (i < N_TEX)
+	size = ft_strarr_size(tab);
+	while (i < size)
 	{
 		if (valid_identifier(tab[i]))
 			count++;
 		i++;
 	}
-	if (count == N_TEX)
+	if (count == size)
 		return (true);
-	return (p_error("Error: Texture Mission"));
+	return (p_error("Error: Texture Missing"));
 }
 
 bool	duplicate_identifier(char **info)
@@ -100,11 +101,11 @@ bool	duplicate_identifier(char **info)
 	char	*str;
 	int32_t	i;
 	int32_t	j;
+	int32_t	size;
 
 	i = 0;
-	if (!no_missing_texture(info))
-		return (false);
-	while (i < N_TEX)
+	size = ft_strarr_size(info);
+	while (i < size)
 	{
 		j = i + 1;
 		str = ft_substr(info[i], 0, 3);
@@ -113,7 +114,7 @@ bool	duplicate_identifier(char **info)
 			if (!ft_strncmp(info[j], str, 3))
 			{
 				free(str);
-				return (false);
+				return (p_error("Error: Duplicate Identifier Found"));
 			}
 			j++;
 		}	

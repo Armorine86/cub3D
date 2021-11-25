@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/24 10:38:31 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/25 10:02:20 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ int	main(int argc, char **argv)
 	void		*win;
 	t_game		game;
 
-	if (argc != 2 || !valid_file_ext(argv[1], ".cub"))
-	{
-		ft_putendl_fd("Error: Enter a valid map", STDERR_FILENO);
+	if (argc != 2 || !valid_file_ext(argv[1], ".cub") || !valid_res())
 		exit(EXIT_FAILURE);
-	}
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "cub3D");
 	init_game(&game, mlx, win);

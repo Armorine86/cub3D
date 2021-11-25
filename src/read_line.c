@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/24 15:47:20 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/25 09:50:27 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ bool	valid_line(char **data, int32_t limit)
 {
 	char	*str;
 
+	if (!data)
+		return (false);
 	str = ft_strarr_last(data);
 	if (limit == N_TEX)
 	{
 		if (!valid_file_ext(str, ".xpm"))
-			return (p_error("Error: Invalid Texture Extension"));
+			return (false);
 		if (!valid_identifier(str))
 			return (p_error("Error: Invalid Texture Identifier"));
 	}
