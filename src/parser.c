@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/25 15:17:20 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/26 13:02:03 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ bool	read_file(char *file)
 	p->tex = read_line(p->tex, fd, 0, N_TEX);
 	p->rgb = read_line(p->rgb, fd, 0, N_COL);
 	p->map = read_line(p->map, fd, 1, MAP_MAX_H);
-	// if (!map_integrity(p->map))
-	sanitize_map(p->map);
 	if (!p->tex || !p->rgb || !p->map)
 	{
 		free_parser(p);
@@ -96,7 +94,7 @@ void	create_map(t_game *game, char *file)
 	game->world = ft_calloc(1, sizeof(t_world));
 	if (read_file(file))
 	{
-		// load_texture(game->world, game->mlx, file_data);
+		load_texture(game->world, game->mlx, file);
 		// get_floor_ceiling_colors(game->world, file_data);
 		// ft_strarr_free(file_data);
 	}
