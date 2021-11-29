@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:14:32 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:23:30 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	create_map(t_game *game, char *file)
 					game->world->ceiling = get_colors(p->rgb[1]);
 			}
 		}
-		free_parser(p);
 	}
 	else
 		quit_game(game);
