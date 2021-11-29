@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:13:32 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:37:29 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,23 @@
 #include "libft/libft.h"
 #include "map_info.h"
 #include "parser.h"
+
+char	**copy_arr(char **map)
+{
+	int32_t	i;
+	int32_t	size;
+	char	**new_map;
+
+	size = ft_strarr_size(map);
+	new_map = ft_calloc(size + 1, sizeof(char *));
+	i = 0;
+	while (map[i])
+	{
+		new_map[i] = ft_strdup(map[i]);
+		i++;
+	}
+	return (new_map);
+}
 
 void	free_parser(t_parser *p)
 {
@@ -66,6 +83,7 @@ char	**allocate_sqr_map(char **map)
 		str = ft_str_new_copy(map[i]);
 		while (diff-- > 0)
 			ft_str_add_back(str, MAP_LIMIT);
+		free(map[i]);
 		map[i] = ft_str_take(str);
 		i++;
 	}

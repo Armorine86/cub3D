@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:23:30 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:40:46 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ uint32_t	get_colors(char *data)
 	char		*new_data;
 	char		**str;
 
-	data++;
-	new_data = ft_strtrim(data, " ");
+	new_data = ft_strtrim(data + 1, " ");
 	str = ft_split(new_data, ',');
 	color = make_argb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2]));
 	ft_strarr_free(str);
@@ -77,7 +76,7 @@ void	create_map(t_game *game, char *file)
 	game->world = ft_calloc(1, sizeof(t_world));
 	if (read_file(p, file))
 	{
-		game->world->map = p->map;
+		game->world->map = copy_arr(p->map);
 		load_texture(game->world, game->mlx, p->tex);
 		if (N_TEX == 4)
 		{
@@ -90,6 +89,7 @@ void	create_map(t_game *game, char *file)
 					game->world->ceiling = get_colors(p->rgb[1]);
 			}
 		}
+		free_parser(p);
 	}
 	else
 		quit_game(game);

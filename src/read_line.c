@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 13:04:27 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:33:48 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ bool	valid_path(char *line)
 	return (true);
 }
 
-bool	valid_line(t_parser *p, char *line)
+bool	valid_line(char *line)
 {
-	if (!p->tex || !p->map)
-		return (false);
 	if (!valid_identifier(line))
 		return (p_error("Error: Invalid Texture Identifier"));
 	if (verify_identifier(line) == 2)
@@ -80,7 +78,7 @@ bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
 		{
 			if (str_is_null(line))
 				continue ;
-			if (!valid_line(p, line))
+			if (!valid_line(line))
 				return (false);
 			dispatch_line(p, line);
 			limit--;

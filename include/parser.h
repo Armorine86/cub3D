@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 12:59:24 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:33:09 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	free_parser(t_parser *p);
 bool	str_is_null(char *str);
 void	gnl_fail(t_parser *p, int32_t ret);
 int		verify_identifier(char *line);
-
-
+char	**copy_arr(char **map);
 
 #endif
