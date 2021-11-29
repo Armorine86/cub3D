@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 15:21:53 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:25:00 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	valid_floor_ceiling(char *line)
 	if (!valid_path(new_line))
 	{
 		free(new_line);
-		return (p_error("Error: Invalid Floor or Ceiling Texture Path"));
+		return (false);
 	}
 	free(new_line);
 	return (true);
@@ -53,7 +53,7 @@ bool	valid_file_ext(char *file, char *ext)
 	if (!ft_strncmp(file + len - ext_len, ext, ext_len + 1))
 		return (true);
 	free(file);
-	return (false);
+	return (p_error("Error: Invalid Texture Extension"));
 }
 
 bool	valid_identifier(char *str)
@@ -70,7 +70,7 @@ bool	valid_identifier(char *str)
 		return (true);
 	else if (!ft_strncmp(str, "F ", 2))
 		return (true);
-	return (false);
+	return (p_error("Error: Invalid Texture Identifier"));
 }
 
 bool	no_missing_texture(char **tab)
