@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 13:21:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:13:21 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,7 @@ bool	validate_data(t_parser *p)
 		return (p_error("Error: Texture Missing"));
 	if (!valid_map_symbols(p->map))
 		return (p_error("Error: Unrecognized Map Symbol"));
-	p->map = sanitize_map(p->map);
-	if (!map_integrity(p->map, MAP_LIMIT))
+	if (!map_integrity(sanitize_map(p->map), MAP_LIMIT))
 		return (false);
 	return (true);
 }
