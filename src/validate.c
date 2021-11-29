@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 13:11:22 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:12:29 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ bool	valid_floor_ceiling(char *line)
 {
 	char	*new_line;
 
-	line++;
-	new_line = ft_strtrim(line, " ");
+	new_line = ft_strtrim(line + 1, " ");
 	if (!valid_file_ext(line, ".xpm"))
 	{
 		if (!valid_rgb(new_line))
@@ -30,6 +29,7 @@ bool	valid_floor_ceiling(char *line)
 			free(new_line);
 			return (false);
 		}
+		free(new_line);
 		return (true);
 	}
 	if (!valid_path(new_line))
@@ -52,6 +52,7 @@ bool	valid_file_ext(char *file, char *ext)
 		return (false);
 	if (!ft_strncmp(file + len - ext_len, ext, ext_len + 1))
 		return (true);
+	free(file);
 	return (false);
 }
 

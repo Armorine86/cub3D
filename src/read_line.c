@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:33:48 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:17:02 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ bool	valid_path(char *line)
 	char	*file;
 
 	if (verify_identifier(line) == 1)
-		line += 2;
-	file = ft_strtrim(line, " ");
+		file = ft_strtrim(line + 2, " ");
+	else
+		file = ft_strtrim(line, " ");
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
@@ -79,7 +80,10 @@ bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
 			if (str_is_null(line))
 				continue ;
 			if (!valid_line(line))
+			{
+				free(line);
 				return (false);
+			}
 			dispatch_line(p, line);
 			limit--;
 		}

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:40:46 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:17:19 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ bool	read_file(t_parser *p, char *file)
 		return (p_error("Error: Invalid File Descriptor"));
 	i = 0;
 	if (!read_line(p, fd, 0, N_CONFIG) || !read_line(p, fd, 1, MAP_MAX_H))
+	{
+		free_parser(p);
 		return (false);
+	}
 	if (!p->tex || !p->rgb || !p->map)
 	{
 		free_parser(p);
