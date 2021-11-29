@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 13:02:03 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 08:27:26 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,16 @@
 #include "libft/libft.h"
 #include "parser.h"
 #include "game.h"
+#include "utils.h"
 
-// void	get_floor_ceiling_colors(t_world *world, char **data)
-// {
-// 	int32_t	i;
-// 	char	*ptr;
-// 	char	**floor;
-// 	char	**ceiling;
+uint32_t	get_colors(char *data)
+{
+	char	**str;
 
-// 	data += 4;
-// 	i = -1;
-// 	while (++i < 2)
-// 	{
-// 		ptr = data[i];
-// 		if (*ptr == 'F')
-// 		{
-// 			ptr++;
-// 			floor = ft_split(ptr, ',');
-// 		}
-// 		else if (*ptr == 'C')
-// 		{
-// 			ptr++;
-// 			ceiling = ft_split(ptr, ',');
-// 		}
-// 	}
-// 	load_colors(world, floor, ceiling);
-// 	ft_strarr_free(floor);
-// 	ft_strarr_free(ceiling);
-// }
-
-// void	load_colors(t_world *world, char **floor, char **ceiling)
-// {
-// 	int32_t	i;
-
-// 	i = -1;
-// 	while (++i < 3)
-// 	{
-// 		world->floor[i] = ft_atoi(floor[i]);
-// 		world->ceiling[i] = ft_atoi(ceiling[i]);
-// 	}
-// }
+	data++;
+	str = ft_split(ft_strtrim(data, " "), ',');
+	return (make_argb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2])));
+}
 
 t_parser	*init_parser(void)
 {
@@ -67,18 +37,17 @@ t_parser	*init_parser(void)
 	return (d);
 }
 
-bool	read_file(char *file)
-{
-	t_parser	*p;
+bool	read_file(t_parser *p, char *file)
+{	
 	int32_t		fd;
+	int32_t		i;
 
-	p = init_parser();
 	fd = open(file, O_RDWR);
 	if (fd == -1)
 		return (p_error("Error: Invalid File Descriptor"));
-	p->tex = read_line(p->tex, fd, 0, N_TEX);
-	p->rgb = read_line(p->rgb, fd, 0, N_COL);
-	p->map = read_line(p->map, fd, 1, MAP_MAX_H);
+	i = 0;
+	if (!read_line(p, fd, 0, N_CONFIG) || !read_line(p, fd, 1, MAP_MAX_H))
+		return (false);
 	if (!p->tex || !p->rgb || !p->map)
 	{
 		free_parser(p);
@@ -91,12 +60,26 @@ bool	read_file(char *file)
 
 void	create_map(t_game *game, char *file)
 {
+	int32_t		i;
+	t_parser	*p;
+
+	p = init_parser();
 	game->world = ft_calloc(1, sizeof(t_world));
-	if (read_file(file))
+	if (read_file(p, file))
 	{
-		load_texture(game->world, game->mlx, file);
-		// get_floor_ceiling_colors(game->world, file_data);
-		// ft_strarr_free(file_data);
+		game->world->map = p->map;
+		load_texture(game->world, game->mlx, p->tex);
+		if (N_TEX == 4)
+		{
+			i = -1;
+			while (++i < 2)
+			{
+				if (!ft_strncmp(p->rgb[i], "C ", 2))
+					game->world->ceiling = get_colors(p->rgb[0]);
+				else
+					game->world->floor = get_colors(p->rgb[1]);
+			}
+		}
 	}
 	else
 		quit_game(game);

@@ -6,15 +6,15 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 10:28:15 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/26 14:01:18 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/libft.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <mlx.h>
+#include "libft/libft.h"
 #include "map_info.h"
 #include "parser.h"
 

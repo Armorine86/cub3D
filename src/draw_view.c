@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/22 23:19:41 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/26 14:29:02 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 	}
 }
 
-void	draw_view(t_buffer *buf, t_player *p, t_texture *t)
+void	draw_view(t_buffer *buf, t_player *p, t_texture *t[N_TEX])
 {
 	t_vec2		ray_dir;
 	t_lineinfo	info;
@@ -103,13 +103,13 @@ void	draw_view(t_buffer *buf, t_player *p, t_texture *t)
 		intersect(p->pos, ray_dir, &hit);
 		info = line_info(p, ray_dir, hit, buf->h);
 		if (hit.side == EAST)
-			draw_line_tex(buf, t, info, x);
+			draw_line_tex(buf, t[EAST], info, x);
 		else if (hit.side == WEST)
-			draw_line_tex(buf, t, info, x);
+			draw_line_tex(buf, t[WEST], info, x);
 		else if (hit.side == NORTH)
-			draw_line_tex(buf, t, info, x);
+			draw_line_tex(buf, t[NORTH], info, x);
 		else
-			draw_line_tex(buf, t, info, x);
+			draw_line_tex(buf, t[SOUTH], info, x);
 		x++;
 	}
 }

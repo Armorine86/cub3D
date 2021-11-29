@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/23 12:36:24 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/26 14:55:11 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int	update(t_game *game)
 	update_player(&game->player, game->keystate, game->dt);
 	w = game->buf3d->w;
 	h = game->buf3d->h;
-	draw_rect(game->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, 0xFFFF);
-	draw_rect(game->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, 0x777777);
-	draw_view(game->buf3d, &game->player, game->world->tex[EAST]);
+	draw_rect(game->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, game->world->ceiling);
+	draw_rect(game->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, game->world->floor);
+	draw_view(game->buf3d, &game->player, game->world->tex);
 	update_screen(game);
 	return (0);
 }

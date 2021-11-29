@@ -6,15 +6,17 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/24 10:53:58 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/26 15:00:55 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEXTURE_H
 # define TEXTURE_H
 
+# define N_CONFIG 6
 # define N_TEX 4
-# define N_COL 2
+//# define N_TEX 4
+//# define N_COL 2
 
 # include <stdint.h>
 # include "side.h"

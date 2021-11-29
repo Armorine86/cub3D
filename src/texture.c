@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:50:36 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/24 09:42:28 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 08:26:14 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,21 @@ void	load_texture(t_world *world, void *mlx, char **info)
 	while (n < N_TEX)
 	{
 		path = ft_strtrim(&info[n][2], " ");
-		if (!(ft_strncmp(info[n], "NO", 3)))
+		if (ft_strnstr(info[n], "NO", 2))
 			world->tex[NORTH] = new_texture(mlx, path);
-		else if (!(ft_strncmp(info[n], "SO", 3)))
+		else if (ft_strnstr(info[n], "SO", 2))
 			world->tex[SOUTH] = new_texture(mlx, path);
-		else if (!(ft_strncmp(info[n], "WE", 3)))
+		else if (ft_strnstr(info[n], "WE", 2))
 			world->tex[WEST] = new_texture(mlx, path);
-		else if (!(ft_strncmp(info[n], "EA", 3)))
+		else if (ft_strnstr(info[n], "EA", 2))
 			world->tex[EAST] = new_texture(mlx, path);
+		if (N_TEX > 4)
+		{
+			if (ft_strnstr(info[n], "F", 1))
+				world->tex[FLOOR] = new_texture(mlx, path);
+			else if (ft_strnstr(info[n], "C", 1))
+				world->tex[CEILING] = new_texture(mlx, path);
+		}
 		n++;
 		free(path);
 	}
