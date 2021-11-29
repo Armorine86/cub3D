@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:28:45 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:42:15 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,6 @@ bool	valid_map_symbols(char **map)
 				return (false);
 			j++;
 		}
-		i++;
-	}
-	return (true);
-}
-
-bool	top_bot_closed(char *str)
-{
-	int32_t	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != '1')
-			return (false);
 		i++;
 	}
 	return (true);

@@ -6,14 +6,14 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:33:09 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:46:01 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-#include <stdint.h>
+# include <stdint.h>
 
 # define MAP_SYMBOL "01NSEW "
 # define MAP_LIMIT 'X'
