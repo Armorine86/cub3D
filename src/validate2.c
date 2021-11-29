@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 15:22:03 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:38:41 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,28 @@ bool	valid_map_symbols(char **map)
 		j = 0;
 		while (map[i][j])
 		{
+			if (map[i][0] == '\0')
+				return (false);
 			if (!ft_strchr(MAP_SYMBOL, map[i][j]))
 				return (false);
 			j++;
 		}
+		i++;
+	}
+	return (true);
+}
+
+bool	valid_map(char **map)
+{
+	int32_t	i;
+	int32_t	size;
+
+	i = 0;
+	size = ft_strarr_size(map);
+	while (i < size - 1)
+	{
+		if (map[i][0] == '\0')
+			return (false);
 		i++;
 	}
 	return (true);
@@ -92,6 +110,8 @@ bool	validate_data(t_parser *p)
 		return (p_error("Error: Duplicate Identifier Found"));
 	if (!no_missing_texture(p->tex) || !no_missing_texture(p->rgb))
 		return (p_error("Error: Texture Missing"));
+	if (!valid_map(p->map))
+		return (p_error("Error: Found Newline in Map"));
 	if (!valid_map_symbols(p->map))
 		return (p_error("Error: Unrecognized Map Symbol"));
 	if (!map_integrity(sanitize_map(p->map), MAP_LIMIT))
