@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 12:21:07 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:06:39 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ bool	valid_floor_ceiling(char *line)
 			free(new_line);
 			return (false);
 		}
+		return (true);
+	}
+	if (!valid_path(new_line))
+	{
+		free(new_line);
+		return (p_error("Error: Invalid Floor or Ceiling Texture Path"));
 	}
 	free(new_line);
 	return (true);

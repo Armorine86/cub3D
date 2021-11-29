@@ -6,15 +6,36 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 12:21:02 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:04:27 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <fcntl.h>
 #include "libft/libft.h"
 #include "parser.h"
 #include "texture.h"
 #include "config.h"
+
+bool	valid_path(char *line)
+{
+	int32_t	fd;
+	char	*file;
+
+	if (verify_identifier(line) == 1)
+		line += 2;
+	file = ft_strtrim(line, " ");
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+	{
+		close(fd);
+		free(file);
+		return (false);
+	}
+	close(fd);
+	free(file);
+	return (true);
+}
 
 bool	valid_line(t_parser *p, char *line)
 {
@@ -31,6 +52,8 @@ bool	valid_line(t_parser *p, char *line)
 	{
 		if (!valid_file_ext(line, ".xpm"))
 			return (p_error("Error: Invalid Texture Extension"));
+		if (!valid_path(line))
+			return (p_error("Error: Invalid Texture Path"));
 	}
 	return (true);
 }
