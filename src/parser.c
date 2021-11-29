@@ -6,10 +6,11 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 11:13:34 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:27:20 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <fcntl.h>
 #include "config.h"
 #include "libft/libft.h"
@@ -19,11 +20,17 @@
 
 uint32_t	get_colors(char *data)
 {
-	char	**str;
+	uint32_t	color;
+	char		*new_data;
+	char		**str;
 
 	data++;
-	str = ft_split(ft_strtrim(data, " "), ',');
-	return (make_argb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2])));
+	new_data = ft_strtrim(data, " ");
+	str = ft_split(new_data, ',');
+	color = make_argb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2]));
+	ft_strarr_free(str);
+	free(new_data);
+	return (color);
 }
 
 t_parser	*init_parser(void)
@@ -85,5 +92,8 @@ void	create_map(t_game *game, char *file)
 		}
 	}
 	else
+	{
+		free_parser(p);
 		quit_game(game);
+	}
 }

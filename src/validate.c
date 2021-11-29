@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 13:06:39 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:11:22 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool	no_missing_texture(char **tab)
 	}
 	if (count == size)
 		return (true);
-	return (p_error("Error: Texture Missing"));
+	return (false);
 }
 
 bool	duplicate_identifier(char **info)
@@ -110,7 +110,7 @@ bool	duplicate_identifier(char **info)
 			if (!ft_strncmp(info[j], str, 3))
 			{
 				free(str);
-				return (p_error("Error: Duplicate Identifier Found"));
+				return (false);
 			}
 			j++;
 		}	

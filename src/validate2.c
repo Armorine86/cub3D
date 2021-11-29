@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 12:08:47 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:21:18 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,13 @@ bool	top_bot_closed(char *str)
 bool	validate_data(t_parser *p)
 {
 	if (!duplicate_identifier(p->tex) || !duplicate_identifier(p->rgb))
-		return (false);
+		return (p_error("Error: Duplicate Identifier Found"));
 	if (!no_missing_texture(p->tex) || !no_missing_texture(p->rgb))
-		return (false);
+		return (p_error("Error: Texture Missing"));
 	if (!valid_map_symbols(p->map))
-		return (false);
-	if (!map_integrity(sanitize_map(p->map), MAP_LIMIT))
+		return (p_error("Error: Unrecognized Map Symbol"));
+	p->map = sanitize_map(p->map);
+	if (!map_integrity(p->map, MAP_LIMIT))
 		return (false);
 	return (true);
 }

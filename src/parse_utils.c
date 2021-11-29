@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 12:54:27 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:21:29 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,21 @@ char	**sanitize_map(char **map)
 {
 	int32_t	i;
 	int32_t	j;
+	char	**new_map;
 
-	allocate_sqr_map(map);
+	new_map = allocate_sqr_map(map);
+	ft_strarr_free(map);
 	i = 0;
-	while (map[i])
+	while (new_map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (new_map[i][j])
 		{
-			if (map[i][j] == ' ')
-				map[i][j] = 'X';
+			if (new_map[i][j] == ' ')
+				new_map[i][j] = 'X';
 			j++;
 		}
 		i++;
 	}
-	return (map);
+	return (new_map);
 }
