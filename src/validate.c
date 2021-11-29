@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/25 13:54:17 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:21:07 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,21 @@
 #include "libft/libft.h"
 #include "parser.h"
 
-bool	valid_rgb(char *str)
+bool	valid_floor_ceiling(char *line)
 {
-	int32_t	i;
-	int32_t	j;
-	int32_t	num;
-	char	**rgb;
+	char	*new_line;
 
-	str++;
-	rgb = ft_split(str, ',');
-	i = -1;
-	while (rgb[++i])
+	line++;
+	new_line = ft_strtrim(line, " ");
+	if (!valid_file_ext(line, ".xpm"))
 	{
-		j = 0;
-		while (rgb[i][j])
+		if (!valid_rgb(new_line))
 		{
-			while (rgb[i][j] == ' ')
-				j++;
-			if (!ft_isdigit(rgb[i][j]))
-				return (false);
-			j++;
-		}
-		num = ft_atoi(rgb[i]);
-		if (num < 0 || num > 255 || ft_strarr_size(rgb) < 3)
+			free(new_line);
 			return (false);
+		}
 	}
+	free(new_line);
 	return (true);
 }
 
@@ -80,7 +70,7 @@ bool	no_missing_texture(char **tab)
 {
 	int32_t	i;
 	int32_t	count;
-	int32_t size;
+	int32_t	size;
 
 	count = 0;
 	i = 0;

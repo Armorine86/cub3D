@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:47:12 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 11:41:12 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:04:20 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 bool	p_index(char *msg, int i, int j)
 {
-	char *line;
-	char *index;
+	char	*line;
+	char	*index;
 
 	index = ft_ltoa(j);
 	line = ft_ltoa(i);

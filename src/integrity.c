@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 10:03:16 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 12:00:59 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:03:27 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ bool	map_integrity(char **map, char out_of_bound)
 		{
 			if (map[i][j] == '0')
 			{
-				if (!check_up(map, i , j, out_of_bound))
+				if (!check_up(map, i, j, out_of_bound))
 					return (false);
-				if (!check_down(map, i , j, out_of_bound))
+				if (!check_down(map, i, j, out_of_bound))
 					return (false);
-				if (!check_left(map, i , j, out_of_bound))
+				if (!check_left(map, i, j, out_of_bound))
 					return (false);
-				if (!check_right(map, i , j, out_of_bound))
+				if (!check_right(map, i, j, out_of_bound))
 					return (false);
 			}
 			j++;

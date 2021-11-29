@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 10:53:15 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:08:47 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,70 @@
 #include "libft/libft.h"
 #include "parser.h"
 
-bool	valid_map_symbols(char *line)
+bool	is_all_digit(char **rgb)
 {
 	int32_t	i;
+	int32_t	j;
 
 	i = 0;
-	while (line[i])
+	while (rgb[i])
 	{
-		if (!ft_strchr(MAP_SYMBOL, line[i]))
-			return(false);
+		j = 0;
+		while (rgb[i][j])
+		{
+			if (rgb[i][j] == '-')
+				j++;
+			if (!ft_isdigit(rgb[i][j]))
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
+}
+
+bool	valid_rgb(char *str)
+{
+	int32_t	i;
+	int32_t	num;
+	char	**rgb;
+
+	rgb = ft_split(str, ',');
+	if (!is_all_digit(rgb))
+	{
+		ft_strarr_free(rgb);
+		return (p_error("Error: RGB Values Are Not All Digits"));
+	}
+	i = 0;
+	while (rgb[i])
+	{
+		num = ft_atoi(rgb[i]);
+		if (num < 0 || num > 255)
+		{
+			ft_strarr_free(rgb);
+			return (p_error("Error: RGB Value Outside Range"));
+		}
+		i++;
+	}
+	ft_strarr_free(rgb);
+	return (true);
+}
+
+bool	valid_map_symbols(char **map)
+{
+	int32_t	i;
+	int32_t	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (!ft_strchr(MAP_SYMBOL, map[i][j]))
+				return (false);
+			j++;
+		}
 		i++;
 	}
 	return (true);
@@ -47,10 +102,11 @@ bool	top_bot_closed(char *str)
 
 bool	validate_data(t_parser *p)
 {
-	
 	if (!duplicate_identifier(p->tex) || !duplicate_identifier(p->rgb))
 		return (false);
 	if (!no_missing_texture(p->tex) || !no_missing_texture(p->rgb))
+		return (false);
+	if (!valid_map_symbols(p->map))
 		return (false);
 	if (!map_integrity(sanitize_map(p->map), MAP_LIMIT))
 		return (false);

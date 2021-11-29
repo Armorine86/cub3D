@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 14:08:40 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:21:02 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,21 @@
 #include "texture.h"
 #include "config.h"
 
-bool	valid_line(t_parser *p, int32_t limit, char *line)
+bool	valid_line(t_parser *p, char *line)
 {
 	if (!p->tex || !p->map)
 		return (false);
-	if (limit == N_TEX)
+	if (!valid_identifier(line))
+		return (p_error("Error: Invalid Texture Identifier"));
+	if (verify_identifier(line) == 2)
 	{
-		if (!valid_identifier(line))
-			return (p_error("Error: Invalid Texture Identifier"));
-		if (verify_identifier(line) == 1)
-		{
-			if (!valid_file_ext(line, ".xpm"))
-				return (p_error("Error: Invalid Texture Extension"));
-		}
+		if (!valid_floor_ceiling(line))
+			return (false);
 	}
-	else if (limit == MAP_MAX_H)
+	if (verify_identifier(line) == 1)
 	{
-		if (!valid_map_symbols(line))
-			return (p_error("Error: Invalid Map Symbols"));
+		if (!valid_file_ext(line, ".xpm"))
+			return (p_error("Error: Invalid Texture Extension"));
 	}
 	return (true);
 }
@@ -49,11 +46,9 @@ void	dispatch_line(t_parser *p, char *line)
 bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
 {
 	int32_t	ret;
-	int32_t	dispatch;
 	char	*line;
 
 	ret = 1;
-	dispatch = limit;
 	while (ret && limit > 0)
 	{
 		ret = get_next_line(fd, &line);
@@ -62,7 +57,7 @@ bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
 		{
 			if (str_is_null(line))
 				continue ;
-			if (!valid_line(p, dispatch, line))
+			if (!valid_line(p, line))
 				return (false);
 			dispatch_line(p, line);
 			limit--;

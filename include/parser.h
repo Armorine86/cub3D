@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 13:58:48 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:20:54 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ bool	valid_file_ext(char *file, char *ext);
 bool	valid_res(void);
 bool	map_closed(char **map);
 bool	valid_rgb(char *str);
-bool	valid_map_symbols(char *line);
+bool	valid_floor_ceiling(char *line);
+bool	valid_map_symbols(char **map);
 bool	valid_identifier(char *str);
 bool	duplicate_identifier(char **info);
 bool	no_missing_texture(char **tab);

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/26 14:55:11 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:06:30 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,23 @@ static void	update_screen(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, buf3d->img, 0, 0);
 }
 
-int	update(t_game *game)
+int	update(t_game *g)
 {
 	t_time	t;
 	int32_t	w;
 	int32_t	h;
 
 	ft_gettime(&t);
-	game->dt = (float)ft_timediff(game->last_frame, t);
-	game->last_frame = t;
-	// game->dt = 0.02;
-	update_player(&game->player, game->keystate, game->dt);
-	w = game->buf3d->w;
-	h = game->buf3d->h;
-	draw_rect(game->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, game->world->ceiling);
-	draw_rect(game->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, game->world->floor);
-	draw_view(game->buf3d, &game->player, game->world->tex);
-	update_screen(game);
+	g->dt = (float)ft_timediff(g->last_frame, t);
+	g->last_frame = t;
+	// g->dt = 0.02;
+	update_player(&g->player, g->keystate, g->dt);
+	w = g->buf3d->w;
+	h = g->buf3d->h;
+	draw_rect(g->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, g->world->ceiling);
+	draw_rect(g->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, g->world->floor);
+	draw_view(g->buf3d, &g->player, g->world->tex);
+	update_screen(g);
 	return (0);
 }
 

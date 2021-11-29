@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 08:27:26 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/29 11:13:34 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ bool	read_file(t_parser *p, char *file)
 		return (p_error("Error: File Read Failed"));
 	}
 	if (!validate_data(p))
+	{
+		free_parser(p);
 		return (false);
+	}
 	return (true);
 }
 
@@ -74,10 +77,10 @@ void	create_map(t_game *game, char *file)
 			i = -1;
 			while (++i < 2)
 			{
-				if (!ft_strncmp(p->rgb[i], "C ", 2))
-					game->world->ceiling = get_colors(p->rgb[0]);
+				if (!ft_strncmp(p->rgb[i], "F ", 2))
+					game->world->floor = get_colors(p->rgb[0]);
 				else
-					game->world->floor = get_colors(p->rgb[1]);
+					game->world->ceiling = get_colors(p->rgb[1]);
 			}
 		}
 	}
