@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 11:08:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:52:16 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ bool	map_integrity(char **map, char out_of_bound);
 bool	free_parser(t_parser *p);
 bool	read_line(t_parser *p, int32_t fd, bool skip, int limit);
 char	**sanitize_map(char **map);
+int32_t	find_longest_line(char **map);
+
 //char	**read_line(char **data, int32_t fd, bool skip, int limit);
 
 // UTILS
