@@ -6,12 +6,13 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/20 20:30:31 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:23:30 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
-#include "fixed_map.h"
+#include "map_info.h"
+#include "config.h"
 #include <math.h>
 
 static t_vec2i	get_step(t_vec2 dir)
@@ -71,7 +72,7 @@ static t_hit	distance(t_vec2 *len, t_vec2i *sq, t_vec2i step, t_vec2 unit)
 	return (hit);
 }
 
-void	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
+void	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit, char **map)
 {
 	t_vec2	ray_len;
 	t_vec2	unit_step;
@@ -87,7 +88,7 @@ void	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit)
 	while (hit->dist < MAX_DIST)
 	{
 		*hit = distance(&ray_len, &map_p, step, unit_step);
-		if (g_map[map_p.y][map_p.x])
+		if (map[map_p.y][map_p.x] != MAP_EMPTY)
 		{
 			hit->pos = vec2_add(vec2_mul(dir, hit->dist), pos);
 			hit->map_pos = map_p;

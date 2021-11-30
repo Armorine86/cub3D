@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:09:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/26 14:28:11 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:07:37 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	draw_line(t_buffer *buf, t_vec2 p0, t_vec2 p1, uint32_t c);
 void	draw_circle(t_buffer *buf, t_vec2 center, double r, uint32_t c);
 void	draw_grid(t_buffer *buf);
 void	draw_player(t_buffer *buf, t_player *player);
-void	draw_ray(t_buffer *buf, t_vec2 ray_start, t_vec2 ray_dir, uint32_t c);
-void	draw_field(t_buffer *buf, t_player *p, uint32_t c);
-void	draw_view(t_buffer *buf, t_player *p, t_texture *t[N_TEX]);
+// void	draw_ray(t_buffer *buf, t_vec2 ray_start, t_vec2 ray_dir, uint32_t c);
+// void	draw_field(t_buffer *buf, t_player *p, uint32_t c);
+void	draw_view(t_buffer *buf, t_player *p, t_texture *t[N_TEX], char **map);
 void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo info, int32_t x);
 
 #endif

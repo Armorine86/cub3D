@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 11:08:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:14:21 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define PARSER_H
 
 # include <stdint.h>
-
-# define MAP_SYMBOL "01NSEW "
-# define MAP_LIMIT 'X'
 
 typedef struct s_parser
 {
@@ -39,11 +36,10 @@ bool	duplicate_identifier(char **info);
 bool	no_missing_texture(char **tab);
 bool	missing_texture(char **tab);
 bool	validate_data(t_parser *p);
-bool	map_integrity(char **map, char out_of_bound);
+bool	map_integrity(char **map);
 bool	free_parser(t_parser *p);
 bool	read_line(t_parser *p, int32_t fd, bool skip, int limit);
-char	**sanitize_map(char **map);
-//char	**read_line(char **data, int32_t fd, bool skip, int limit);
+char	**allocate_sqr_map(char **map);
 
 // UTILS
 bool	str_is_null(char *str);

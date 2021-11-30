@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 15:38:41 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:15:03 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include <stdlib.h>
-#include "texture.h"
+#include "map_info.h"
 #include "config.h"
 #include "libft/libft.h"
 #include "parser.h"
@@ -114,7 +114,7 @@ bool	validate_data(t_parser *p)
 		return (p_error("Error: Found Newline in Map"));
 	if (!valid_map_symbols(p->map))
 		return (p_error("Error: Unrecognized Map Symbol"));
-	if (!map_integrity(sanitize_map(p->map), MAP_LIMIT))
+	if (!map_integrity(allocate_sqr_map(p->map)))
 		return (false);
 	return (true);
 }

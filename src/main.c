@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/25 14:56:49 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:21:45 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <stdlib.h>
 #include "event.h"
-#include "fixed_map.h"
 #include "parser.h"
 #include "game.h"
+#include "config.h"
 
 int	main(int argc, char **argv)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 11:03:31 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:13:48 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +83,9 @@ char	**allocate_sqr_map(char **map)
 		diff = size - ft_strlen(map[i]);
 		str = ft_str_new_copy(map[i]);
 		while (diff-- > 0)
-			ft_str_add_back(str, MAP_LIMIT);
+			ft_str_add_back(str, MAP_OOB);
 		free(map[i]);
 		map[i] = ft_str_take(str);
-		i++;
-	}
-	return (map);
-}
-
-char	**sanitize_map(char **map)
-{
-	int32_t	i;
-	int32_t	j;
-
-	allocate_sqr_map(map);
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == ' ')
-				map[i][j] = 'X';
-			j++;
-		}
 		i++;
 	}
 	return (map);

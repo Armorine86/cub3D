@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:38:58 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 15:05:03 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:14:26 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define MAP_INFO_H
 
 # include "texture.h"
+
+# define MAP_SYMBOL "01NSEW "
+# define MAP_OOB ' '
+# define MAP_EMPTY '0'
+# define MAP_WALL '1'
 
 typedef struct s_world
 {

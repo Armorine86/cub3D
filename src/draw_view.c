@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/26 14:29:02 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:06:26 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 	}
 }
 
-void	draw_view(t_buffer *buf, t_player *p, t_texture *t[N_TEX])
+void	draw_view(t_buffer *buf, t_player *p, t_texture *t[N_TEX], char **map)
 {
 	t_vec2		ray_dir;
 	t_lineinfo	info;
@@ -100,7 +100,7 @@ void	draw_view(t_buffer *buf, t_player *p, t_texture *t[N_TEX])
 	while (x < buf->w)
 	{
 		ray_dir = get_ray_dir(p, x, buf->w);
-		intersect(p->pos, ray_dir, &hit);
+		intersect(p->pos, ray_dir, &hit, map);
 		info = line_info(p, ray_dir, hit, buf->h);
 		if (hit.side == EAST)
 			draw_line_tex(buf, t[EAST], info, x);

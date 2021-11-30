@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/29 12:06:30 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:22:15 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "draw.h"
-#include "fixed_map.h"
+#include "config.h"
 #include <mlx.h>
 #include <math.h>
 #include <stdlib.h>
@@ -29,7 +29,7 @@ void	init_game(t_game *game, void *mlx, void *win)
 	p->angle = deg_to_rad(0.0);
 	p->dir.x = cos(p->angle);
 	p->dir.y = sin(p->angle);
-	p->pos = (t_vec2){2.5, 1.5};
+	p->pos = (t_vec2){2.5, 4.5};
 	p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
 	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 	game->buf3d = new_buffer(mlx, WIDTH, HEIGHT);
@@ -59,12 +59,12 @@ int	update(t_game *g)
 	g->dt = (float)ft_timediff(g->last_frame, t);
 	g->last_frame = t;
 	// g->dt = 0.02;
-	update_player(&g->player, g->keystate, g->dt);
+	update_player(&g->player, g->keystate, g->dt, g->world->map);
 	w = g->buf3d->w;
 	h = g->buf3d->h;
 	draw_rect(g->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, g->world->ceiling);
 	draw_rect(g->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, g->world->floor);
-	draw_view(g->buf3d, &g->player, g->world->tex);
+	draw_view(g->buf3d, &g->player, g->world->tex, g->world->map);
 	update_screen(g);
 	return (0);
 }

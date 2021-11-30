@@ -18,7 +18,7 @@ NM			=	norminette
 MAKE_DIR	= $(MAKE) --no-print-directory -C
 
 CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
-				draw_circle.c event.c draw_ray.c fixed_map.c draw_field.c draw_view.c\
+				draw_circle.c event.c draw_ray.c draw_field.c draw_view.c\
 				intersection.c parser.c parse_utils.c texture.c validate.c validate2.c\
 				read_line.c read_line_utils.c error.c integrity.c\
 				
