@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 11:30:28 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:50:18 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	valid_line(char *line)
 			return (valid_floor_ceiling(line));
 		if (verify_identifier(line) == 1)
 		{
-			if (valid_file_ext(line, ".xpm") && valid_path(line))
+			if (valid_file_ext(line, EXT) && valid_path(line))
 				return (true);
 			free(line);
 			p_error("Error: Invalid Texture Extension");

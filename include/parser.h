@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 13:57:13 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:52:17 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PARSER_H
 
 # include <stdint.h>
+# define EXT ".xpm"
+# define MAP_EXT ".cub"
 
 typedef struct s_parser
 {
@@ -42,6 +44,7 @@ bool	read_line(t_parser *p, int32_t fd, bool skip, int limit);
 char	**allocate_sqr_map(char **map);
 
 // UTILS
+
 bool	str_is_null(char *str);
 bool	gnl_fail(t_parser *p, int32_t ret);
 int		verify_identifier(char *line);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 12:21:45 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:51:08 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	void		*win;
 	t_game		game;
 
-	if (argc != 2 || !valid_file_ext(argv[1], ".cub"))
+	if (argc != 2 || !valid_file_ext(argv[1], MAP_EXT))
 		exit(EXIT_FAILURE);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "cub3D");

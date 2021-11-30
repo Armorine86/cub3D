@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 11:29:31 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:50:25 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	valid_floor_ceiling(char *line)
 	char	*new_line;
 
 	new_line = ft_strtrim(line + 1, " ");
-	if (!valid_file_ext(line, ".xpm"))
+	if (!valid_file_ext(line, EXT))
 	{
 		if (!valid_rgb(new_line))
 		{
