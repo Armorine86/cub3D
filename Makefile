@@ -67,7 +67,7 @@ fclean:		clean
 re:			fclean all
 
 norme:
-			$(MAKE_DIR) $(LIBFT) norme
-			$(NM) $(SRCS) $(HEADERS)
+			@$(MAKE_DIR) $(LIBFT) norme
+			@$(NM) $(SRCS) $(HEADERS)
 
 .PHONY:		all debug clean fclean re norme linux cool_evaluator
