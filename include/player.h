@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:52:26 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 12:03:05 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:59:11 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <libft/libft.h>
 # include "keymap.h"
+# include "map_info.h"
 
 typedef struct s_player
 {
@@ -25,6 +26,6 @@ typedef struct s_player
 	double	fov_ratio;
 }	t_player;
 
-void	update_player(t_player *p, bool keys[N_KEYS], double dt, char **map);
+void	update_player(t_player *p, bool keys[N_KEYS], double dt, t_world *w);
 
 #endif

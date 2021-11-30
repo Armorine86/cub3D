@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 13:56:03 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:57:13 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ bool	str_is_null(char *str);
 bool	gnl_fail(t_parser *p, int32_t ret);
 int		verify_identifier(char *line);
 char	**copy_arr(char **map);
+int32_t	find_longest_line(char **map);
 
 #endif

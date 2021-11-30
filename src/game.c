@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 12:22:15 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:59:21 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	update(t_game *g)
 	g->dt = (float)ft_timediff(g->last_frame, t);
 	g->last_frame = t;
 	// g->dt = 0.02;
-	update_player(&g->player, g->keystate, g->dt, g->world->map);
+	update_player(&g->player, g->keystate, g->dt, g->world);
 	w = g->buf3d->w;
 	h = g->buf3d->h;
 	draw_rect(g->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, g->world->ceiling);
