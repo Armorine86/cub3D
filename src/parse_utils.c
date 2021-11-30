@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:37:29 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:03:31 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**copy_arr(char **map)
 	return (new_map);
 }
 
-void	free_parser(t_parser *p)
+bool	free_parser(t_parser *p)
 {
 	if (p)
 	{
@@ -47,6 +47,7 @@ void	free_parser(t_parser *p)
 			ft_strarr_free(p->rgb);
 		free(p);
 	}
+	return(false);
 }
 
 int32_t	find_longest_line(char **map)

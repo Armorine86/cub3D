@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 15:26:49 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:11:20 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,15 @@ bool	valid_path(char *line)
 bool	valid_line(char *line)
 {
 	if (valid_identifier(line))
-		return (true);
-	if (verify_identifier(line) == 2)
 	{
-		if (valid_floor_ceiling(line))
-			return (true);
-	}
-	if (verify_identifier(line) == 1)
-	{
-		if (valid_file_ext(line, ".xpm"))
-			return (true);
-		if (valid_path(line))
-			return (true);
+		if (verify_identifier(line) == 2)
+			return (valid_floor_ceiling(line));
+		if (verify_identifier(line) == 1)
+		{
+			if (valid_file_ext(line, ".xpm") && valid_path(line))
+				return (true);
+			return (false);
+		}		
 	}
 	free(line);
 	return (false);
@@ -75,7 +72,8 @@ bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
 	while (ret && limit > 0)
 	{
 		ret = get_next_line(fd, &line);
-		gnl_fail(p, ret);
+		if (gnl_fail(p, ret))
+			return (false);
 		if (skip == false)
 		{
 			if (str_is_null(line))

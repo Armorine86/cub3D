@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 15:17:19 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:06:02 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,12 @@ bool	read_file(t_parser *p, char *file)
 	if (!read_line(p, fd, 0, N_CONFIG) || !read_line(p, fd, 1, MAP_MAX_H))
 	{
 		free_parser(p);
-		return (false);
-	}
-	if (!p->tex || !p->rgb || !p->map)
-	{
-		free_parser(p);
 		return (p_error("Error: File Read Failed"));
 	}
+	if (!p->tex || !p->rgb || !p->map)
+		return (free_parser(p));
 	if (!validate_data(p))
-	{
-		free_parser(p);
-		return (false);
-	}
+		return (free_parser(p));
 	return (true);
 }
 

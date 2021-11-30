@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:39:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/26 14:12:00 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:08:08 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	str_is_null(char *str)
 	return (false);
 }
 
-void	gnl_fail(t_parser *p, int32_t ret)
+bool	gnl_fail(t_parser *p, int32_t ret)
 {
 	if (ret == -1)
 	{
@@ -34,7 +34,11 @@ void	gnl_fail(t_parser *p, int32_t ret)
 			ft_strarr_free(p->tex);
 		if (p->rgb)
 			ft_strarr_free(p->rgb);
+		if (p->map)
+			ft_strarr_free(p->map);
+		return (true);
 	}
+	return (false);
 }
 
 int	verify_identifier(char *line)

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 14:46:01 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:08:18 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ bool	no_missing_texture(char **tab);
 bool	missing_texture(char **tab);
 bool	validate_data(t_parser *p);
 bool	map_integrity(char **map, char out_of_bound);
-char	**sanitize_map(char **map);
+bool	free_parser(t_parser *p);
 bool	read_line(t_parser *p, int32_t fd, bool skip, int limit);
-void	free_parser(t_parser *p);
+char	**sanitize_map(char **map);
 //char	**read_line(char **data, int32_t fd, bool skip, int limit);
 
 // UTILS
 bool	str_is_null(char *str);
-void	gnl_fail(t_parser *p, int32_t ret);
+bool	gnl_fail(t_parser *p, int32_t ret);
 int		verify_identifier(char *line);
 char	**copy_arr(char **map);
 
