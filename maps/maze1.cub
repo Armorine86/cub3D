@@ -1,8 +1,8 @@
 
 NO ./textures/pattern.xpm
-EA      ./textures/pld.xpm
+SO      ./textures/pld.xpm
 WE           ./textures/pld2.xpm
-SO       ./textures/wall.xpm
+EA       ./textures/wall.xpm
 
 
 C     80,80,80

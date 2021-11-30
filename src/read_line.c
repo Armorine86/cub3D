@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 11:11:20 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:30:28 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ bool	valid_path(char *line)
 	{
 		close(fd);
 		free(file);
+		free(line);
 		return (p_error("Error: Invalid Texture Path"));
 	}
 	close(fd);
@@ -48,6 +49,8 @@ bool	valid_line(char *line)
 		{
 			if (valid_file_ext(line, ".xpm") && valid_path(line))
 				return (true);
+			free(line);
+			p_error("Error: Invalid Texture Extension");
 			return (false);
 		}		
 	}
@@ -73,7 +76,7 @@ bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
 	{
 		ret = get_next_line(fd, &line);
 		if (gnl_fail(p, ret))
-			return (false);
+			return (p_error("Error: File Read Failed"));
 		if (skip == false)
 		{
 			if (str_is_null(line))

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/29 15:25:00 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:29:31 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ bool	valid_floor_ceiling(char *line)
 		if (!valid_rgb(new_line))
 		{
 			free(new_line);
+			free(line);
 			return (false);
 		}
 		free(new_line);
@@ -37,6 +38,7 @@ bool	valid_floor_ceiling(char *line)
 		free(new_line);
 		return (false);
 	}
+	free(line);
 	free(new_line);
 	return (true);
 }
@@ -52,8 +54,7 @@ bool	valid_file_ext(char *file, char *ext)
 		return (false);
 	if (!ft_strncmp(file + len - ext_len, ext, ext_len + 1))
 		return (true);
-	free(file);
-	return (p_error("Error: Invalid Texture Extension"));
+	return (false);
 }
 
 bool	valid_identifier(char *str)
