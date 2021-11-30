@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:38:58 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 12:14:26 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:55:24 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 typedef struct s_world
 {
 	t_texture	*tex[N_TEX];
+	uint32_t	height;
+	uint32_t	width;
 	uint32_t	floor;
 	uint32_t	ceiling;
 	char		**map;

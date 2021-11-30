@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 12:13:48 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:55:46 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	free_parser(t_parser *p)
 			ft_strarr_free(p->rgb);
 		free(p);
 	}
-	return(false);
+	return (false);
 }
 
 int32_t	find_longest_line(char **map)
