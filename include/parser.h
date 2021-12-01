@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 11:24:59 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:07:15 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ typedef struct s_parser
 	char	**rgb;
 	char	**map;
 }	t_parser;
+
+typedef enum e_ident
+{
+	ID_NONE,
+	ID_WALL,
+	ID_FLOOR,
+	ID_CEILING
+}	t_ident;
 
 bool	p_error(char *msg);
 bool	p_index(char *msg, int i, int j);
@@ -47,9 +55,9 @@ char	**allocate_sqr_map(char **map);
 
 bool	str_is_null(char *str);
 bool	gnl_fail(t_parser *p, int32_t ret);
-int		verify_identifier(char *line);
+t_ident	identifier_type(char *line);
 char	**copy_arr(char **map);
 size_t	find_longest_line(char **map);
-t_vec2i	find_spawn_location(char **map);
+t_vec2	find_spawn_location(char **map);
 
 #endif

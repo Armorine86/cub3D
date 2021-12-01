@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_line_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:39:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 11:08:08 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:52:15 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ bool	gnl_fail(t_parser *p, int32_t ret)
 	return (false);
 }
 
-int	verify_identifier(char *line)
+t_ident	identifier_type(char *line)
 {
 	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
 		|| !ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3))
-		return (1);
-	else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
-		return (2);
-	return (0);
+		return (ID_WALL);
+	else if (!ft_strncmp(line, "F ", 2))
+		return (ID_FLOOR);
+	else if (!ft_strncmp(line, "C ", 2))
+		return (ID_CEILING);
+	return (ID_NONE);
 }

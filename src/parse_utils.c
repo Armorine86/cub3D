@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 12:53:51 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:20:24 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 #include "map_info.h"
 #include "parser.h"
 
-t_vec2i	find_spawn_location(char **map)
+t_vec2	find_spawn_location(char **map)
 {
-	t_vec2i	loc;
 	int32_t	x;
 	int32_t	y;
 
@@ -31,12 +30,15 @@ t_vec2i	find_spawn_location(char **map)
 		while (map[y][x])
 		{
 			if (ft_strchr(SPAWN, map[y][x]))
-				loc = (t_vec2i){x, y};
+			{
+				map[y][x] = MAP_EMPTY;
+				return ((t_vec2){(double)x + 0.5, (double)y + 0.5});
+			}
 			x++;
 		}
 		y++;
 	}
-	return (loc);
+	return ((t_vec2){0, 0});
 }
 
 char	**copy_arr(char **map)

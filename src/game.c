@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 13:09:14 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:22:50 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_game(t_game *game)
 	p->angle = deg_to_rad(0.0);
 	p->dir.x = cos(p->angle);
 	p->dir.y = sin(p->angle);
-	p->pos = (t_vec2){2.5, 4.5};
+	p->pos = game->world->spawn;
 	p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
 	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
 	ft_gettime(&game->last_frame);
@@ -71,7 +71,8 @@ int	quit_game(t_game *game)
 
 	if (game->buf3d)
 		destroy_buffer(game->mlx, game->buf3d);
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
 	i = 0;
 	if (game->world)
 	{

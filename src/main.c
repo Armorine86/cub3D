@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 13:08:53 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:42:29 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	main(int argc, char **argv)
 	}
 	ft_bzero(&game, sizeof(t_game));
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "cub3D");
 	game.world = create_map(game.mlx, argv[1]);
 	if (!game.world)
 		quit_game(&game);
+	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "cub3D");
 	init_game(&game);
 	mlx_do_key_autorepeatoff(game.mlx);
 	mlx_hook(game.win, KEY_PRESS, KEY_PRESS_MASK, &keydown, &game);

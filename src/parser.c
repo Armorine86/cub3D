@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 12:52:53 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:21:40 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	read_file(t_parser *p, char *file)
 
 	fd = open(file, O_RDWR);
 	if (fd == -1)
-		return (p_error("Error: Invalid File Descriptor"));
+		return (p_error("Error: Invalid File"));
 	i = 0;
 	if (!read_line(p, fd, 0, N_CONFIG) || !read_line(p, fd, 1, MAP_MAX_H))
 		return (free_parser(p));
@@ -74,7 +74,7 @@ void	map_dimension(t_world *world, char **map)
 	world->map = copy_arr(map);
 	world->height = ft_strarr_size(map);
 	world->width = find_longest_line(map);
-	world->spawn = find_spawn_location(map);
+	world->spawn = find_spawn_location(world->map);
 }
 
 t_world	*create_map(void *mlx, char *file)
@@ -92,6 +92,9 @@ t_world	*create_map(void *mlx, char *file)
 		free_parser(p);
 	}
 	else
+	{
+		free(world);
 		return (NULL);
+	}
 	return (world);
 }

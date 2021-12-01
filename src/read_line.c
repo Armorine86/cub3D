@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 10:16:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:56:16 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	valid_path(char *line)
 	int32_t	fd;
 	char	*file;
 
-	if (verify_identifier(line) == 1)
+	if (identifier_type(line) == ID_WALL)
 		file = ft_strtrim(line + 2, " ");
 	else
 		file = ft_strtrim(line, " ");
@@ -41,18 +41,21 @@ bool	valid_path(char *line)
 
 bool	valid_line(char *line)
 {
+	t_ident	type;
+
 	if (valid_identifier(line))
 	{
-		if (verify_identifier(line) == 2)
+		type = identifier_type(line);
+		if (type == ID_CEILING || type == ID_FLOOR)
 			return (valid_floor_ceiling(line));
-		if (verify_identifier(line) == 1)
+		if (type == ID_WALL)
 		{
 			if (valid_file_ext(line, EXT) && valid_path(line))
 				return (true);
 			free(line);
 			p_error("Error: Invalid Texture Extension");
 			return (false);
-		}		
+		}
 	}
 	free(line);
 	return (false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:38:58 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 11:45:31 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:04:04 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 typedef struct s_world
 {
 	t_texture	*tex[N_TEX];
-	t_vec2i		spawn;
+	t_vec2		spawn;
 	uint32_t	height;
 	uint32_t	width;
 	uint32_t	floor;
