@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 14:07:15 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:28:00 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ bool	gnl_fail(t_parser *p, int32_t ret);
 t_ident	identifier_type(char *line);
 char	**copy_arr(char **map);
 size_t	find_longest_line(char **map);
-t_vec2	find_spawn_location(char **map);
+void	set_spawn_location(char **map, t_vec2 *spawn, double *angle);
 
 #endif

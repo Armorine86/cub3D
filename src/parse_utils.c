@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 14:20:24 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:15:47 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,8 @@
 #include <stdbool.h>
 #include <mlx.h>
 #include "libft/libft.h"
-#include "map_info.h"
+#include "world.h"
 #include "parser.h"
-
-t_vec2	find_spawn_location(char **map)
-{
-	int32_t	x;
-	int32_t	y;
-
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (ft_strchr(SPAWN, map[y][x]))
-			{
-				map[y][x] = MAP_EMPTY;
-				return ((t_vec2){(double)x + 0.5, (double)y + 0.5});
-			}
-			x++;
-		}
-		y++;
-	}
-	return ((t_vec2){0, 0});
-}
 
 char	**copy_arr(char **map)
 {

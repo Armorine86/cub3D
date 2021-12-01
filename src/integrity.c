@@ -6,13 +6,13 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 10:03:16 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 12:15:15 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:15:47 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "libft/libft.h"
-#include "map_info.h"
+#include "world.h"
 #include "parser.h"
 
 static bool	check_right(char **map, int i, int j)

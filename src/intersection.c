@@ -6,12 +6,12 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 07:10:00 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:15:47 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
-#include "map_info.h"
+#include "world.h"
 #include "config.h"
 #include <math.h>
 

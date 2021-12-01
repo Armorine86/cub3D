@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 13:42:29 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:17:49 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	}
 	ft_bzero(&game, sizeof(t_game));
 	game.mlx = mlx_init();
-	game.world = create_map(game.mlx, argv[1]);
+	game.world = create_world(game.mlx, argv[1]);
 	if (!game.world)
 		quit_game(&game);
 	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "cub3D");

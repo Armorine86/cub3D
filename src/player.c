@@ -6,12 +6,12 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 07:08:27 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:29:41 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
-#include "map_info.h"
+#include "world.h"
 #include "config.h"
 #include <math.h>
 
@@ -51,9 +51,9 @@ void	update_player(t_player *p, bool keys[N_KEYS], double dt, t_world *w)
 {
 	t_vec2	move_dir;
 
-	if (keys[LEFT])
+	if (keys[ARROW_LEFT])
 		rotate_left(p, dt);
-	if (keys[RIGHT])
+	if (keys[ARROW_RIGHT])
 		rotate_right(p, dt);
 	move_dir = (t_vec2){0, 0};
 	if (keys[W])

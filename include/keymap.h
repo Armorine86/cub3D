@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keymap.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:38:48 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 16:37:59 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:27:02 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef enum s_key
 	A,
 	S,
 	D,
-	LEFT,
-	RIGHT
+	ARROW_LEFT,
+	ARROW_RIGHT
 }	t_key;
 
 #endif

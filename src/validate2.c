@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 11:40:13 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:15:47 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include <stdlib.h>
-#include "map_info.h"
+#include "world.h"
 #include "config.h"
 #include "libft/libft.h"
 #include "parser.h"

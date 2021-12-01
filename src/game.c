@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 14:22:50 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:25:18 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_game(t_game *game)
 	p = &game->player;
 	game->buf3d = new_buffer(game->mlx, WIDTH, HEIGHT);
 	p->fov_ratio = FOV / 90.0;
-	p->angle = deg_to_rad(0.0);
+	p->angle = game->world->angle;
 	p->dir.x = cos(p->angle);
 	p->dir.y = sin(p->angle);
 	p->pos = game->world->spawn;

@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:10:56 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 22:13:02 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:27:16 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	keydown(int key, t_game *game)
 	else if (key == KEY_D)
 		game->keystate[D] = true;
 	else if (key == KEY_LEFT)
-		game->keystate[LEFT] = true;
+		game->keystate[ARROW_LEFT] = true;
 	else if (key == KEY_RIGHT)
-		game->keystate[RIGHT] = true;
+		game->keystate[ARROW_RIGHT] = true;
 	else if (key == KEY_ESC)
 		quit_game(game);
 	return (0);
@@ -42,8 +42,8 @@ int	keyup(int key, t_game *game)
 	else if (key == KEY_D)
 		game->keystate[D] = false;
 	else if (key == KEY_LEFT)
-		game->keystate[LEFT] = false;
+		game->keystate[ARROW_LEFT] = false;
 	else if (key == KEY_RIGHT)
-		game->keystate[RIGHT] = false;
+		game->keystate[ARROW_RIGHT] = false;
 	return (0);
 }
