@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 12:15:03 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 11:40:13 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ bool	valid_rgb(char *str)
 
 bool	valid_map_symbols(char **map)
 {
+	bool	spawn_found;
 	int32_t	i;
 	int32_t	j;
 
+	spawn_found = false;
 	i = 0;
 	while (map[i])
 	{
@@ -79,12 +81,16 @@ bool	valid_map_symbols(char **map)
 		{
 			if (map[i][0] == '\0')
 				return (false);
+			if (ft_strchr(SPAWN, map[i][j]))
+				spawn_found = true;
 			if (!ft_strchr(MAP_SYMBOL, map[i][j]))
-				return (false);
+				return (p_error("Error: Unrecognized Map Symbol"));
 			j++;
 		}
 		i++;
 	}
+	if (spawn_found == false)
+		return (p_error("Error: Cannot Find Spawn Location"));
 	return (true);
 }
 
@@ -113,7 +119,7 @@ bool	validate_data(t_parser *p)
 	if (!valid_map(p->map))
 		return (p_error("Error: Found Newline in Map"));
 	if (!valid_map_symbols(p->map))
-		return (p_error("Error: Unrecognized Map Symbol"));
+		return (false);
 	if (!map_integrity(allocate_sqr_map(p->map)))
 		return (false);
 	return (true);

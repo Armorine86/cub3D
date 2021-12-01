@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/24 10:37:59 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:08:07 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_game
 	t_texture	*wall;
 }	t_game;
 
+t_world	*create_map(void *mlx, char *file);
 void	load_texture(t_world *world, void *mlx, char **info);
-void	init_game(t_game *game, void *mlx, void *win);
-void	create_map(t_game *game, char *file);
+void	init_game(t_game *game);
 int		update(t_game *game);
 int		quit_game(t_game *game);
 

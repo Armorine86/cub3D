@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 11:05:16 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 13:09:14 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@
 #include <math.h>
 #include <stdlib.h>
 
-void	init_game(t_game *game, void *mlx, void *win)
+void	init_game(t_game *game)
 {
 	int32_t		i;
 	t_player	*p;
 
 	p = &game->player;
-	game->mlx = mlx;
-	game->win = win;
+	game->buf3d = new_buffer(game->mlx, WIDTH, HEIGHT);
 	p->fov_ratio = FOV / 90.0;
 	p->angle = deg_to_rad(0.0);
 	p->dir.x = cos(p->angle);
@@ -32,8 +31,6 @@ void	init_game(t_game *game, void *mlx, void *win)
 	p->pos = (t_vec2){2.5, 4.5};
 	p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
 	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
-	game->buf3d = new_buffer(mlx, WIDTH, HEIGHT);
-	game->wall = new_texture(mlx, "textures/pld.xpm");
 	ft_gettime(&game->last_frame);
 	game->dt = 0.0;
 	i = 0;
@@ -70,8 +67,17 @@ int	update(t_game *g)
 
 int	quit_game(t_game *game)
 {
-	destroy_buffer(game->mlx, game->buf3d);
+	int32_t	i;
+
+	if (game->buf3d)
+		destroy_buffer(game->mlx, game->buf3d);
 	mlx_destroy_window(game->mlx, game->win);
-	ft_strarr_free(game->world->map);
+	i = 0;
+	if (game->world)
+	{
+		while (i < N_TEX)
+			free_texture(game->mlx, game->world->tex[i++]);
+		ft_strarr_free(game->world->map);
+	}
 	exit(0);
 }

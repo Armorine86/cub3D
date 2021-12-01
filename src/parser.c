@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 11:01:40 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 12:52:53 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,24 @@ void	map_dimension(t_world *world, char **map)
 	world->map = copy_arr(map);
 	world->height = ft_strarr_size(map);
 	world->width = find_longest_line(map);
+	world->spawn = find_spawn_location(map);
 }
 
-void	create_map(t_game *game, char *file)
+t_world	*create_map(void *mlx, char *file)
 {
 	t_parser	*p;
+	t_world		*world;
 
 	p = init_parser();
-	game->world = ft_calloc(1, sizeof(t_world));
+	world = ft_calloc(1, sizeof(t_world));
 	if (read_file(p, file))
 	{
-		map_dimension(game->world, p->map);
-		load_texture(game->world, game->mlx, p->tex);
-		get_colors(game->world, p->rgb);
+		map_dimension(world, p->map);
+		load_texture(world, mlx, p->tex);
+		get_colors(world, p->rgb);
 		free_parser(p);
 	}
 	else
-		quit_game(game);
+		return (NULL);
+	return (world);
 }

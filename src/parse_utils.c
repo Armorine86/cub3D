@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 07:12:01 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 12:53:51 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,27 @@
 #include "libft/libft.h"
 #include "map_info.h"
 #include "parser.h"
+
+t_vec2i	find_spawn_location(char **map)
+{
+	t_vec2i	loc;
+	int32_t	x;
+	int32_t	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (ft_strchr(SPAWN, map[y][x]))
+				loc = (t_vec2i){x, y};
+			x++;
+		}
+		y++;
+	}
+	return (loc);
+}
 
 char	**copy_arr(char **map)
 {

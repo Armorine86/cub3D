@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 07:12:13 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 11:24:59 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ bool	gnl_fail(t_parser *p, int32_t ret);
 int		verify_identifier(char *line);
 char	**copy_arr(char **map);
 size_t	find_longest_line(char **map);
+t_vec2i	find_spawn_location(char **map);
 
 #endif
