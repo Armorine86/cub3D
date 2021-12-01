@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 13:55:46 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 07:12:01 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 char	**copy_arr(char **map)
 {
 	int32_t	i;
-	int32_t	size;
+	size_t	size;
 	char	**new_map;
 
 	size = ft_strarr_size(map);
@@ -50,11 +50,11 @@ bool	free_parser(t_parser *p)
 	return (false);
 }
 
-int32_t	find_longest_line(char **map)
+size_t	find_longest_line(char **map)
 {
-	int32_t	len;
-	int32_t	temp;
-	int32_t	i;
+	size_t	len;
+	size_t	temp;
+	size_t	i;
 
 	i = 0;
 	len = 0;
@@ -74,7 +74,7 @@ char	**allocate_sqr_map(char **map)
 	t_string	str;
 	int32_t		i;
 	int32_t		diff;
-	int32_t		size;
+	uint32_t	size;
 
 	size = find_longest_line(map);
 	i = 0;

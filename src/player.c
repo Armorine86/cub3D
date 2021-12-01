@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 13:59:29 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 07:08:27 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static t_vec2	collide_walls(t_vec2 pos, t_vec2 dir, double speed, t_world *w)
 	int32_t	y;
 	t_vec2	move;
 
-	x = ft_clamp(pos.x + dir.x * 0.1, 0, w->width - 1);
-	y = ft_clamp(pos.y + dir.y * 0.1, 0, w->height - 1);
+	x = ft_clamp((int64_t)(pos.x + dir.x * 0.1), 0, w->width - 1);
+	y = ft_clamp((int64_t)(pos.y + dir.y * 0.1), 0, w->height - 1);
 	move = vec2_mul(dir, speed);
 	if (w->map[(int32_t)pos.y][x] == MAP_EMPTY)
 		pos.x += move.x;

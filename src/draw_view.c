@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 12:06:26 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 07:09:46 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_lineinfo	line_info(t_player *p, t_vec2 ray, t_hit hit, int32_t h)
 	info.hit = hit;
 	theta = wrap_angle(p->angle - atan(ray.y / ray.x));
 	view_dist = fabs(hit.dist * cos(theta));
-	info.h = h / view_dist;
+	info.h = (int32_t)(h / view_dist);
 	info.start = (-info.h / 2) + (h / 2);
 	if (info.start < 0)
 		info.start = 0;
@@ -72,7 +72,7 @@ void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 	int32_t		y;
 	uint32_t	color;
 
-	tex_x = line.wall_x * t->w;
+	tex_x = (int32_t)(line.wall_x * t->w);
 	if (is_vertical(line.hit.side) && line.ray_dir.x < 0)
 		tex_x = t->w - tex_x - 1;
 	else if (is_horizontal(line.hit.side) && line.ray_dir.y > 0)
@@ -82,7 +82,7 @@ void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 	y = line.start;
 	while (y < line.end)
 	{
-		color = get_tex_pixel(t, tex_x, ft_clamp(tex_y, 0, t->h - 1));
+		color = get_tex_pixel(t, tex_x, ft_clamp((int64_t)tex_y, 0, t->h - 1));
 		tex_y += tex_step;
 		put_pixel(buf, x, y, get_color(color, line.hit.dist));
 		y++;

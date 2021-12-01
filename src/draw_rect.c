@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:05:44 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 12:22:21 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/01 07:07:59 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	draw_rect(t_buffer *buf, t_vec2 tl, t_vec2 br, uint32_t c)
 	int32_t	i;
 	int32_t	j;
 
-	j = tl.y;
+	j = (int32_t)tl.y;
 	while (j < (int32_t)br.y)
 	{
-		i = tl.x;
+		i = (int32_t)tl.x;
 		while (i < (int32_t)br.x)
 		{
 			put_pixel(buf, i, j, c);
