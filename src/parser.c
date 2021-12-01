@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 10:08:30 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 11:01:40 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,26 @@
 #include "game.h"
 #include "utils.h"
 
-uint32_t	get_colors(char *data)
+void	get_colors(t_world *world, char **data)
 {
+	int32_t		i;
 	uint32_t	color;
 	char		*new_data;
 	char		**str;
 
-	new_data = ft_strtrim(data + 1, " ");
-	str = ft_split(new_data, ',');
-	color = make_argb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2]));
-	ft_strarr_free(str);
-	free(new_data);
-	return (color);
+	i = -1;
+	while (++i < 2)
+	{
+		new_data = ft_strtrim(data[i] + 1, " ");
+		str = ft_split(new_data, ',');
+		color = make_argb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2]));
+		if (!ft_strncmp(data[i], "F ", 2))
+			world->floor = color;
+		else
+			world->ceiling = color;
+		ft_strarr_free(str);
+		free(new_data);
+	}
 }
 
 t_parser	*init_parser(void)
@@ -70,7 +78,6 @@ void	map_dimension(t_world *world, char **map)
 
 void	create_map(t_game *game, char *file)
 {
-	int32_t		i;
 	t_parser	*p;
 
 	p = init_parser();
@@ -79,14 +86,7 @@ void	create_map(t_game *game, char *file)
 	{
 		map_dimension(game->world, p->map);
 		load_texture(game->world, game->mlx, p->tex);
-		i = -1;
-		while (++i < 2)
-		{
-			if (!ft_strncmp(p->rgb[i], "F ", 2))
-				game->world->floor = get_colors(p->rgb[0]);
-			else
-				game->world->ceiling = get_colors(p->rgb[1]);
-		}
+		get_colors(game->world, p->rgb);
 		free_parser(p);
 	}
 	else
