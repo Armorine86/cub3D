@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 14:50:18 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 10:16:18 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,10 @@ bool	valid_line(char *line)
 
 void	dispatch_line(t_parser *p, char *line)
 {
-	if (verify_identifier(line) == 1)
+	if (ft_strnstr(line, "NO", 2) || ft_strnstr(line, "SO", 2)
+		|| ft_strnstr(line, "EA", 2) || ft_strnstr(line, "WE", 2))
 		p->tex = ft_strarr_extend(p->tex, line);
-	else if (verify_identifier(line) == 2)
+	else if (ft_strnstr(line, "F", 1) || ft_strnstr(line, "C", 1))
 		p->rgb = ft_strarr_extend(p->rgb, line);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/11/30 13:52:54 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/01 10:08:30 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,13 @@ void	create_map(t_game *game, char *file)
 	{
 		map_dimension(game->world, p->map);
 		load_texture(game->world, game->mlx, p->tex);
-		if (N_TEX == 4)
+		i = -1;
+		while (++i < 2)
 		{
-			i = -1;
-			while (++i < 2)
-			{
-				if (!ft_strncmp(p->rgb[i], "F ", 2))
-					game->world->floor = get_colors(p->rgb[0]);
-				else
-					game->world->ceiling = get_colors(p->rgb[1]);
-			}
+			if (!ft_strncmp(p->rgb[i], "F ", 2))
+				game->world->floor = get_colors(p->rgb[0]);
+			else
+				game->world->ceiling = get_colors(p->rgb[1]);
 		}
 		free_parser(p);
 	}
