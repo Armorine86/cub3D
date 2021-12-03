@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/03 01:04:16 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 05:07:59 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_vec2	collide_walls(t_vec2 pos, t_vec2 dir, double speed, t_world *w)
 void	update_player(t_player *p, bool keys[N_KEYS], double dt, t_world *w)
 {
 	t_vec2	move_dir;
+	t_vec2	d;
 
 	if (keys[ARROW_LEFT])
 		rotate_left(p, dt);
@@ -61,9 +62,15 @@ void	update_player(t_player *p, bool keys[N_KEYS], double dt, t_world *w)
 	if (keys[S])
 		move_dir = ft_vec2_sub(move_dir, p->dir);
 	if (keys[A] && !keys[D])
-		move_dir = ft_vec2_add(move_dir, ft_vec2_unit(p->angle - ft_deg_to_rad(90.0)));
+	{
+		d = ft_vec2_unit(p->angle - ft_deg_to_rad(90.0));
+		move_dir = ft_vec2_add(move_dir, d);
+	}
 	if (keys[D] && !keys[A])
-		move_dir = ft_vec2_add(move_dir, ft_vec2_unit(p->angle + ft_deg_to_rad(90.0)));
+	{
+		d = ft_vec2_unit(p->angle + ft_deg_to_rad(90.0));
+		move_dir = ft_vec2_add(move_dir, d);
+	}
 	move_dir = ft_vec2_normalize(move_dir);
 	p->pos = collide_walls(p->pos, move_dir, SPEED * dt, w);
 }
