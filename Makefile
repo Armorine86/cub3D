@@ -21,33 +21,50 @@ CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 				draw_circle.c event.c draw_ray.c draw_field.c draw_view.c\
 				intersection.c parser.c parse_utils.c texture.c validate.c validate2.c\
 				read_line.c read_line_utils.c error.c integrity.c world.c\
-				
+
+# Mandatory files which conflicts with bonuses
+CMANDATORY	=	game_update.c
+
+CBONUS		=	game_update_bonus.c
+
 HFILES		=	buffer.h utils.h texture.h draw.h game.h player.h keymap.h event.h config.h\
 				intersection.h world.h parser.h 
 
 OFILES		=	$(CFILES:.c=.o)
+OMANDATORY	=	$(CMANDATORY:.c=.o)
+OBONUS		=	$(CBONUS:.c=.o)
 
-SRCS		=	$(addprefix $(SRC)/, $(CFILES))
+SRCS		=	$(addprefix $(SRC)/, $(CFILES)) $(addprefix $(SRC)/, $(CMANDATORY)) $(addprefix $(SRC)/, $(CBONUS))
 HEADERS		=	$(addprefix $(INC)/, $(HFILES))
 OBJS		=	$(addprefix $(OBJ)/, $(OFILES))
+OBJS_MAND	=	$(addprefix $(OBJ)/, $(OMANDATORY))
+OBJS_BONUS	=	$(addprefix $(OBJ)/, $(OBONUS))
 
 VPATH		=	$(SRC)
 
 $(OBJ)/%.o:	%.c
 			$(CC) $(CFLAGS) -I$(INC) -I$(LIB) -c $< -o $@
 
-all:		CFLAGS += -O2 -DNDEBUG
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(OBJS)
+$(NAME):	CFLAGS += -O2 -DNDEBUG
+$(NAME):	OBJS += $(OBJS_MAND)
+$(NAME):	link_bin
+
+link_bin:	$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
 			$(CC) $(OBJS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
 $(OBJ):
 			@$(MK) $(OBJ)
 
+bonus:		CFLAGS += -O2 -DNDEBUG
+bonus:		OBJS += $(OBJS_BONUS)
+bonus:		link_bin
+
 debug:		CFLAGS += -O0 -g
-debug:		$(NAME)
+debug:		OBJS += $(OBJS_BONUS)
+debug:		link_bin
 
 linux:		CFLAGS += -O0 -g
 linux:		$(OBJ) $(OBJS)
@@ -70,4 +87,4 @@ norme:
 			@$(MAKE_DIR) $(LIBFT) norme
 			@$(NM) $(SRCS) $(HEADERS)
 
-.PHONY:		all debug clean fclean re norme linux cool_evaluator
+.PHONY:		all debug clean fclean re norme linux bonus link_bin

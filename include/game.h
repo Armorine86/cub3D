@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 15:17:30 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 15:33:12 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_game
 
 void	load_texture(t_world *world, void *mlx, char **info);
 void	init_game(t_game *game);
-int		update(t_game *game);
+void	update_screen(t_game *game);
 int		quit_game(t_game *game);
+int		update(t_game *game);
 
 #endif
