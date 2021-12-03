@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 15:28:00 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/02 09:16:57 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PARSER_H
 
 # include <stdint.h>
-# define EXT ".xpm"
+# define TEX_EXT ".xpm"
 # define MAP_EXT ".cub"
 
 typedef struct s_parser

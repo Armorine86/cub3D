@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 13:56:16 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/02 09:25:08 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	valid_line(char *line)
 			return (valid_floor_ceiling(line));
 		if (type == ID_WALL)
 		{
-			if (valid_file_ext(line, EXT) && valid_path(line))
+			if (valid_file_ext(line, TEX_EXT) && valid_path(line))
 				return (true);
 			free(line);
 			p_error("Error: Invalid Texture Extension");
