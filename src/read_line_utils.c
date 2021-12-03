@@ -6,16 +6,16 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:39:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 13:52:15 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 04:59:50 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
-#include "libft/libft.h"
+#include <libft/libft.h>
 #include "parser.h"
 
-bool	str_is_null(char *str)
+bool	str_is_empty(char *str)
 {
 	if (str[0] == '\0')
 	{

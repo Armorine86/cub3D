@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 15:15:47 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 04:44:34 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "world.h"
 #include "config.h"
-#include "libft/libft.h"
+#include <libft/libft.h>
 #include "parser.h"
 
 bool	is_all_digit(char **rgb)

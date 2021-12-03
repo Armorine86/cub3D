@@ -6,12 +6,12 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:19:04 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/18 13:41:07 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 04:44:34 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "buffer.h"
-#include "libft/libft.h"
+#include <libft/libft.h>
 #include <mlx.h>
 #include <stdint.h>
 #include <stdlib.h>
