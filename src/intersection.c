@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:42:06 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 15:15:47 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:04:35 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	intersect(t_vec2 pos, t_vec2 dir, t_hit *hit, char **map)
 		*hit = distance(&ray_len, &map_p, step, unit_step);
 		if (map[map_p.y][map_p.x] != MAP_EMPTY)
 		{
-			hit->pos = vec2_add(vec2_mul(dir, hit->dist), pos);
+			hit->pos = ft_vec2_add(ft_vec2_mul(dir, hit->dist), pos);
 			hit->map_pos = map_p;
 			return ;
 		}

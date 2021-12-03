@@ -6,13 +6,13 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/02 09:25:08 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:16:31 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <fcntl.h>
-#include "libft/libft.h"
+#include <libft/libft.h>
 #include "parser.h"
 #include "texture.h"
 #include "config.h"
@@ -70,7 +70,7 @@ void	dispatch_line(t_parser *p, char *line)
 		p->rgb = ft_strarr_extend(p->rgb, line);
 }
 
-bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
+bool	read_line(t_parser *p, int fd, bool skip, int limit)
 {
 	int32_t	ret;
 	char	*line;
@@ -78,19 +78,19 @@ bool	read_line(t_parser *p, int32_t fd, bool skip, int limit)
 	ret = 1;
 	while (ret && limit > 0)
 	{
-		ret = get_next_line(fd, &line);
+		ret = ft_get_next_line(fd, &line);
 		if (gnl_fail(p, ret))
 			return (p_error("Error: File Read Failed"));
 		if (skip == false)
 		{
-			if (str_is_null(line))
+			if (str_is_empty(line))
 				continue ;
 			if (!valid_line(line))
 				return (false);
 			dispatch_line(p, line);
 			limit--;
 		}
-		else if (ft_strarr_size(p->map) == 0 && str_is_null(line))
+		else if (ft_strarr_size(p->map) == 0 && str_is_empty(line))
 			continue ;
 		else
 			p->map = ft_strarr_extend(p->map, line);

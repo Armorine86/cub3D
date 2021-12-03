@@ -6,14 +6,14 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 15:25:00 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 04:58:46 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <fcntl.h>
 #include "config.h"
-#include "libft/libft.h"
+#include <libft/libft.h>
 #include "parser.h"
 #include "game.h"
 #include "utils.h"
@@ -22,21 +22,18 @@ void	get_colors(t_world *world, char **data)
 {
 	int32_t		i;
 	uint32_t	color;
-	char		*new_data;
 	char		**str;
 
 	i = -1;
 	while (++i < 2)
 	{
-		new_data = ft_strtrim(data[i] + 1, " ");
-		str = ft_split(new_data, ',');
+		str = ft_split(data[i] + 1, ',');
 		color = make_argb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2]));
 		if (!ft_strncmp(data[i], "F ", 2))
 			world->floor = color;
 		else
 			world->ceiling = color;
 		ft_strarr_free(str);
-		free(new_data);
 	}
 }
 
@@ -52,9 +49,9 @@ t_parser	*init_parser(void)
 }
 
 bool	read_file(t_parser *p, char *file)
-{	
-	int32_t		fd;
-	int32_t		i;
+{
+	int		fd;
+	int32_t	i;
 
 	fd = open(file, O_RDWR);
 	if (fd == -1)
@@ -74,7 +71,7 @@ void	world_setup(t_world *world, char **map)
 	world->map = copy_arr(map);
 	world->height = ft_strarr_size(map);
 	world->width = find_longest_line(map);
-	set_spawn_location(world->map, &world->spawn, &world->angle);
+	get_spawn_location(world->map, &world->spawn, &world->angle);
 }
 
 t_world	*create_world(void *mlx, char *file)

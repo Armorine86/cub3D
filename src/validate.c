@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/02 09:17:01 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:17:16 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "texture.h"
 #include "config.h"
-#include "libft/libft.h"
+#include <libft/libft.h>
 #include "parser.h"
 
 bool	valid_floor_ceiling(char *line)

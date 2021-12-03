@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:01:58 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/17 21:52:32 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:03:39 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	draw_player(t_buffer *buf, t_player *player)
 	t_vec2	line_end;
 	t_vec2	scaled_pos;
 
-	scaled_pos = vec2_mul(player->pos, SQ_SIZE);
+	scaled_pos = ft_vec2_mul(player->pos, SQ_SIZE);
 	draw_circle(buf, scaled_pos, 5.0, 0xFF0000);
-	line_end = vec2_add(scaled_pos, vec2_mul(player->dir, 20.0));
+	line_end = ft_vec2_add(scaled_pos, ft_vec2_mul(player->dir, 20.0));
 	draw_line(buf, scaled_pos, line_end, 0xFF0000);
 }

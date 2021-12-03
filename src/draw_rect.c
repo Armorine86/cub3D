@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:05:44 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 07:07:59 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:03:39 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void	draw_rect_center(t_buffer *buf, t_vec2 center, t_vec2 wh, uint32_t c)
 	t_vec2	br;
 
 	tl = (t_vec2){center.x - (wh.x / 2.0), center.y - (wh.y / 2.0)};
-	br = vec2_add(tl, wh);
+	br = ft_vec2_add(tl, wh);
 	draw_rect(buf, tl, br, c);
 }

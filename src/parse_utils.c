@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 15:15:47 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 04:53:44 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <mlx.h>
-#include "libft/libft.h"
+#include <libft/libft.h>
 #include "world.h"
 #include "parser.h"
 
@@ -81,10 +81,9 @@ char	**allocate_sqr_map(char **map)
 	while (map[i])
 	{
 		diff = size - ft_strlen(map[i]);
-		str = ft_str_new_copy(map[i]);
+		str = ft_str_new(map[i]);
 		while (diff-- > 0)
 			ft_str_add_back(str, MAP_OOB);
-		free(map[i]);
 		map[i] = ft_str_take(str);
 		i++;
 	}
