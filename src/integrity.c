@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   integrity.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 10:03:16 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 04:44:34 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:55:24 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,51 +20,54 @@ static bool	check_right(char **map, int i, int j)
 	while (map[i][j])
 	{
 		if (map[i][j] == MAP_WALL)
-			break ;
+			return (true);
 		if (map[i][j] == MAP_OOB)
-			return (p_index("Error: Map Is Open ", i, j));
+			break ;
 		j++;
 	}
-	return (true);
+	return (p_index("Error: Map Is Open ", i, j));
 }
 
 static bool	check_left(char **map, int i, int j)
 {
-	while (map[i][j] && j > 0)
+	while (map[i][j] && j >= 0)
 	{
 		if (map[i][j] == MAP_WALL)
-			break ;
+			return (true);
 		if (map[i][j] == MAP_OOB)
-			return (p_index("Error: Map Border is Open ", i, j + 1));
+			break ;
 		j--;
 	}
-	return (true);
+	return (p_index("Error: Map Border is Open ", i, j + 1));
 }
 
 static bool	check_down(char **map, int i, int j)
 {
-	while (map[i][j])
+	size_t	size;
+
+	size = ft_strarr_size(map);
+	while (map[i][j] && (size_t)i < size)
 	{
 		if (map[i][j] == MAP_WALL)
-			break ;
+			return (true);
 		if (map[i][j] == MAP_OOB)
-			return (p_index("Error: Map Is Open ", i - 1, j));
+			break ;
 		i++;
 	}
-	return (true);
+	return (p_index("Error: Map Is Open ", i - 1, j));
 }
 
 static bool	check_up(char **map, int i, int j)
 {
-	while (map[i][j] && i > 0)
+	while (map[i][j] && i >= 0)
 	{
 		if (map[i][j] == MAP_WALL)
-			break ;
+			return (true);
 		if (map[i][j] == MAP_OOB)
-			return (p_index("Error: Map Is Open ", i + 1, j));
+			break ;
 		i--;
 	}
-	return (true);
+	return (p_index("Error: Map Is Open ", i + 1, j));
 }
 
 bool	map_integrity(char **map)

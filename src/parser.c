@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 04:58:46 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:54:28 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	read_file(t_parser *p, char *file)
 
 void	world_setup(t_world *world, char **map)
 {
-	world->map = copy_arr(map);
+	world->map = ft_strarr_dup(map);
 	world->height = ft_strarr_size(map);
 	world->width = find_longest_line(map);
 	get_spawn_location(world->map, &world->spawn, &world->angle);

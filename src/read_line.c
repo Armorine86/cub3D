@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 12:16:31 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:19:10 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ bool	read_line(t_parser *p, int fd, bool skip, int limit)
 	while (ret && limit > 0)
 	{
 		ret = ft_get_next_line(fd, &line);
-		if (gnl_fail(p, ret))
+		if (ret == -1)
 			return (p_error("Error: File Read Failed"));
 		if (skip == false)
 		{

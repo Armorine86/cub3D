@@ -1,3 +1,0 @@
-- maze1.cub est pas closed mais le jeu load quand meme
-- la function copy_arr est la meme chose que ft_strarr_dup ?
-- si get_next_line fail il y a un double free

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_line_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 13:39:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 04:59:50 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:19:02 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,6 @@ bool	str_is_empty(char *str)
 	{
 		free(str);
 		str = NULL;
-		return (true);
-	}
-	return (false);
-}
-
-bool	gnl_fail(t_parser *p, int32_t ret)
-{
-	if (ret == -1)
-	{
-		if (p->tex)
-			ft_strarr_free(p->tex);
-		if (p->rgb)
-			ft_strarr_free(p->rgb);
-		if (p->map)
-			ft_strarr_free(p->map);
 		return (true);
 	}
 	return (false);
