@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 15:25:18 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:03:25 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	init_game(t_game *game)
 	p->dir.x = cos(p->angle);
 	p->dir.y = sin(p->angle);
 	p->pos = game->world->spawn;
-	p->c_plane = vec2_unit(p->angle + deg_to_rad(90.0));
-	p->c_plane = vec2_mul(p->c_plane, p->fov_ratio);
+	p->c_plane = ft_vec2_unit(p->angle + ft_deg_to_rad(90.0));
+	p->c_plane = ft_vec2_mul(p->c_plane, p->fov_ratio);
 	ft_gettime(&game->last_frame);
 	game->dt = 0.0;
 	i = 0;

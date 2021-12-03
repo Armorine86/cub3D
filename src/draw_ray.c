@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:54:45 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 12:23:10 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:03:09 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 // 	t_hit	hit;
 
 // 	intersect(pos, dir, &hit);
-// 	draw_line(buf, vec2_mul(pos, SQ_SIZE), vec2_mul(hit.pos, SQ_SIZE), c);
+// 	draw_line(buf, ft_vec2_mul(pos, SQ_SIZE), ft_vec2_mul(hit.pos, SQ_SIZE), c);
 // }

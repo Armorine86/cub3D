@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:34:34 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/30 12:07:40 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:03:25 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 // 	double	end;
 // 	t_vec2	dir;
 
-// 	angle_step = deg_to_rad(0.02);
-// 	angle = p->angle - deg_to_rad(FOV / 2.0);
-// 	end = p->angle + deg_to_rad(FOV / 2.0);
+// 	angle_step = ft_deg_to_rad(0.02);
+// 	angle = p->angle - ft_deg_to_rad(FOV / 2.0);
+// 	end = p->angle + ft_deg_to_rad(FOV / 2.0);
 // 	while (angle <= end)
 // 	{
 // 		dir.x = cos(angle);

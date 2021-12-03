@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:14:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 15:28:52 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:05:01 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static double	get_angle(char side)
 {
 	if (side == UP)
-		return (deg_to_rad(270));
+		return (ft_deg_to_rad(270));
 	if (side == DOWN)
-		return (deg_to_rad(90));
+		return (ft_deg_to_rad(90));
 	if (side == LEFT)
-		return (deg_to_rad(180));
-	return (deg_to_rad(0));
+		return (ft_deg_to_rad(180));
+	return (ft_deg_to_rad(0));
 }
 
 void	set_spawn_location(char **map, t_vec2 *spawn, double *angle)

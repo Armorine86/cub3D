@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 07:09:46 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:04:16 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_lineinfo	line_info(t_player *p, t_vec2 ray, t_hit hit, int32_t h)
 
 	info.ray_dir = ray;
 	info.hit = hit;
-	theta = wrap_angle(p->angle - atan(ray.y / ray.x));
+	theta = ft_wrap_angle(p->angle - atan(ray.y / ray.x));
 	view_dist = fabs(hit.dist * cos(theta));
 	info.h = (int32_t)(h / view_dist);
 	info.start = (-info.h / 2) + (h / 2);
