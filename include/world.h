@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 10:38:58 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 15:24:36 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/03 20:29:07 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_world
 	t_texture	*tex[N_TEX];
 	t_vec2		spawn;
 	double		angle;
-	uint32_t	height;
-	uint32_t	width;
+	int32_t		height;
+	int32_t		width;
 	uint32_t	floor;
 	uint32_t	ceiling;
 	char		**map;
