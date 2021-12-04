@@ -21,6 +21,7 @@ CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 				draw_circle.c event.c draw_ray.c draw_field.c draw_view.c\
 				intersection.c parser.c parse_utils.c texture.c validate.c validate2.c\
 				read_line.c read_line_utils.c error.c integrity.c world.c\
+				draw_minimap.c
 
 # Mandatory files which conflicts with bonuses
 CMANDATORY	=	game_update.c
@@ -67,6 +68,7 @@ debug:		OBJS += $(OBJS_BONUS)
 debug:		link_bin
 
 linux:		CFLAGS += -O0 -g
+linux:		OBJS += $(OBJS_BONUS)
 linux:		$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)
