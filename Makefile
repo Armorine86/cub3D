@@ -68,16 +68,15 @@ debug:		OBJS += $(OBJS_BONUS)
 debug:		link_bin
 
 linux:		CFLAGS += -O0 -g
-linux:		OBJS += $(OBJS_BONUS)
-linux:		$(OBJ) $(OBJS)
+linux:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)
-			$(CC) $(OBJS) -L$(LIBFT) -lft -L$(MLX_LINUX) -lmlx -lm -lXext -lX11 -o $(NAME)
+			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -L$(MLX_LINUX) -lmlx -lm -lXext -lX11 -o $(NAME)
 
 clean:
 #			@$(MAKE_DIR) $(LIBFT) clean
 			@$(MAKE_DIR) $(MLX_LINUX) clean
-			@$(RM) $(OBJS)
+			@$(RM) $(OBJS) $(OBJS_MAND) $(OBJS_MAND)
 
 fclean:		clean
 #			@$(MAKE_DIR) $(LIBFT) fclean
