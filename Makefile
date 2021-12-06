@@ -48,26 +48,25 @@ $(OBJ)/%.o:	%.c
 
 all:		$(NAME)
 
-$(NAME):	CFLAGS += -O2 -DNDEBUG
-$(NAME):	OBJS += $(OBJS_MAND)
-$(NAME):	link_bin
-
-link_bin:	$(OBJ) $(OBJS)
+$(NAME):	CFLAGS += -O3 -DNDEBUG
+$(NAME):	$(OBJ) $(OBJS) $(OBJS_MAND)
 			@$(MAKE_DIR) $(LIBFT)
-			$(CC) $(OBJS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
+			$(CC) $(OBJS) $(OBJS_MAND) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
 $(OBJ):
 			@$(MK) $(OBJ)
 
-bonus:		CFLAGS += -O2 -DNDEBUG
-bonus:		OBJS += $(OBJS_BONUS)
-bonus:		link_bin
+bonus:		CFLAGS += -O3 -DNDEBUG
+bonus:		$(OBJ) $(OBJS) $(OBJS_BONUS)
+			@$(MAKE_DIR) $(LIBFT)
+			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
-debug:		CFLAGS += -O0 -g
-debug:		OBJS += $(OBJS_BONUS)
-debug:		link_bin
+debug:		CFLAGS += -g
+debug:		$(OBJ) $(OBJS) $(OBJS_BONUS)
+			@$(MAKE_DIR) $(LIBFT)
+			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
-linux:		CFLAGS += -O0 -g
+linux:		CFLAGS += -g
 linux:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)
@@ -88,4 +87,4 @@ norme:
 			@$(MAKE_DIR) $(LIBFT) norme
 			@$(NM) $(SRCS) $(HEADERS)
 
-.PHONY:		all debug clean fclean re norme linux bonus link_bin
+.PHONY:		all debug clean fclean re norme linux bonus
