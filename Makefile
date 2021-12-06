@@ -48,7 +48,7 @@ $(OBJ)/%.o:	%.c
 
 all:		$(NAME)
 
-$(NAME):	CFLAGS += -O2 -DNDEBUG
+$(NAME):	CFLAGS += -O3 -DNDEBUG
 $(NAME):	OBJS += $(OBJS_MAND)
 $(NAME):	link_bin
 
@@ -59,15 +59,15 @@ link_bin:	$(OBJ) $(OBJS)
 $(OBJ):
 			@$(MK) $(OBJ)
 
-bonus:		CFLAGS += -O2 -DNDEBUG
+bonus:		CFLAGS += -O3 -DNDEBUG
 bonus:		OBJS += $(OBJS_BONUS)
 bonus:		link_bin
 
-debug:		CFLAGS += -O0 -g
+debug:		CFLAGS += -g
 debug:		OBJS += $(OBJS_BONUS)
 debug:		link_bin
 
-linux:		CFLAGS += -O0 -g
+linux:		CFLAGS += -g
 linux:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)

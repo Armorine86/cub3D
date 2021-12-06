@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/05 21:35:54 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/06 00:33:45 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define FOG_DENSITY 0.25
 # define FOG_GRADIENT 2.0
 # define MAP_MAX_H 2048
-# define MINIMAP_SCALE 8
+# define MINIMAP_W 250
+# define MINIMAP_H 150
+# define MINIMAP_SCALE 3
 
 #endif
