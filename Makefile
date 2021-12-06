@@ -50,7 +50,7 @@ all:		$(NAME)
 
 $(NAME):	CFLAGS += -O3 -DNDEBUG
 $(NAME):	OBJS += $(OBJS_MAND)
-$(NAME):	link_bin
+$(NAME):	$(OBJS_MAND) link_bin
 
 link_bin:	$(OBJ) $(OBJS)
 			@$(MAKE_DIR) $(LIBFT)
@@ -61,11 +61,11 @@ $(OBJ):
 
 bonus:		CFLAGS += -O3 -DNDEBUG
 bonus:		OBJS += $(OBJS_BONUS)
-bonus:		link_bin
+bonus:		$(OBJS_BONUS) link_bin
 
 debug:		CFLAGS += -g
 debug:		OBJS += $(OBJS_BONUS)
-debug:		link_bin
+debug:		$(OBJS_BONUS) link_bin
 
 linux:		CFLAGS += -g
 linux:		$(OBJ) $(OBJS) $(OBJS_BONUS)
