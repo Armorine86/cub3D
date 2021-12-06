@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:57:40 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/05 23:55:44 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:49:27 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_game(t_game *game)
 
 	p = &game->player;
 	game->buf3d = new_buffer(game->mlx, WIDTH, HEIGHT);
-	game->minimap = new_buffer(game->mlx, MINIMAP_W, MINIMAP_H);
+	game->minimap = new_buffer(game->mlx, MM_WIDTH, MM_HEIGTH);
 	p->fov_ratio = FOV / 90.0;
 	p->angle = game->world->angle;
 	p->dir.x = cos(p->angle);
