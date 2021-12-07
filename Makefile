@@ -75,7 +75,7 @@ linux:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 clean:
 #			@$(MAKE_DIR) $(LIBFT) clean
 			@$(MAKE_DIR) $(MLX_LINUX) clean
-			@$(RM) $(OBJS) $(OBJS_MAND) $(OBJS_MAND)
+			@$(RM) $(OBJS) $(OBJS_MAND) $(OBJS_BONUS)
 
 fclean:		clean
 #			@$(MAKE_DIR) $(LIBFT) fclean
