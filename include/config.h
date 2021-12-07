@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/06 14:52:18 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/07 12:35:39 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define MM_BG_COLOR 0xCCCCCC
 # define MM_PATH_COLOR 0x00CCFF
 # define MM_PLAYER_COLOR 0xFF0000
-# define MM_PLAYER_RADIUS 3
-# define MM_LINE_LENGTH 10
+# define MM_PLAYER_RADIUS 4
+# define MM_LINE_LENGTH 12
 // Should not be changed
 # define MM_WIDTH 250
 # define MM_HEIGTH 150
