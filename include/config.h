@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/03 20:32:20 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/06 14:52:18 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 # define FOG_DENSITY 0.25
 # define FOG_GRADIENT 2.0
 # define MAP_MAX_H 2048
-# define MINIMAP_SCALE 6
+
+# define MM_BG_COLOR 0xCCCCCC
+# define MM_PATH_COLOR 0x00CCFF
+# define MM_PLAYER_COLOR 0xFF0000
+# define MM_PLAYER_RADIUS 3
+# define MM_LINE_LENGTH 10
+// Should not be changed
+# define MM_WIDTH 250
+# define MM_HEIGTH 150
 
 #endif
