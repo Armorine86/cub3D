@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:09:37 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/11/10 22:42:36 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/07 14:36:14 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int	keydown(int key, t_game *game);
 int	keyup(int key, t_game *game);
+int	mouse_move(int x, int y, t_game *game);
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
