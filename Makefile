@@ -83,8 +83,8 @@ fclean:		clean
 
 re:			fclean all
 
-norme:
-			@$(MAKE_DIR) $(LIBFT) norme
+norm:
+			@$(MAKE_DIR) $(LIBFT) norm
 			@$(NM) $(SRCS) $(HEADERS)
 
-.PHONY:		all debug clean fclean re norme linux bonus
+.PHONY:		all debug clean fclean re norm linux bonus
