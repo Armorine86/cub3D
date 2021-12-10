@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 12:17:23 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:13:45 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ bool	valid_rgb(char *str)
 
 bool	valid_map_symbols(char **map)
 {
-	bool	spawn_found;
+	int32_t	spawn_count;
 	int32_t	i;
 	int32_t	j;
 
-	spawn_found = false;
+	spawn_count = 0;
 	i = 0;
 	while (map[i])
 	{
@@ -84,15 +84,15 @@ bool	valid_map_symbols(char **map)
 			if (map[i][0] == '\0')
 				return (false);
 			if (ft_strchr(SPAWN, map[i][j]))
-				spawn_found = true;
+				spawn_count++;
 			if (!ft_strchr(MAP_SYMBOL, map[i][j]))
 				return (p_error("Error: Unrecognized Map Symbol"));
 			j++;
 		}
 		i++;
 	}
-	if (spawn_found == false)
-		return (p_error("Error: Cannot Find Spawn Location"));
+	if (spawn_count == 0 || spawn_count > 1)
+		return (p_error("Error: Invalid Spawn Location"));
 	return (true);
 }
 

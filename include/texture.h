@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:51:19 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/01 10:15:47 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/10 09:42:07 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define TEXTURE_H
 
 # define N_CONFIG 6
+
+#ifndef N_TEX
 # define N_TEX 4
+#endif
 
 # include <stdint.h>
 # include "side.h"
