@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 22:50:54 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/05 23:53:18 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:25:01 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "buffer.h"
 # include "player.h"
 # include "world.h"
+# include "mouse.h"
 
 typedef struct s_game
 {
@@ -25,6 +26,8 @@ typedef struct s_game
 	t_time		last_frame;
 	t_world		*world;
 	bool		keystate[N_KEYS];
+	t_mouse		mouse;
+	bool		mouse_enabled;
 	void		*mlx;
 	void		*win;
 	double		dt;

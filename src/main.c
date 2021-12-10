@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/04 21:01:37 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/07 14:40:11 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, KEY_PRESS, KEY_PRESS_MASK, &keydown, &game);
 	mlx_hook(game.win, KEY_RELEASE, KEY_RELEASE_MASK, &keyup, &game);
 	mlx_hook(game.win, DESTROY_NOTIFY, NO_EVENT_MASK, &quit_game, &game);
+	mlx_hook(game.win, MOTION_NOTIFY, POINTER_MOTION_MASK, &mouse_move, &game);
 	mlx_loop_hook(game.mlx, &update, &game);
 	mlx_loop(game.mlx);
 }
