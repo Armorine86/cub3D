@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:38:48 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/01 15:27:02 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:24:05 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #  define KEY_A 0x00
 #  define KEY_S 0x01
 #  define KEY_D 0x02
+#  define KEY_M 0x2E
 #  define KEY_ESC 0x35
 #  define KEY_LEFT 0x7B
 #  define KEY_RIGHT 0x7C
