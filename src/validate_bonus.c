@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/10 09:32:03 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:55:24 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	valid_floor_ceiling(char *line)
 	{
 		free(line);
 		free(new_line);
-		return (false);
+		return (p_error("Error: Invalid File Extension"));
 	}
 	if (!valid_path(new_line))
 	{
