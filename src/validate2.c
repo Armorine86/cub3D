@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:34:28 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:42:28 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ bool	valid_map_symbols(char **map)
 				return (p_error("Error: Unrecognized Map Symbol"));
 		}
 	}
-	if (spawn_found == 0 || spawn_found > 1)
+	if (!spawn_found)
 		return (p_error("Error: Invalid Spawn Location"));
 	return (true);
 }
