@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:26:06 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:55:24 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:36:00 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ bool	valid_floor_ceiling(char *line)
 	if (!valid_path(new_line))
 	{
 		free(new_line);
+		free(line);
 		return (false);
 	}
 	free(new_line);
@@ -65,6 +66,8 @@ bool	valid_identifier(char *str)
 		return (true);
 	else if (!ft_strncmp(str, "F ", 2))
 		return (true);
+	else if (!ft_strnstr(MAP_SYMBOL, str, 1))
+		return (p_error("Error: Missing Texture"));
 	return (p_error("Error: Invalid Texture Identifier"));
 }
 

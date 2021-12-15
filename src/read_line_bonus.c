@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:29:11 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/10 10:04:31 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:25:20 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ bool	valid_path(char *line)
 	{
 		close(fd);
 		free(file);
-		free(line);
 		return (p_error("Error: Invalid Texture Path"));
 	}
 	close(fd);
@@ -53,7 +52,6 @@ bool	valid_line(char *line)
 			if (valid_file_ext(line, TEX_EXT) && valid_path(line))
 				return (true);
 			free(line);
-			p_error("Error: Invalid Texture Extension");
 			return (false);
 		}
 	}

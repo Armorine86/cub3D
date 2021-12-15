@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 10:03:16 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 12:55:24 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:51:32 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static bool	check_up(char **map, int i, int j)
 	{
 		if (map[i][j] == MAP_WALL)
 			return (true);
-		if (map[i][j] == MAP_OOB)
+		if (map[i][j] == MAP_OOB || i < 1)
 			break ;
 		i--;
 	}

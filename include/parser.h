@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 12:17:07 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:31:06 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdint.h>
 # define TEX_EXT ".xpm"
 # define MAP_EXT ".cub"
+
+# ifndef MAP_SYMBOL
+#  define MAP_SYMBOL "01NSEW "
+# endif
 
 typedef struct s_parser
 {

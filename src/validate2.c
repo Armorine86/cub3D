@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:58:39 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:41:13 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,15 @@
 #include "config.h"
 #include "parser.h"
 
-bool	is_all_digit(char **rgb)
+bool	is_all_digit(char *rgb)
 {
 	int32_t	i;
-	int32_t	j;
 
 	i = 0;
 	while (rgb[i])
 	{
-		j = 0;
-		while (rgb[i][j])
-		{
-			if (rgb[i][j] == '-')
-				j++;
-			if (!ft_isdigit(rgb[i][j]))
-				return (false);
-			j++;
-		}
+		if (!ft_isdigit(rgb[i]))
+			return (false);
 		i++;
 	}
 	return (true);
@@ -46,23 +38,20 @@ bool	valid_rgb(char *str)
 	char	**rgb;
 
 	rgb = ft_split(str, ',');
-	if (ft_strarr_size(rgb) < 3)
+ 	if (ft_strarr_size(rgb) < 3)
+	 {
+		ft_strarr_free(rgb);	
 		return (p_error("Error: Missing RGB Value"));
-	if (!is_all_digit(rgb))
-	{
-		ft_strarr_free(rgb);
-		return (p_error("Error: RGB Values Are Not All Digits"));
-	}
-	i = 0;
-	while (rgb[i])
+	 }
+	i = -1;
+	while (rgb[++i])
 	{
 		num = ft_atoi(rgb[i]);
-		if (num < 0 || num > 255)
+		if (!is_all_digit(rgb[i]) || (num < 0 || num > 255))
 		{
 			ft_strarr_free(rgb);
-			return (p_error("Error: RGB Value Outside Range [0, 255]"));
+			return (p_error("Error: Invalid RGB Values"));
 		}
-		i++;
 	}
 	ft_strarr_free(rgb);
 	return (true);
@@ -88,7 +77,7 @@ bool	valid_map_symbols(char **map)
 			if (ft_strchr(SPAWN, map[i][j]))
 				spawn_found = true;
 			if (!ft_strchr(MAP_SYMBOL, map[i][j]))
-				return (p_error("Error: Unrecognized Map Symbol"));
+				return (p_index("Error: Unrecognized Map Symbol", i, j));
 		}
 	}
 	if (!spawn_found)

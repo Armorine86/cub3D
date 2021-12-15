@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/10 10:12:43 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:38:29 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	valid_map_symbols(char **map)
 			if (ft_strchr(SPAWN, map[i][j]))
 				spawn_count++;
 			if (!ft_strchr(MAP_SYMBOL, map[i][j]))
-				return (p_error("Error: Unrecognized Map Symbol"));
+				return (p_index("Error: Unrecognized Map Symbol", i, j));
 			j++;
 		}
 		i++;
