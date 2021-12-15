@@ -5,8 +5,8 @@ WE           ./textures/pld2.xpm
 EA       ./textures/wall.xpm
 
 
-C     80,80,80
-F     127,127,127
+C     ./textures/pld.xpm
+F     ./textures/pld2.xpm
 
 
 

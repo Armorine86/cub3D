@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate2.c                                        :+:      :+:    :+:   */
+/*   validate2_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:58:39 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:12:43 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/libft.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include "world.h"
 #include "config.h"
+#include <libft/libft.h>
 #include "parser.h"
 
 bool	is_all_digit(char **rgb)
@@ -70,28 +70,28 @@ bool	valid_rgb(char *str)
 
 bool	valid_map_symbols(char **map)
 {
-	bool	spawn_found;
+	int32_t	spawn_count;
 	int32_t	i;
 	int32_t	j;
 
-	spawn_found = false;
-	i = -1;
-	while (map[++i])
+	spawn_count = 0;
+	i = 0;
+	while (map[i])
 	{
-		j = -1;
-		while (map[i][++j])
+		j = 0;
+		while (map[i][j])
 		{
 			if (map[i][0] == '\0')
 				return (false);
-			if (spawn_found && ft_strchr(SPAWN, map[i][j]))
-				return (p_error("Error: Multiple Spawn Locations Found"));
 			if (ft_strchr(SPAWN, map[i][j]))
-				spawn_found = true;
+				spawn_count++;
 			if (!ft_strchr(MAP_SYMBOL, map[i][j]))
 				return (p_error("Error: Unrecognized Map Symbol"));
+			j++;
 		}
+		i++;
 	}
-	if (!spawn_found)
+	if (spawn_count == 0 || spawn_count > 1)
 		return (p_error("Error: Invalid Spawn Location"));
 	return (true);
 }
@@ -114,9 +114,9 @@ bool	valid_map(char **map)
 
 bool	validate_data(t_parser *p)
 {
-	if (!duplicate_identifier(p->tex) || !duplicate_identifier(p->rgb))
+	if (!duplicate_identifier(p->tex))
 		return (p_error("Error: Duplicate Identifier Found"));
-	if (!no_missing_texture(p->tex) || !no_missing_texture(p->rgb))
+	if (!no_missing_texture(p->tex))
 		return (p_error("Error: Texture Missing"));
 	if (!valid_map(p->map))
 		return (p_error("Error: Found Newline in Map"));

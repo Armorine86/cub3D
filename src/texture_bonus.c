@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   texture_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:50:36 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/10 09:28:59 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:02:30 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ void	load_texture(t_world *world, void *mlx, char **info)
 			world->tex[WEST] = new_texture(mlx, path);
 		else if (ft_strnstr(info[n], "EA", 2))
 			world->tex[EAST] = new_texture(mlx, path);
+		else if (ft_strnstr(info[n], "F", 1))
+			world->tex[FLOOR] = new_texture(mlx, path);
+		else if (ft_strnstr(info[n], "C", 1))
+			world->tex[CEILING] = new_texture(mlx, path);
 		n++;
 		free(path);
 	}

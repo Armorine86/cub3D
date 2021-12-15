@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_update_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:17:39 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/07 15:01:25 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:52:12 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	update(t_game *g)
 	update_player(&g->player, g->keystate, g->dt, g);
 	w = g->buf3d->w;
 	h = g->buf3d->h;
-	draw_rect(g->buf3d, (t_vec2){0, 0}, (t_vec2){w, h / 2}, g->world->ceiling);
-	draw_rect(g->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, g->world->floor);
+	draw_fc(g->buf3d, &g->player, g->world->tex[FLOOR],
+		g->world->tex[CEILING]);
 	draw_view(g->buf3d, &g->player, g->world->tex, g->world->map);
 	draw_minimap(g->minimap, g->world, &g->player);
 	update_screen(g);
