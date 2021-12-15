@@ -26,7 +26,8 @@ CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 # Mandatory files which conflicts with bonuses
 CMANDATORY	=	game_update.c
 
-CBONUS		=	game_update_bonus.c
+CBONUS		=	game_update_bonus.c texture_bonus.c validate_bonus.c parser_bonus.c\
+				read_line_bonus.c
 
 HFILES		=	buffer.h utils.h texture.h draw.h game.h player.h keymap.h event.h config.h\
 				intersection.h world.h parser.h 
@@ -56,7 +57,7 @@ $(NAME):	$(OBJ) $(OBJS) $(OBJS_MAND)
 $(OBJ):
 			@$(MK) $(OBJ)
 
-bonus:		CFLAGS += -O3 -DNDEBUG
+bonus:		CFLAGS += -O3 -DNDEBUG -DN_TEX=6
 bonus:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
