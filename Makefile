@@ -19,7 +19,7 @@ MAKE_DIR	= $(MAKE) --no-print-directory -C
 
 CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 				draw_circle.c event.c draw_ray.c draw_field.c draw_view.c\
-				intersection.c parse_utils.c  validate2.c\
+				intersection.c parse_utils.c  validate2.c utils2.c\
 				read_line_utils.c error.c integrity.c world.c\
 				draw_minimap.c
 
@@ -67,19 +67,19 @@ debug:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
-linux:		CFLAGS += -g
+linux:		CFLAGS += -O3 -DN_TEX=6
 linux:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)
 			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -L$(MLX_LINUX) -lmlx -lm -lXext -lX11 -o $(NAME)
 
 clean:
-#			@$(MAKE_DIR) $(LIBFT) clean
+			@$(MAKE_DIR) $(LIBFT) clean
 			@$(MAKE_DIR) $(MLX_LINUX) clean
 			@$(RM) $(OBJS) $(OBJS_MAND) $(OBJS_BONUS)
 
 fclean:		clean
-#			@$(MAKE_DIR) $(LIBFT) fclean
+			@$(MAKE_DIR) $(LIBFT) fclean
 			@$(RM) $(NAME)
 
 re:			fclean all

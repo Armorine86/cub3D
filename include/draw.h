@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:09:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/15 12:54:12 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:54:57 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 typedef struct s_fc
 {
-	uint32_t	color;
 	t_vec2i		iter;
 	t_vec2		ray0;
 	t_vec2		ray1;

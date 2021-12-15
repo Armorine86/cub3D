@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view_fc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 11:29:02 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:49:06 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:55:03 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,23 @@
 #include "utils.h"
 #include <math.h>
 
-typedef void	(*t_draw_pixel)(t_buffer *, t_texture *, t_fc *, uint32_t);
+typedef void	(*t_draw_pixel)(t_buffer *, t_texture *, t_fc *);
 
-void	draw_ceiling(t_buffer *buf, t_texture *t, t_fc *f, uint32_t color)
+void	draw_ceiling(t_buffer *buf, t_texture *t, t_fc *f)
 {
+	uint32_t	color;
+
 	color = get_tex_pixel(t, f->tex.x, f->tex.y);
+	color = get_color_fog(color, f->row_dist);
 	put_pixel(buf, f->iter.x, buf->h - f->iter.y - 1, color);
 }
 
-void	draw_floor(t_buffer *buf, t_texture *t, t_fc *f, uint32_t color)
+void	draw_floor(t_buffer *buf, t_texture *t, t_fc *f)
 {
+	uint32_t	color;
+
 	color = get_tex_pixel(t, f->tex.x, f->tex.y);
+	color = get_color_fog(color, f->row_dist);
 	put_pixel(buf, f->iter.x, f->iter.y, color);
 }
 
@@ -42,7 +48,7 @@ void	draw_fc_x(t_buffer *buf, t_texture *t, t_fc *f, t_draw_pixel fn)
 				0, t->h - 1);
 		f->pos.x += f->f_step.x;
 		f->pos.y += f->f_step.y;
-		fn(buf, t, f, f->color);
+		fn(buf, t, f);
 		f->iter.x++;
 	}
 }

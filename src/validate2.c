@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 15:41:13 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:59:09 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ bool	valid_rgb(char *str)
 	char	**rgb;
 
 	rgb = ft_split(str, ',');
- 	if (ft_strarr_size(rgb) < 3)
-	 {
-		ft_strarr_free(rgb);	
+	if (ft_strarr_size(rgb) < 3)
+	{
+		ft_strarr_free(rgb);
 		return (p_error("Error: Missing RGB Value"));
-	 }
+	}
 	i = -1;
 	while (rgb[++i])
 	{

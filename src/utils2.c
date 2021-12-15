@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 00:47:28 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/15 18:50:06 by mleblanc         ###   ########.fr       */
+/*   Created: 2021/12/15 18:49:35 by mleblanc          #+#    #+#             */
+/*   Updated: 2021/12/15 18:51:29 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
+#include "config.h"
+#include <math.h>
 
-# include <libft/libft.h>
-# include "side.h"
+uint32_t	get_color_fog(uint32_t c, double dist)
+{
+	double	visibility;
 
-uint32_t	make_argb(uint8_t t, uint8_t r, uint8_t g, uint8_t b);
-uint32_t	argb_mul(uint32_t c, double factor);
-void		vec2_swap(t_vec2 *a, t_vec2 *b);
-bool		is_vertical(t_side side);
-bool		is_horizontal(t_side side);
-uint32_t	get_color_fog(uint32_t c, double dist);
-
-#endif
+	if (!isnormal(dist))
+		dist = 0;
+	visibility = exp(-pow(dist * FOG_DENSITY, FOG_GRADIENT));
+	visibility = ft_clampd(visibility, 0.0, 1.0);
+	return (argb_mul(c, visibility));
+}

@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 15:27:03 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/03 01:04:16 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:50:46 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,6 @@ static t_lineinfo	line_info(t_player *p, t_vec2 ray, t_hit hit, int32_t h)
 	return (info);
 }
 
-static uint32_t	get_color(uint32_t c, double dist)
-{
-	double	visibility;
-
-	if (!isnormal(dist))
-		dist = 0;
-	visibility = exp(-pow(dist * FOG_DENSITY, FOG_GRADIENT));
-	visibility = ft_clampd(visibility, 0.0, 1.0);
-	return (argb_mul(c, visibility));
-}
-
 void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 {
 	int32_t		tex_x;
@@ -84,7 +73,7 @@ void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo line, int32_t x)
 	{
 		color = get_tex_pixel(t, tex_x, ft_clamp((int64_t)tex_y, 0, t->h - 1));
 		tex_y += tex_step;
-		put_pixel(buf, x, y, get_color(color, line.hit.dist));
+		put_pixel(buf, x, y, get_color_fog(color, line.hit.dist));
 		y++;
 	}
 }
