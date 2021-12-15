@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:09:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/07 15:03:49 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:53:22 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@
 # include "texture.h"
 # include "intersection.h"
 # include "world.h"
+
+typedef struct s_fc
+{
+	uint32_t	color;
+	t_vec2i		iter;
+	t_vec2		ray0;
+	t_vec2		ray1;
+	t_vec2		f_step;
+	t_vec2		pos;
+	t_vec2i		tex;
+	t_vec2i		map;
+	int32_t		p;
+	double		row_dist;
+	double		pos_z;
+}	t_fc;
 
 typedef struct s_lineinfo
 {
