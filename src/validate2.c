@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:57:50 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:58:39 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "world.h"
 #include "config.h"
 #include "parser.h"
-
 
 bool	is_all_digit(char **rgb)
 {
