@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:09:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/15 18:54:57 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/16 13:01:53 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,9 @@
 typedef struct s_fc
 {
 	t_vec2i		iter;
-	t_vec2		ray0;
-	t_vec2		ray1;
-	t_vec2		f_step;
+	t_vec2		step;
 	t_vec2		pos;
-	t_vec2i		tex;
-	t_vec2i		map;
-	int32_t		p;
 	double		row_dist;
-	double		pos_z;
 }	t_fc;
 
 typedef struct s_lineinfo
