@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game_update_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:17:39 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/15 12:52:12 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/16 13:32:41 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "draw.h"
+#include "config.h"
 
 int	update(t_game *g)
 {
@@ -29,6 +30,7 @@ int	update(t_game *g)
 		g->world->tex[CEILING]);
 	draw_view(g->buf3d, &g->player, g->world->tex, g->world->map);
 	draw_minimap(g->minimap, g->world, &g->player);
+	draw_crosshair(g->buf3d, CROSSHAIR_COLOR);
 	update_screen(g);
 	return (0);
 }

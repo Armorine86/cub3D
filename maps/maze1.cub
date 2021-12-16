@@ -1,12 +1,12 @@
 
-NO ./textures/pld.xpm
-EA           ./textures/pld2.xpm
-WE       ./textures/pld3.xpm
-SO      ./textures/pld4.xpm
+NO ./textures/wall.xpm
+EA           ./textures/wall.xpm
+WE       ./textures/wall.xpm
+SO      ./textures/wall.xpm
 
 
-C     ./textures/bob_ross.xpm
-F     ./textures/bob_ross.xpm
+C     ./textures/wood.xpm
+F     ./textures/stone.xpm
 
 
 

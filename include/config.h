@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:00:47 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/07 12:35:39 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/16 13:32:22 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define FOG_DENSITY 0.25
 # define FOG_GRADIENT 2.0
 # define MAP_MAX_H 2048
+# define CROSSHAIR_COLOR 0xFF00
 
 # define MM_BG_COLOR 0xCCCCCC
 # define MM_PATH_COLOR 0x00CCFF

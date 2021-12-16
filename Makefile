@@ -21,7 +21,7 @@ CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 				draw_circle.c event.c draw_ray.c draw_field.c draw_view.c\
 				intersection.c parse_utils.c  validate2.c utils2.c\
 				read_line_utils.c error.c integrity.c world.c\
-				draw_minimap.c
+				draw_minimap.c draw_crosshair.c
 
 # Mandatory files which conflicts with bonuses
 CMANDATORY	=	game_update.c texture.c validate.c parser.c read_line.c
@@ -58,9 +58,12 @@ $(OBJ):
 			@$(MK) $(OBJ)
 
 bonus:		CFLAGS += -O3 -DNDEBUG -DN_TEX=6
-bonus:		$(OBJ) $(OBJS) $(OBJS_BONUS)
+bonus:		bclean $(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
+
+bclean:
+			@$(RM) $(OBJS) $(OBJS_BONUS)
 
 debug:		CFLAGS += -g -DN_TEX=6
 debug:		$(OBJ) $(OBJS) $(OBJS_BONUS)
@@ -87,4 +90,4 @@ re:			fclean all
 norm:
 			@$(NM) $(SRCS) $(HEADERS)
 
-.PHONY:		all debug clean fclean re linux bonus
+.PHONY:		all debug clean fclean re linux bonus bclean

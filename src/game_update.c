@@ -6,12 +6,13 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:17:39 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/07 15:01:21 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/16 13:32:59 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "draw.h"
+#include "config.h"
 
 int	update(t_game *g)
 {
@@ -26,6 +27,7 @@ int	update(t_game *g)
 	draw_rect(g->buf3d, (t_vec2){0, h / 2}, (t_vec2){w, h}, g->world->floor);
 	draw_view(g->buf3d, &g->player, g->world->tex, g->world->map);
 	draw_minimap(g->minimap, g->world, &g->player);
+	draw_crosshair(g->buf3d, CROSSHAIR_COLOR);
 	update_screen(g);
 	return (0);
 }

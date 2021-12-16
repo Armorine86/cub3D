@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:09:21 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/16 13:01:53 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/16 13:32:00 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	draw_fc(t_buffer *buf, t_player *p, t_texture *fl, t_texture *c);
 void	draw_view(t_buffer *buf, t_player *p, t_texture *t[N_TEX], char **map);
 void	draw_line_tex(t_buffer *buf, t_texture *t, t_lineinfo info, int32_t x);
 void	draw_minimap(t_buffer *buf, t_world *world, t_player *p);
+void	draw_crosshair(t_buffer *buf, uint32_t color);
 
 #endif
