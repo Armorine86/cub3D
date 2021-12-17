@@ -1,6 +1,6 @@
 # cub3D
 
-A Wolfeinstein-style raycaster in C
+A Wolfenstein3D-style raycaster in C
 
 ![Screenshot](screenshot/screenshot1.png)
 

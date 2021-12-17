@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 08:40:47 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/10 10:08:05 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/16 19:54:14 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ t_parser	*init_parser(void)
 bool	read_file(t_parser *p, char *file)
 {
 	int		fd;
-	int32_t	i;
 
 	fd = open(file, O_RDWR);
 	if (fd == -1)
 		return (p_error("Error: Invalid File"));
-	i = 0;
 	if (!read_line(p, fd, 0, N_CONFIG) || !read_line(p, fd, 1, MAP_MAX_H))
 		return (free_parser(p));
 	if (!p->tex || !p->map)
