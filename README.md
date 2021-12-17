@@ -10,6 +10,6 @@ A Wolfenstein3D-style raycaster in C
 - ESC to quit
 - Textures for every wall faces, floor and ceiling
 - Fog effect
-- Map loaded from file
+- Map loaded from file (customizable)
 - Minimap
 - Crosshair
