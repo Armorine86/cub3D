@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:50:59 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/07 14:40:11 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/19 05:42:13 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 	}
 	ft_bzero(&game, sizeof(t_game));
 	game.mlx = mlx_init();
+	if (!game.mlx)
+		return EXIT_FAILURE;
 	game.world = create_world(game.mlx, argv[1]);
 	if (!game.world)
 		quit_game(&game);
