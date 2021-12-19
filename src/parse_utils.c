@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 09:32:09 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/03 04:53:44 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/18 22:38:45 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,6 @@
 #include <libft/libft.h>
 #include "world.h"
 #include "parser.h"
-
-char	**copy_arr(char **map)
-{
-	int32_t	i;
-	size_t	size;
-	char	**new_map;
-
-	size = ft_strarr_size(map);
-	new_map = ft_calloc(size + 1, sizeof(char *));
-	i = 0;
-	while (map[i])
-	{
-		new_map[i] = ft_strdup(map[i]);
-		i++;
-	}
-	return (new_map);
-}
 
 bool	free_parser(t_parser *p)
 {

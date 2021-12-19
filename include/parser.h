@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:52:17 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 15:31:06 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/18 22:38:55 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char	**allocate_sqr_map(char **map);
 bool	str_is_empty(char *str);
 bool	gnl_fail(t_parser *p, int32_t ret);
 t_ident	identifier_type(char *line);
-char	**copy_arr(char **map);
 size_t	find_longest_line(char **map);
 void	get_spawn_location(char **map, t_vec2 *spawn, double *angle);
 
