@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:17:39 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/16 13:32:59 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/20 10:28:22 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	update(t_game *g)
 	int32_t	w;
 	int32_t	h;
 
-	g->dt = 0.01;
+	g->dt = 0.02;
 	update_player(&g->player, g->keystate, g->dt, g);
 	w = g->buf3d->w;
 	h = g->buf3d->h;
