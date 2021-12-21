@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:10:56 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/13 22:54:04 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:27:27 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	keydown(int key, t_game *game)
 		game->mouse_enabled = !game->mouse_enabled;
 		game->mouse.old_pos = (t_vec2i){0, 0};
 		game->mouse.pos = (t_vec2i){0, 0};
+		game->mouse.new_event = false;
 	}
 	else if (key == KEY_ESC)
 		quit_game(game);
@@ -61,6 +62,7 @@ int	mouse_move(int x, int y, t_game *game)
 		game->mouse.old_pos = game->mouse.pos;
 		game->mouse.pos.x = x;
 		game->mouse.pos.y = y;
+		game->mouse.new_event = true;
 	}
 	return (0);
 }

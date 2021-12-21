@@ -6,7 +6,7 @@
 /*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:55:12 by mleblanc          #+#    #+#             */
-/*   Updated: 2021/12/07 15:29:12 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:26:32 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,13 @@ static void	mouse_movement(t_player *p, double dt, t_mouse *m)
 	int32_t	dx;
 	double	speed;
 
-	speed = 1.0 / PI;
-	dx = m->pos.x - m->old_pos.x;
-	rotate(p, p->angle + ((double)dx * speed * dt));
+	if (m->new_event)
+	{
+		speed = 1.0 / PI;
+		dx = m->pos.x - m->old_pos.x;
+		m->new_event = false;
+		rotate(p, p->angle + ((double)dx * speed * dt));
+	}
 }
 
 void	update_player(t_player *p, bool keys[N_KEYS], double dt, t_game *g)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   integrity.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 10:03:16 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/21 11:30:54 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:28:46 by mleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static bool	check_right(char **map, int i, int j)
 {
-	char symbol;
+	char	symbol;
 
 	symbol = map[i][j];
 	while (map[i][j])
@@ -35,7 +35,7 @@ static bool	check_right(char **map, int i, int j)
 
 static bool	check_left(char **map, int i, int j)
 {
-	char symbol;
+	char	symbol;
 
 	symbol = map[i][j];
 	while (map[i][j] && j >= 0)
@@ -54,7 +54,7 @@ static bool	check_left(char **map, int i, int j)
 static bool	check_down(char **map, int i, int j)
 {
 	size_t	size;
-	char symbol;
+	char	symbol;
 
 	symbol = map[i][j];
 	size = ft_strarr_size(map);
@@ -73,7 +73,7 @@ static bool	check_down(char **map, int i, int j)
 
 static bool	check_up(char **map, int i, int j)
 {
-	char symbol;
+	char	symbol;
 
 	symbol = map[i][j];
 	while (map[i][j] && i >= 0)
