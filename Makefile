@@ -19,14 +19,14 @@ MAKE_DIR	= $(MAKE) --no-print-directory -C
 
 CFILES		=	main.c buffer.c utils.c draw_line.c game.c draw_rect.c player.c\
 				draw_circle.c event.c draw_view.c intersection.c parse_utils.c\
-				validate2.c utils2.c read_line_utils.c error.c integrity.c world.c\
+				utils2.c read_line_utils.c error.c integrity.c world.c\
 				draw_minimap.c draw_crosshair.c
 
 # Mandatory files which conflicts with bonuses
-CMANDATORY	=	game_update.c texture.c validate.c parser.c read_line.c
+CMANDATORY	=	game_update.c texture.c validate.c parser.c read_line.c validate2.c
 
 CBONUS		=	game_update_bonus.c texture_bonus.c validate_bonus.c parser_bonus.c\
-				read_line_bonus.c draw_view_fc.c
+				read_line_bonus.c draw_view_fc.c validate2_bonus.c
 
 HFILES		=	buffer.h utils.h texture.h draw.h game.h player.h keymap.h event.h config.h\
 				intersection.h world.h parser.h 
@@ -69,7 +69,7 @@ debug:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			$(CC) $(OBJS) $(OBJS_BONUS) -L$(LIBFT) -lft -lmlx -lm -framework OpenGL -framework AppKit -o $(NAME)
 
-linux:		CFLAGS += -O3 -DN_TEX=6
+linux:		CFLAGS += -O3 -DN_TEX=6 -g
 linux:		$(OBJ) $(OBJS) $(OBJS_BONUS)
 			@$(MAKE_DIR) $(LIBFT)
 			@$(MAKE_DIR) $(MLX_LINUX)

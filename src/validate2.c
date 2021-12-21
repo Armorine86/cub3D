@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleblanc <mleblanc@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 18:59:09 by mleblanc         ###   ########.fr       */
+/*   Updated: 2021/12/21 11:40:54 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool	valid_map_symbols(char **map)
 		}
 	}
 	if (!spawn_found)
-		return (p_error("Error: Invalid Spawn Location"));
+		return (p_error("Error: No Spawn Location Found"));
 	return (true);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 10:03:16 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/15 14:51:32 by mmondell         ###   ########.fr       */
+/*   Updated: 2021/12/21 11:30:54 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 static bool	check_right(char **map, int i, int j)
 {
+	char symbol;
+
+	symbol = map[i][j];
 	while (map[i][j])
 	{
 		if (map[i][j] == MAP_WALL)
@@ -25,11 +28,16 @@ static bool	check_right(char **map, int i, int j)
 			break ;
 		j++;
 	}
-	return (p_index("Error: Map Is Open ", i, j));
+	if (ft_strchr(SPAWN, symbol))
+		return (p_index("Error: Invalid Spawn Location", i, j));
+	return (p_index("Error: Map Is Open", i, j));
 }
 
 static bool	check_left(char **map, int i, int j)
 {
+	char symbol;
+
+	symbol = map[i][j];
 	while (map[i][j] && j >= 0)
 	{
 		if (map[i][j] == MAP_WALL)
@@ -38,13 +46,17 @@ static bool	check_left(char **map, int i, int j)
 			break ;
 		j--;
 	}
-	return (p_index("Error: Map Border is Open ", i, j + 1));
+	if (ft_strchr(SPAWN, symbol))
+		return (p_index("Error: Invalid Spawn Location", i, j + 1));
+	return (p_index("Error: Map is Open", i, j + 1));
 }
 
 static bool	check_down(char **map, int i, int j)
 {
 	size_t	size;
+	char symbol;
 
+	symbol = map[i][j];
 	size = ft_strarr_size(map);
 	while (map[i][j] && (size_t)i < size)
 	{
@@ -54,11 +66,16 @@ static bool	check_down(char **map, int i, int j)
 			break ;
 		i++;
 	}
-	return (p_index("Error: Map Is Open ", i - 1, j));
+	if (ft_strchr(SPAWN, symbol))
+		return (p_index("Error: Invalid Spawn Location", i - 1, j));
+	return (p_index("Error: Map Is Open", i - 1, j));
 }
 
 static bool	check_up(char **map, int i, int j)
 {
+	char symbol;
+
+	symbol = map[i][j];
 	while (map[i][j] && i >= 0)
 	{
 		if (map[i][j] == MAP_WALL)
@@ -67,7 +84,9 @@ static bool	check_up(char **map, int i, int j)
 			break ;
 		i--;
 	}
-	return (p_index("Error: Map Is Open ", i + 1, j));
+	if (ft_strchr(SPAWN, symbol))
+		return (p_index("Error: Invalid Spawn Location", i + 1, j));
+	return (p_index("Error: Map Is Open", i + 1, j));
 }
 
 bool	map_integrity(char **map)
@@ -81,7 +100,7 @@ bool	map_integrity(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == MAP_EMPTY)
+			if (map[i][j] == MAP_EMPTY || ft_strchr(SPAWN, map[i][j]))
 			{
 				if (!check_up(map, i, j))
 					return (false);
