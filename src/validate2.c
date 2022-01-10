@@ -6,7 +6,7 @@
 /*   By: mmondell <mmondell@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:36:26 by mmondell          #+#    #+#             */
-/*   Updated: 2021/12/21 11:40:54 by mmondell         ###   ########.fr       */
+/*   Updated: 2022/01/10 14:12:05 by mmondell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,16 @@ bool	valid_map(char **map)
 {
 	int32_t	i;
 	int32_t	size;
+	bool	valid;
 
+	valid = true;
 	i = 0;
 	size = ft_strarr_size(map);
 	while (i < size - 1)
 	{
-		if (map[i][0] == '\0')
+		if (valid && map[i][0] == '\0')
+			valid = false;
+		if (!valid && map[i][0] != '\0')
 			return (false);
 		i++;
 	}
