@@ -13,3 +13,8 @@ A Wolfenstein3D-style raycaster in C
 - Map loaded from file (customizable)
 - Minimap
 - Crosshair
+
+
+## Project Score:
+
+[![mmondell's 42 cub3d Score](https://badge42.vercel.app/api/v2/cl1mb28v7003209mtmfky9fw8/project/2436911)](https://github.com/JaeSeoKim/badge42)
